@@ -51,3 +51,7 @@ p {
 .picture {
   height: 100px;
 }
+.container_mg{
+  margin-top: 200px;
+  margin-bottom: 40px;
+}
