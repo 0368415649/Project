@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://kit.fontawesome.com/b369642a0f.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Document</title>
 </head>
@@ -14,22 +15,22 @@
 <div class="header">
     <div class="row header-title">
         <div class="col-3"></div>
-        <div class="col-6 " >
+        <div class="col-6 header_title" >
             <p>Order by 5pm for same-day delivery Mon - Sat, 2pm for Sun, 7 days a week across Singapore.
             <br>Fresh premium blooms, handmade by our team of florists.</p>
         </div>
         <div class="col-3 grap">
-            <!-- <div class="register_css">
-                <a href="#">Register</a>
+            <div class="register_css">
+                <div id="register_btn">Register</div>
             </div>
             <span style=" color: darkgrey; ">/</span>
             <div class="register_css">
-                <a href="#">Login</a>
-            </div> -->
-             <div class="">
+                <div id="login_btn">Login</div>
+            </div>
+             <!-- <div class="">
                 Xin chao nguyen dinh duy
                 <i class="fa-solid fa-user login_icon"></i>
-            </div>
+            </div> -->
            
         </div>
     </div>
@@ -84,7 +85,20 @@
             </div>
         </div>
         <div class="row grap_product_image">    
-            <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="col-xl-3 col-lg-4 col-md-6 grap_product_click">
+                <a href="#">
+                    <img width="100%" src="./img/home/prjt0001.jpg" alt="">
+                </a>
+                    <div class="font_product">
+                        <div class="product_name">Florist's Pick Flower Jars</div>
+                        <div class="product_price">
+                            <div class="pricr">178.00$</div>
+                            <div class="price_cart"><i class="fa-solid fa-cart-arrow-down cart_cl"></i></div>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-4 col-md-6 grap_product_click">
                 <img width="100%" src="./img/home/prjt0001.jpg" alt="">
                 <div class="font_product">
                     <div class="product_name">Florist's Pick Flower Jars</div>
@@ -95,7 +109,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="col-xl-3 col-lg-4 col-md-6 grap_product_click">
                 <img width="100%" src="./img/home/prjt0001.jpg" alt="">
                 <div class="font_product">
                     <div class="product_name">Florist's Pick Flower Jars</div>
@@ -106,18 +120,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <img width="100%" src="./img/home/prjt0001.jpg" alt="">
-                <div class="font_product">
-                    <div class="product_name">Florist's Pick Flower Jars</div>
-                    <div class="product_price">
-                        <div class="pricr">178.00$</div>
-                        <div class="price_cart"><i class="fa-solid fa-cart-arrow-down cart_cl"></i></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="col-xl-3 col-lg-4 col-md-6 grap_product_click">
                 <img width="100%" src="./img/home/prjt0001.jpg" alt="">
                 <div class="font_product">
                     <div class="product_name">Florist's Pick Flower Jars</div>
@@ -389,6 +392,57 @@
     </div>
 </div>
 <!-- footer -->
+<!-- Css login -->
+<div class="modall" id="modal">
+</div>
+<div class="modal__body modal__body-registration">
+    <div class="modal__inner">
+            <form action="" method="GET" class="form">
+                <div class="modal__inner-heard">
+                    <div class="modal__inner-heard-register">Registration</div>
+                    <label for="name" class="modal__inner-heard-login">Login</label>
+                </div>
+                <div class="modal__inner-content">
+                    <div class="modal__inner-content-model">
+                        <input type="number" class="modal__inner-content-input"  name="phone" placeholder='Please enter phone number ....'>                                            
+                        <input type="text" class="modal__inner-content-input" name="first_name" placeholder='First Name ...'>
+                        <input type="text" class="modal__inner-content-input" name="last_name" placeholder='Last Name ...'>
+                        <input type="password" class="modal__inner-content-input" name="password" placeholder='Please enter password ....'>              
+                    </div>
+                    <div class="rules">
+                        By registering , you agree to <a href="#" class="rules-content">Terms of Service</a> & <a href="#" class="rules-content">Privacy Policy</a>
+                    </div>
+                    <div class="btn-location">
+                            <label for="name" class="btn btn--hover">Back</label>
+                            <div class="btn btn--register btn-login">Registration</div>
+                    </div>
+                </div>
+            </form>
+    </div>
+</div>
+<div class="modal__body modal__body-login">
+    <div class="modal__inner">
+        <div class="form2">
+            <div class="modal__inner-heard">
+                <div class="modal__inner-heard-register">Login</div>
+                <label for="name2"  class="modal__inner-heard-registration">Registration</label>
+            </div>
+            <div class="modal__inner-content">
+                <div class="modal__inner-content-model">
+                    <input type="email" id="login-email" name="login-email" class="modal__inner-content-input" placeholder='Email của bạn'>
+                    <span class="regex login-email-span"></span>
+                    <input type="password" id="login-password" name="login-password" class="modal__inner-content-input" placeholder='Password của bạn'>
+                    <span class="regex login-password-span"></span>
+                </div>
+                <div class="btn-location">
+                        <label for="name2" class="btn btn--hover btn--hover-back ">Back</label>
+                        <div class="btn btn--register btn-registration">Login</div>
+                </div>
+            </div>
+        </div>
+    </div> 
+<!-- Login -->
 </body>
 </html>
+<script src="./js/login.js"></script>
 
