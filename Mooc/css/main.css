@@ -1,0 +1,249 @@
+/* Commom */
+ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+a{
+    text-decoration: none;
+}
+.flex_grap{
+    display: flex;
+}
+.flex-aline{
+    align-items: center !important;
+}
+.flex_center{
+    justify-content: center !important;
+}
+/* Commom */
+/* Css Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-bottom: 1px solid #666;
+    padding-bottom: 20px;
+}
+.header-title {
+    background-color: #383c4f;
+    text-align: center;
+    padding: 2px 0px;
+    color: white;
+    font-size: 11px;
+    font-weight: 500;
+}
+.header-title p{
+    margin: 0px;
+}
+.grap{
+    display: flex;
+    align-items: center;
+}
+.register_css a{
+    text-decoration: none;
+    color: rgb(248, 106, 29);
+    margin:  0px 3px ;
+}
+.logo_flex{
+    display: flex;
+    align-items: center;
+
+}
+.left_item_hover{
+    text-decoration: none;
+    color: #666;
+    font-weight: 700;
+    font-size: 17px;
+    border-right: 1px solid #e6bfbf;
+    padding: 0px 8px;
+}
+.left_item_hover:hover{
+    color: rgb(242, 80, 26);
+    font-weight: 500;
+}
+.category_css{
+   padding: 0px;
+   align-items: center;
+}
+.link_grap{
+    margin-top: 10px !important;
+}
+.bd_none{
+    border-color: transparent;
+}
+.link_col{
+    padding-top: 10px;
+}
+.grap_cart{
+    margin-left: auto;
+}
+.header-search{
+    display: flex;
+    margin-top: 6.8px;
+}
+.header-search-icon {
+    height: 35px;
+    background: #e35820;
+    line-height: 40px;
+    padding: 3px;
+    color: white;
+    font-weight: 200;
+}
+.header-search-input {
+    height: 36px;
+    width: 300px;
+    font-size: 19px;
+    padding-left: 10px;
+}
+.header-search-input:focus {
+    outline: none !important;
+    border-color: #d7d8d9;
+    box-shadow: 0 0 10px #eceff3;
+  }
+.header-search-grap {
+    display: flex;
+    align-items: center;
+}
+.grap_icon_cart{
+    font-size: 25px;
+    margin-left: 10%;
+}
+.container_width{
+    margin: 0px auto;
+    width: 1450px ;
+}
+.login_icon:hover{
+    cursor: pointer;
+    color: #e5622e;
+}
+/* Css header */
+/* Css image home */
+.grap_image_home{
+    margin-top: 95px;
+}
+/* Css image home */
+/* Css lisst product */
+.category_title{
+    font-size: 23px;
+    font-weight: 700;
+}
+.grap_list_product{
+    margin: 40px 0px;
+   
+}
+.grap_title{
+    border-bottom: 1px solid #b2b2b3;
+    padding-bottom: 10px;
+}
+.grap_product_image{
+    margin-top: 20px !important;
+}
+.font_product {
+    text-align: center;
+    padding: 10px 0 10px;
+    background-color: #ececec;
+}
+.product_name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #455560;
+}
+.pricr {
+    font-weight: 200;
+    margin-top: 5px;
+}
+.product_price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 30px;
+    font-size: 17px;
+}
+.price_cart{
+    margin-left: 30px;
+}
+.show_more a{
+    text-decoration: none;
+    color: rgb(174, 19, 19);
+}
+/* Css lisst product */
+/* Css maybe */
+.title_maybe{
+    border-bottom: 1px solid #b2b2b3;
+    padding-bottom: 20px;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+.featured{
+    font-size: 25px;
+    font-weight: 700;
+    margin: 30px 0px;
+}
+.maybe_icon{
+    font-size: 60px;
+}
+.may_be_grap{
+    padding: 0px 40px !important;
+}
+.may_be_title{
+    font-size: 20px;
+    padding: 20px 0px;
+}
+.may_be_des{
+    font-size: 15px !important;
+    font-weight: 300;
+}
+/* Css maybe */
+/* Css featured */
+.featured_text{
+    padding-left: 20px;
+}
+.featured_text h4{
+    font-weight: 400;
+    font-size: 20px;
+}
+.featured_text span{
+    font-weight: 300;
+    font-size: 16px;
+}
+/* Css featured */
+/* Css footer */
+.footer-one-title{
+    font-weight: 500;
+    margin-bottom: 30px;
+    font-size: 13px;
+}
+.footer-item a{
+    color:white;
+    text-decoration: none;
+}
+.boxz{
+    box-sizing:border-box;
+}
+.footer{
+    background: #383c4f;
+    color: white;
+    padding: 30px 30px 100px 30px;
+    font-size:14px;
+}
+.footer-item{
+    font-weight: 500;
+    margin-bottom: 7px;
+    cursor: pointer;
+
+}
+.footer-link{
+    font-size: 15px;
+    color:#e5622e;
+    text-decoration: none;
+}
+.footer-item a:hover{
+    cursor: pointer;
+    color:#e5622e;
+}
+/* Css footer */
+
