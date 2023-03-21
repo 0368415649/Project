@@ -89,3 +89,29 @@
     justify-content: space-between;
     padding: 20px 0px;
 }
+.grap_left_cart{
+    margin-top: 100px;
+    padding-left: 50px;
+}
+.color_usui{
+    color: #aaa9a9;
+}
+.color_pink_half{
+    color: palevioletred;
+}
+.input_width{
+    width: 70%;
+}
+.grap_btn_comfirm_cart{
+    justify-content: space-between;
+    align-items: center;
+}
+.grap_btn_comfirm_cart a{
+   color: palevioletred;
+}
+.grap_btn_comfirm_cart button{
+    padding: 20px 15px;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+}
