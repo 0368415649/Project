@@ -1,0 +1,46 @@
+.container {
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column, .column_content {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+
+.feature_divider {
+  width: 100%;
+  margin-bottom: 20px;
+  display: block;
+  border: 0;
+  border-color: #aaa;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+h1, h3 {
+  font-family: Roboto,sans-serif;
+  font-style: normal;
+  text-transform: none;
+  line-height: 1.5;
+  color: #383c4f;
+  display: block;
+  letter-spacing: 2px;
+  text-rendering: optimizeLegibility;
+  font-size: 26px;
+  margin: 0 auto 15px;
+  clear: both;
+  font-weight: 700;
+  padding-top: 4px;
+}
+
+p {
+  margin: 0 0 10px;
+  font-style: normal;
+  line-height: 1.6em;
+}
+
+  
