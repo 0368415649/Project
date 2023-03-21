@@ -29,6 +29,9 @@ a{
 .flex_center{
     justify-content: center !important;
 }
+.flex_space{
+    justify-content: space-between;
+}
 /* Commom */
 /* Css Header */
 .header_title{
