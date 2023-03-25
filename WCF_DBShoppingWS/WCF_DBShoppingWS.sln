@@ -3,25 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Florist_WCF_Service", "Florist_WCF_Service\", "{8D2A1C66-0481-4591-AA37-276207A58D41}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WCF_DBShoppingWS", "WCF_DBShoppingWS\", "{09F4ED7F-440E-4776-8EB9-E7D7822706E9}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_65200"
-		Debug.AspNetCompiler.PhysicalPath = "Florist_WCF_Service\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_65200\"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_61346"
+		Debug.AspNetCompiler.PhysicalPath = "WCF_DBShoppingWS\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61346\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_65200"
-		Release.AspNetCompiler.PhysicalPath = "Florist_WCF_Service\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_65200\"
+		Release.AspNetCompiler.VirtualPath = "/localhost_61346"
+		Release.AspNetCompiler.PhysicalPath = "WCF_DBShoppingWS\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61346\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "65200"
-		SlnRelativePath = "Florist_WCF_Service\"
+		VWDPort = "61346"
+		SlnRelativePath = "WCF_DBShoppingWS\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
@@ -30,13 +30,13 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8D2A1C66-0481-4591-AA37-276207A58D41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D2A1C66-0481-4591-AA37-276207A58D41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09F4ED7F-440E-4776-8EB9-E7D7822706E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09F4ED7F-440E-4776-8EB9-E7D7822706E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {96321166-71BB-4B4A-A9D5-D3D4C65902F8}
+		SolutionGuid = {D3831169-8B62-4A01-9D36-1875C90061C4}
 	EndGlobalSection
 EndGlobal
