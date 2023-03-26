@@ -52,17 +52,66 @@ public class WebService : System.Web.Services.WebService
 
     // -----------------API For Product Table -------------
 
-    //1. Api get All Product (
+    //1. Api get All Product by search, page, sort 
     [WebMethod]
-    public DataSet GetAllProduct()
+    public int GetCountProduct(string searchName, int category)
     {
         SqlConnection cnn = new SqlConnection(connstr);
+        string queryCategory = "";
+        if (category != 0)
+        {
+            queryCategory = "AND Category.Category_id = " + category;
+        }
+        string sql = "SELECT Count(*) as count FROM     Product" +
+            " LEFT OUTER JOIN    Category ON Product.Category_id = Category.Category_id" +
+            " LEFT OUTER JOIN  Account ON Product.Update_by = Account.Account_id LEFT OUTER JOIN  Supplier ON Product.Supplier_id = Supplier.Supplier_id  " +
+            " Where  Product.Product_name LIKE '%" + searchName + "%' " + queryCategory;
+
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return  int.Parse(ds.Tables[0].Rows[0]["count"].ToString());
+    }
+
+    //1. Api get All Product by search, page, sort 
+    [WebMethod]
+    public DataSet GetAllProduct(string searchName, string sortName, string typeSort, int offset, int limit, int category)
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string queryCategory = "";
+        if(category != 0)
+        {
+            queryCategory = "AND Category.Category_id = " + category;
+        }
         string sql = "SELECT Product.Product_id, Product.Product_name, Product.Description," +
             " Product.Image, Product.Price, Product.Discount, Category.Category_name," +
             " Supplier.Supplier_name, Account.Account_id, Account.User_name, Product.Sold," +
             " Product.Inventory, Product.Update_at FROM     Product" +
             " LEFT OUTER JOIN    Category ON Product.Category_id = Category.Category_id" +
-            " LEFT OUTER JOIN  Account ON Product.Update_by = Account.Account_id LEFT OUTER JOIN  Supplier ON Product.Supplier_id = Supplier.Supplier_id";
+            " LEFT OUTER JOIN  Account ON Product.Update_by = Account.Account_id LEFT OUTER JOIN  Supplier ON Product.Supplier_id = Supplier.Supplier_id  " +
+            " Where  Product.Product_name LIKE '%" + searchName + "%' " + queryCategory +
+            " ORder by " + sortName + " " + typeSort  +
+            " OFFSET " + offset + " ROWS " +
+            " FETCH NEXT  " + limit + "  ROWS ONLY";
+
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds;
+    }
+
+    //1. Api get All Product by category(
+    [WebMethod]
+    public DataSet GetProductByCategory(int categoryID)
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT Top(4) Product.Product_id, Product.Product_name, Product.Description," +
+            " Product.Image, Product.Price, Product.Discount, Category.Category_name," +
+            " Supplier.Supplier_name, Account.Account_id, Account.User_name, Product.Sold," +
+            " Product.Inventory, Product.Update_at FROM     Product" +
+            " LEFT OUTER JOIN    Category ON Product.Category_id = Category.Category_id" +
+            " LEFT OUTER JOIN  Account ON Product.Update_by = Account.Account_id LEFT OUTER JOIN  Supplier ON Product.Supplier_id = Supplier.Supplier_id " +
+            " Where  Category.Category_id = " + categoryID;
 
         SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
         DataSet ds = new DataSet();

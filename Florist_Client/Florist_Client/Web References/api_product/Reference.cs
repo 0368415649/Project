@@ -34,7 +34,11 @@ namespace Florist_Client.api_product {
         
         private System.Threading.SendOrPostCallback GetMessageByCategoryOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetCountProductOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetAllProductOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetProductByCategoryOperationCompleted;
         
         private System.Threading.SendOrPostCallback LoginAccountOperationCompleted;
         
@@ -91,7 +95,13 @@ namespace Florist_Client.api_product {
         public event GetMessageByCategoryCompletedEventHandler GetMessageByCategoryCompleted;
         
         /// <remarks/>
+        public event GetCountProductCompletedEventHandler GetCountProductCompleted;
+        
+        /// <remarks/>
         public event GetAllProductCompletedEventHandler GetAllProductCompleted;
+        
+        /// <remarks/>
+        public event GetProductByCategoryCompletedEventHandler GetProductByCategoryCompleted;
         
         /// <remarks/>
         public event LoginAccountCompletedEventHandler LoginAccountCompleted;
@@ -165,29 +175,101 @@ namespace Florist_Client.api_product {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetCountProduct", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int GetCountProduct(string searchName, int category) {
+            object[] results = this.Invoke("GetCountProduct", new object[] {
+                        searchName,
+                        category});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetCountProductAsync(string searchName, int category) {
+            this.GetCountProductAsync(searchName, category, null);
+        }
+        
+        /// <remarks/>
+        public void GetCountProductAsync(string searchName, int category, object userState) {
+            if ((this.GetCountProductOperationCompleted == null)) {
+                this.GetCountProductOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCountProductOperationCompleted);
+            }
+            this.InvokeAsync("GetCountProduct", new object[] {
+                        searchName,
+                        category}, this.GetCountProductOperationCompleted, userState);
+        }
+        
+        private void OnGetCountProductOperationCompleted(object arg) {
+            if ((this.GetCountProductCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetCountProductCompleted(this, new GetCountProductCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllProduct", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet GetAllProduct() {
-            object[] results = this.Invoke("GetAllProduct", new object[0]);
+        public System.Data.DataSet GetAllProduct(string searchName, string sortName, string typeSort, int offset, int limit, int category) {
+            object[] results = this.Invoke("GetAllProduct", new object[] {
+                        searchName,
+                        sortName,
+                        typeSort,
+                        offset,
+                        limit,
+                        category});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void GetAllProductAsync() {
-            this.GetAllProductAsync(null);
+        public void GetAllProductAsync(string searchName, string sortName, string typeSort, int offset, int limit, int category) {
+            this.GetAllProductAsync(searchName, sortName, typeSort, offset, limit, category, null);
         }
         
         /// <remarks/>
-        public void GetAllProductAsync(object userState) {
+        public void GetAllProductAsync(string searchName, string sortName, string typeSort, int offset, int limit, int category, object userState) {
             if ((this.GetAllProductOperationCompleted == null)) {
                 this.GetAllProductOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllProductOperationCompleted);
             }
-            this.InvokeAsync("GetAllProduct", new object[0], this.GetAllProductOperationCompleted, userState);
+            this.InvokeAsync("GetAllProduct", new object[] {
+                        searchName,
+                        sortName,
+                        typeSort,
+                        offset,
+                        limit,
+                        category}, this.GetAllProductOperationCompleted, userState);
         }
         
         private void OnGetAllProductOperationCompleted(object arg) {
             if ((this.GetAllProductCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetAllProductCompleted(this, new GetAllProductCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetProductByCategory", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet GetProductByCategory(int categoryID) {
+            object[] results = this.Invoke("GetProductByCategory", new object[] {
+                        categoryID});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetProductByCategoryAsync(int categoryID) {
+            this.GetProductByCategoryAsync(categoryID, null);
+        }
+        
+        /// <remarks/>
+        public void GetProductByCategoryAsync(int categoryID, object userState) {
+            if ((this.GetProductByCategoryOperationCompleted == null)) {
+                this.GetProductByCategoryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetProductByCategoryOperationCompleted);
+            }
+            this.InvokeAsync("GetProductByCategory", new object[] {
+                        categoryID}, this.GetProductByCategoryOperationCompleted, userState);
+        }
+        
+        private void OnGetProductByCategoryOperationCompleted(object arg) {
+            if ((this.GetProductByCategoryCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetProductByCategoryCompleted(this, new GetProductByCategoryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -411,6 +493,32 @@ namespace Florist_Client.api_product {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetCountProductCompletedEventHandler(object sender, GetCountProductCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetCountProductCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetCountProductCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetAllProductCompletedEventHandler(object sender, GetAllProductCompletedEventArgs e);
     
     /// <remarks/>
@@ -422,6 +530,32 @@ namespace Florist_Client.api_product {
         private object[] results;
         
         internal GetAllProductCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetProductByCategoryCompletedEventHandler(object sender, GetProductByCategoryCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetProductByCategoryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetProductByCategoryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

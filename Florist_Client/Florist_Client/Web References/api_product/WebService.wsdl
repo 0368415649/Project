@@ -40,13 +40,58 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetCountProduct">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="searchName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="category" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCountProductResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCountProductResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetAllProduct">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="searchName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sortName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="typeSort" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="offset" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="limit" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="category" type="s:int" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="GetAllProductResponse">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="GetAllProductResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProductByCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="categoryID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProductByCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProductByCategoryResult">
               <s:complexType>
                 <s:sequence>
                   <s:element ref="s:schema" />
@@ -174,11 +219,23 @@
   <wsdl:message name="GetMessageByCategorySoapOut">
     <wsdl:part name="parameters" element="tns:GetMessageByCategoryResponse" />
   </wsdl:message>
+  <wsdl:message name="GetCountProductSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCountProduct" />
+  </wsdl:message>
+  <wsdl:message name="GetCountProductSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCountProductResponse" />
+  </wsdl:message>
   <wsdl:message name="GetAllProductSoapIn">
     <wsdl:part name="parameters" element="tns:GetAllProduct" />
   </wsdl:message>
   <wsdl:message name="GetAllProductSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProductByCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetProductByCategory" />
+  </wsdl:message>
+  <wsdl:message name="GetProductByCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetProductByCategoryResponse" />
   </wsdl:message>
   <wsdl:message name="LoginAccountSoapIn">
     <wsdl:part name="parameters" element="tns:LoginAccount" />
@@ -219,9 +276,17 @@
       <wsdl:input message="tns:GetMessageByCategorySoapIn" />
       <wsdl:output message="tns:GetMessageByCategorySoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetCountProduct">
+      <wsdl:input message="tns:GetCountProductSoapIn" />
+      <wsdl:output message="tns:GetCountProductSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetAllProduct">
       <wsdl:input message="tns:GetAllProductSoapIn" />
       <wsdl:output message="tns:GetAllProductSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductByCategory">
+      <wsdl:input message="tns:GetProductByCategorySoapIn" />
+      <wsdl:output message="tns:GetProductByCategorySoapOut" />
     </wsdl:operation>
     <wsdl:operation name="LoginAccount">
       <wsdl:input message="tns:LoginAccountSoapIn" />
@@ -264,8 +329,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetCountProduct">
+      <soap:operation soapAction="http://tempuri.org/GetCountProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAllProduct">
       <soap:operation soapAction="http://tempuri.org/GetAllProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductByCategory">
+      <soap:operation soapAction="http://tempuri.org/GetProductByCategory" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -339,8 +422,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetCountProduct">
+      <soap12:operation soapAction="http://tempuri.org/GetCountProduct" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAllProduct">
       <soap12:operation soapAction="http://tempuri.org/GetAllProduct" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductByCategory">
+      <soap12:operation soapAction="http://tempuri.org/GetProductByCategory" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

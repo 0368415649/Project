@@ -445,4 +445,10 @@
 </body>
 </html>
 <script src="./js/login.js"></script>
+<script>
+    $('.header-search-input').on('input', function (e) {
+        document.querySelector('.header-search-icon').href = 'SearchProduct?nameSearch=' + $('.header-search-input').val();
+        alert(document.querySelector('.header-search-icon').href)
 
+})
+</script>

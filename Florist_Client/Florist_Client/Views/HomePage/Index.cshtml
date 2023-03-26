@@ -1,0 +1,184 @@
+﻿@model IEnumerable<Florist_Client.Models.Products>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutCommom.cshtml";
+    @Styles.Render("~/Resources/css/about_us.css")
+}
+
+<!-- image home page -->
+<div class="grap_image_home">
+    <img width="100%" src="~/Resources/img/home/logo_home.png" alt="">
+</div>
+<!-- image home page -->
+<!-- lisst product home -->
+
+<div class="container">
+    <div class="grap_list_product">
+        <div class="grap_title flex_aline d-flex justify-content-between">
+            <div class="category_title">Flower basket</div>
+            <div class="show_more">
+                <a href="#">Show more</a>
+            </div>
+        </div>
+        <div class="row grap_product_image">
+            @foreach (var item in ViewBag.Product1)
+            {
+                <div class="col-xl-3 col-lg-4 col-md-6 grap_product_click">
+                    <a href="#">
+                        <img width="100%" height="82%" src="~/Resources/img/product/@(item.Image).png" alt="">
+                    </a>
+                    <div class="font_product">
+                        <div class="product_name">@(item.Product_name)</div>
+                        <div class="product_price">
+                            <div class="pricr">@(item.Price)$</div>
+                            <div class="price_cart"><i class="fa-solid fa-cart-arrow-down cart_cl"></i></div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="grap_list_product">
+        <div class="grap_title flex_aline d-flex justify-content-between">
+            <div class="category_title">Bouquet</div>
+            <div class="show_more">
+                <a href="#">Show more</a>
+            </div>
+        </div>
+        <div class="row grap_product_image">
+            @foreach (var item in ViewBag.Product2)
+            {
+                <div class="col-xl-3 col-lg-4 col-md-6 grap_product_click">
+                    <a href="#">
+                        <img width="100%" height="82%" src="~/Resources/img/product/@(item.Image).png" alt="">
+                    </a>
+                    <div class="font_product">
+                        <div class="product_name">@(item.Product_name)</div>
+                        <div class="product_price">
+                            <div class="pricr">@(item.Price)$</div>
+                            <div class="price_cart"><i class="fa-solid fa-cart-arrow-down cart_cl"></i></div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="grap_list_product">
+        <div class="grap_title flex_aline d-flex justify-content-between">
+            <div class="category_title">Birthday</div>
+            <div class="show_more">
+                <a href="#">Show more</a>
+            </div>
+        </div>
+        <div class="row grap_product_image">
+            @foreach (var item in ViewBag.Product3)
+            {
+                <div class="col-xl-3 col-lg-4 col-md-6 grap_product_click">
+                    <a href="#">
+                        <img width="100%" height="82%" src="~/Resources/img/product/@(item.Image).png" alt="">
+                    </a>
+                    <div class="font_product">
+                        <div class="product_name">@(item.Product_name)</div>
+                        <div class="product_price">
+                            <div class="pricr">@(item.Price)$</div>
+                            <div class="price_cart"><i class="fa-solid fa-cart-arrow-down cart_cl"></i></div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="grap_list_product">
+        <div class="grap_title flex_aline d-flex justify-content-between">
+            <div class="category_title">Graduate</div>
+            <div class="show_more">
+                <a href="#">Show more</a>
+            </div>
+        </div>
+        <div class="row grap_product_image">
+            @foreach (var item in ViewBag.Product4)
+            {
+                <div class="col-xl-3 col-lg-4 col-md-6 grap_product_click">
+                    <a href="#">
+                        <img width="100%" height="82%" src="~/Resources/img/product/@(item.Image).png" alt="">
+                    </a>
+                    <div class="font_product">
+                        <div class="product_name">@(item.Product_name)</div>
+                        <div class="product_price">
+                            <div class="pricr">@(item.Price)$</div>
+                            <div class="price_cart"><i class="fa-solid fa-cart-arrow-down cart_cl"></i></div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- lisst product home -->
+<!-- maybe -->
+<div class="container">
+    <div class="title_maybe text-center">We’re re-inventing the flower industry by doing things the LVLY way</div>
+    <div class="row">
+        <div class="col-4 text-center may_be_grap">
+            <div class="maybe_icon"><i class="fa-solid fa-fan"></i></div>
+            <h3 class="may_be_title">Zero waste promise</h3>
+            <p class="may_be_des">Did you know that flower pollution is among the leading pollution concerns globally? We at LVLY follow waste minimisation practices to ensure <1% wastage</p>
+        </div>
+        <div class="col-4 text-center may_be_grap">
+            <div class="maybe_icon"><i class="fa-solid fa-recycle"></i></div>
+            <h3 class="may_be_title">Premium Fresh Flowers</h3>
+            <p class="may_be_des">For all gifting occasions big and small, celebrations or simply just because, treat someone special with LVLY Flowers & Gifts. With same-day delivery, 7 days a week across Singapore, you’ll never miss a birthday or special moment again.</p>
+        </div>
+        <div class="col-4 text-center may_be_grap">
+            <div class="maybe_icon"><i class="fa-solid fa-sun"></i></div>
+            <h3 class="may_be_title">100% happiness guarantee</h3>
+            <p class="may_be_des">We exist to make people's day. That's why if you're not 100% satisfied we promise to make it right. We're a persistent bunch and won't stop until you're happy. <1% wastage</p>
+        </div>
+    </div>
+</div>
+<!-- maybe -->
+<!-- image home page 2 -->
+<div class="grap_image_home">
+    <img width="100%" src="~/Resources/img/home/logo_home_2.png" alt="">
+</div>
+<!-- image home page 2 -->
+<!-- Featured in -->
+<div class="container mb-5">
+    <div class="text-center featured">Featured in</div>
+    <div class="row">
+        <div class="col-4 d-flex flex-aline">
+            <div class="">
+                <img width="80%" src="~/Resources/img/home/featured_1.png" alt="">
+            </div>
+            <div class="featured_text">
+                <h4>“The Uber of the gifting world”</h4>
+                <span>BUSINESS CHICKS</span>
+            </div>
+        </div>
+        <div class="col-4 d-flex flex-aline">
+            <div class="">
+                <img width="80%" src="~/Resources/img/home/featured_2.png" alt="">
+            </div>
+            <div class="featured_text">
+                <h4>"Worth your hard earned cash"</h4>
+                <span>THE URBAN LIST</span>
+            </div>
+        </div>
+        <div class="col-4 d-flex flex-aline">
+            <div class="">
+                <img width="80%" src="~/Resources/img/home/featured_3.png" alt="">
+            </div>
+            <div class="featured_text">
+                <h4>"Emergency gifting saviours"</h4>
+                <span>CONCRETE PLAYGROUND</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Featured in -->
+</table>
+
