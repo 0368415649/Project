@@ -1,0 +1,197 @@
+/* Css sidebar */
+.grap_serach_product i{
+    font-size: 0.5rem;
+}
+.grap_serach_product a i{
+    font-size: 0.8rem;
+}
+.grap_serach_product span{
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.grap_s_title{
+    font-size: 27px;
+    font-weight: 700;
+    margin-top: 15px;
+}
+.title_left_s{
+    font-size: 17px;
+    color: white;
+    text-align: center;
+    padding: 10px 0px;
+    background-color: #a92c38;
+}
+a{
+    text-decoration: none;
+    
+}
+.narbar_grap{
+    border: 1px solid #ddd;
+    border-top: transparent;
+    padding: 10px 10px;
+}
+.narbar_item{
+    color: #352e2e;
+}
+.narbar_item:hover{
+    color: #9e1010;
+}
+/* Css sidebar */
+.grap_serach{
+    padding: 12px 20px;
+    background-color: #ededed;
+}
+.grap_price_hot a{
+    color: black;
+    padding: 5px 10px;
+    background-color: white;
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 2px;
+}
+.grap_price_label {
+    color: black;
+    padding: 6px 10px;
+    background-color: white;
+    width: 200px;
+    display: flex;
+    font-weight: 400;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.grap_price_label span{
+    font-weight: 400;
+    font-size: 15px;
+}
+.grap_price{
+    position: relative;
+}
+.chirld_grap{
+    background-color: white;
+    position: absolute;
+    top: 103%;
+    width: 200px;
+    border: 1px solid #f0f0f0;
+    border-radius: 3px;
+}
+.chirld_grap a{
+    display: block;
+    padding: 10px;
+    color: black;
+    padding-left: 15px;
+}
+.chirld_grap a:hover{
+    color: rgb(253, 91, 32);
+}
+.chirld_grap::after{
+    content: "";
+    position: absolute;
+    background-color: transparent;
+    height: 10px;
+    width: 200px;
+    top: -10px;
+}
+.chirld_grap{
+    display: none;
+}
+.grap_price:hover .chirld_grap{
+    display: block;
+}
+.icon_pagging{  
+    /* display: block; */
+    /* padding: 13px; */
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: white;
+    padding: 6px 10px;
+    color: black ;
+
+}
+.icon_pagging:hover{
+    color: black;
+}
+.icon_pagging i {
+    font-size: 0.5rem;
+}
+.none_icon{
+    pointer-events: none;
+    background-color: #f3f3f3;
+    color: #e2dede;
+}
+
+/* Css lisst product */
+.category_title{
+    font-size: 23px;
+    font-weight: 700;
+}
+.grap_list_product{
+    margin: 40px 0px;
+   
+}
+.grap_title{
+    border-bottom: 1px solid #b2b2b3;
+    padding-bottom: 10px;
+}
+.grap_product_image{
+    margin-top: 20px !important;
+}
+.font_product {
+    text-align: center;
+    padding: 10px 0 10px;
+    background-color: #ececec;
+}
+.product_name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #455560;
+}
+.pricr {
+    font-weight: 200;
+    margin-top: 5px;
+}
+.product_price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 30px;
+    font-size: 17px;
+}
+.price_cart{
+    margin-left: 30px;
+}
+.show_more a{
+    text-decoration: none;
+    color: rgb(174, 19, 19);
+}
+.grap_product_click{
+    cursor: pointer;
+}
+.grap_product_click:hover{
+    margin-top: 4px;
+}
+/* Css lisst product */
+
+/* Css featured */
+.featured_why{
+    font-size: 25px;
+    font-weight: 700;
+    margin: 80px 0px;
+}
+.featured_text_why {
+    padding-left: 20px;
+}
+.featured_text_why h4{
+    font-weight: 400;
+    font-size: 15px;
+}
+.featured_text_why span{
+    font-weight: 300;
+    font-size: 12px;
+}
+.grap_fea{
+    margin: 15px 0px;
+}
+/* Css featured */

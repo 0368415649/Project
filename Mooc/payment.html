@@ -13,15 +13,15 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="contaniner ">
+    <div class="contaniner mt-3 mb-3">
         <div class="ar64 cbwrap text-center">
-            <div id="sp1" class="s8 s8c">
+            <div id="sp1" class="s8 ">
               <span id="spn1">1.Address</span>
             </div>
             <div id="sp2" class="s8 ">
               <span id="spn2">2.Comfirm</span>
             </div>
-            <div id="sp3" class="s8 ">
+            <div id="sp3" class="s8 s8c">
               <span id="spn3">3.Payment</span>
             </div>
           </div>
@@ -36,21 +36,36 @@
                     <div class="ml-3 ms-3">Shipping <i class="fa-solid fa-angle-right ms-2 color_usui"></i></div>
                     <div class="ml-3 ms-3">Payment</div>
                 </div>
-                <div class="fs-4 fw-normal mt-4">Contact information</div>
-                <input type="text" class="form-control mt-4 input_width" id="" placeholder="Flower Recipient Name ...">
-                <input type="text" class="form-control mt-4 input_width" id="" placeholder="Address ...">
-                <input type="number" class="form-control mt-4 input_width" id="" placeholder="Phone ...">
-                <div class="d-flex  grap_btn_comfirm_cart">
-                    <a href="./delivery.html">Return to cart</a>
-                    <button>Continue to shipping</button>
+                <div class="d-flex justify-content-between grap_discard mt-3">
+                    <div class="fs-6 fw-bold ms-3">Credit card</div>
+                    <div class="me-3">
+                        <i class="fa-brands fa-cc-visa visa ms-1 fs-2"></i>
+                        <i class="fa-brands fa-cc-mastercard ms-1 fs-2"></i>
+                        <i class="fa-brands fa-cc-amex amex ms-1 fs-2"></i>
+                    </div>
+                </div>
+                <div class="grap_card_number">
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control font_input  mb-3" placeholder="Card number">
+                        </div>
+                    
+                    <input type="email" class="form-control font_input  mb-3" placeholder="Name on card">
+                    <div class="d-flex">
+                        <input type="email" class="form-control font_input  me-3" placeholder="Expiration date (MM / YY)">
+                        <input type="email" class="form-control font_input " placeholder="Securyticode">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between grap_btn_payment">
+                    <a href="#">Return to shipping</a>
+                    <button>Confirm Order</button>
                 </div>
             </div>
             <div class="col-5 grap_cart_comfirm" >
                 <div class="sen22"></div>
                 <div class="row">
                     <div class="col-3 text-center grap_image_cart">
-                        <img src="./img/home/prjt0001.jpg" width="60%" height="" alt="">
-                        
+                        <img src="./img/home/prjt0001.jpg" width="60%" height="100%" alt="">
+                        <div class="num_cart">3</div>
                     </div>
                     <div class="col-9 d-flex grap_full">
                         <div class="gral_cart_text_comfirm">
@@ -84,4 +99,3 @@
     </div>
 </body>
 </html>
-

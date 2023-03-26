@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b369642a0f.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/profile_user.css">
+    
+    <title>Document</title>
+</head>
+<body>
+<div class="grap_profile_color">
+    <div class="row">
+        <div class="col-3 grap_profile_color_grap">
+            <div class="grap_profile_color_name">
+                <i class="fa-solid fa-user me-3"></i>
+                <span class="grap_profile_color_name_txt">Dinh Duy</span>
+            </div>
+            <div class="mt-3 grap_profile_nav">
+                <a href=""><i class="fa-regular fa-user me-3"></i> <span>Tài khoản của tôi</span></a>
+                <ul class="ul_profile mt-3">
+                    <a href="#" class="li_profile mt-2"><li >Hồ Sơ</li></a>
+                    <a href="#" class="li_profile mt-2"><li >Địa Chỉ</li></a>
+                    <a href="#" class="li_profile mt-2"><li >Đổi Mật Khẩu</li></a>
+                </ul>
+            </div>    
+            <div class="mt-3 grap_profile_nav">
+                <a href="#"><i class="fa-solid fa-list-ul me-3"></i> <span>Đơn hàng</span></a>       
+            </div>
+        </div>
+
+        <div class="col-9 grap_profile_color_image ">
+            <div class="gral_pr_im">
+                <div class="fs-5 fw-normal">Đổi Mật Khẩu</div>
+                <div class="fw-lighter">Để bảo mật tài khoản, vui lòng không chia sẻ mật khẩu cho người khác</div>
+            </div>
+            <div class="input_alll">
+                <div class="grap_a_i mt-4">
+                    <label for="exampleInputEmail1" class="">Mật Khẩu Hiện Tại</label>
+                    <input type="text" class="form-control form_control_2">
+                </div>  
+                <div class="grap_a_i mt-4">
+                    <label for="exampleInputEmail1" class="">Mật Khẩu Mới</label>
+                    <input type="text" class="form-control form_control_2">
+                </div>   
+                <div class="grap_a_i mt-4">
+                    <label for="exampleInputEmail1" class="">Xác Nhận Mật Khẩu</label>
+                    <input type="text" class="form-control form_control_2">
+                </div>  
+                <button class="btn_profile_pass">Save</button>
+
+            </div>
+        </div>
+
+            <!-- New adress  -->
+        <!-- <div class="col-9 grap_profile_color_image_2">
+            <div class="grap_new_ad">
+                <div class="fs-6 fw-bold">Địa chỉ của tôi</div>
+                <button><i class="fa-solid fa-plus"></i> Thêm địa chỉ mới</button>
+            </div>
+            <div class="gral_all_ad">
+                <div class="tlt_t fs-4 fw-normal">Địa chỉ</div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="">
+                        <div class="n_n fw-normal mt-4">Ngọc huyền</div>
+                        <div class="n_n fw-lighter">(+84) 866974684</div>
+                        <div class="n_n fw-lighter">Phường Khương Thượng, Quận Đống Đa, Hà Nội</div>
+                    </div>
+                    <div class="d-flex btn_gr">
+                        <div class="edit_address me-2">Edit</div>
+                        <div class="delete_address">Delete</div>
+                    </div>
+                </div>
+            </div>
+            <div class="gral_all_ad">
+                <div class="tlt_t fs-4 fw-normal">Địa chỉ</div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="">
+                        <div class="n_n fw-normal mt-4">Ngọc huyền</div>
+                        <div class="n_n fw-lighter">(+84) 866974684</div>
+                        <div class="n_n fw-lighter">Phường Khương Thượng, Quận Đống Đa, Hà Nội</div>
+                    </div>
+                    <div class="d-flex btn_gr">
+                        <div class="edit_address me-2">Edit</div>
+                        <div class="delete_address">Delete</div>
+                    </div>
+                </div>
+            </div>
+            <div class="gral_all_ad">
+                <div class="tlt_t fs-4 fw-normal">Địa chỉ</div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="">
+                        <div class="n_n fw-normal mt-4">Ngọc huyền</div>
+                        <div class="n_n fw-lighter">(+84) 866974684</div>
+                        <div class="n_n fw-lighter">Phường Khương Thượng, Quận Đống Đa, Hà Nội</div>
+                    </div>
+                    <div class="d-flex btn_gr">
+                        <div class="edit_address me-2">Edit</div>
+                        <div class="delete_address">Delete</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modall_ad" id="modal">
+        <div class="modal__body modal__body-address">
+            <div class="modal__inner">
+                <div class="form2">
+                    <div class="modal__inner-heard_ad">
+                        <div class="modal__inner-heard-register">New Addrees</div>
+                    </div>
+                    <div class="modal__inner-content">
+                        <div class="modal__inner-content-model">
+                            <input type="text"  name="login-email" class="modal__inner-content-input form_control_22" placeholder='Name nhận hàng'>
+                            <input type="number" name="login-email" class="modal__inner-content-input form_control_2_number ms-3" placeholder='Phone'>
+                            <input type="text" name="login-password" class="modal__inner-content-input" placeholder='Address'>
+                        </div>
+                        <div class="btn-location text-end">
+                                <label for="name2" class="btn btn--hover ">Back</label>
+                                <div class="btn btn_com">Login</div>
+                        </div>
+                    </div>
+                </div>
+            </div>  -->
+            <!-- New adress  -->
+
+        <!-- Css edit profile -->
+        <!-- <div class="col-9 grap_profile_color_image ">
+            <div class="gral_pr_im">
+                <div class="fs-5 fw-normal">Hồ Sơ Của Tôi</div>
+                <div class="fw-lighter">Quản lý thông tin hồ sơ để bảo mật tài khoản</div>
+            </div>
+            <div class="input_alll">
+                <div class="grap_a_i mt-4">
+                    <label for="exampleInputEmail1" class="">Name</label>
+                    <input type="text" class="form-control form_control_2">
+                </div>  
+                <div class="grap_a_i mt-4">
+                    <label for="exampleInputEmail1" class="">Phone</label>
+                    <input type="number" class="form-control form_control_2_number">
+                </div>  
+                <div class="grap_a_i mt-4">
+                    <label for="exampleInputEmail1" class="">Sex</label>
+                    <input class="form-check-input me-2 " type="radio" name="gender"> Female
+                    <input class="form-check-input me-2 ms-2" type="radio" name="gender"> Male
+                    <input class="form-check-input me-2 ms-2" type="radio" name="gender"> Other
+                </div>  
+                <div class="grap_a_i mt-4">
+                    <label for="exampleInputEmail1" class="">Date</label>
+                    <input type="date" class="form-control form_control_2_date">
+                </div>  
+                <button class="btn_profile">Save</button>
+
+            </div>
+        </div> -->
+        <!-- Css edit profile -->
+
+    </div>
+</div>
+
+</body>
+</html>

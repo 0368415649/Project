@@ -1,0 +1,184 @@
+/* Css save  */
+.grap_profile_color{
+    background: #f5f5f5;
+    padding: 20px 200px;
+}
+.grap_profile_color_name{
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+}
+.grap_profile_color_name i{
+ font-size: 3rem;
+
+}
+.grap_profile_color_name{
+    padding-bottom: 40px;
+    border-bottom: 1px solid #ddd;
+}
+.grap_profile_color_image{
+    background-color: white;
+
+}
+.grap_profile_color_name_txt{
+    margin-left: 15px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.grap_profile_color_grap{
+    padding-right: 20px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.grap_profile_nav a i{
+    color: rgb(27, 136, 232);
+}
+.ul_profile{
+    list-style: none;
+    padding: 0px;
+    padding-left: 35px;
+}
+.li_profile{
+    /* padding-left: 10px; */
+    display: block;
+}
+.li_profile:hover{
+    color:rgb(249, 102, 49)
+}
+.gral_pr_im{
+    margin: 15px 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+.form_control_2{
+    width: 50% !important;
+}
+.form_control_2_number{
+    width: 20%
+}
+.form_control_2_date{
+    width: 25%
+}
+.grap_a_i{
+    display: flex;
+    align-items: center;
+}
+.input_alll{
+    padding: 30px 30px 100px 50px;
+}
+.grap_a_i label{
+    min-width: 150px;
+    text-align: end;
+    margin-right: 20px;
+}
+.btn_profile{
+    padding: 12px 15px;
+    color: white;
+    background-color: rgb(253, 85, 24);
+    border: transparent;
+    border-radius: 3px;
+    margin-left: 120px;
+    margin-top: 20px;
+}
+/* css save */
+/* css profile */
+.grap_new_ad{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #eae8e8;
+    align-items: center;
+}
+.grap_profile_color_image_2{
+    background-color: white;
+    padding: 0;
+    border: 1px solid #eae8e8;
+
+}
+.grap_profile_color_image_2 button{
+    padding: 8px 20px;
+    color: white;
+    background-color: rgb(253, 85, 24);
+    border: transparent;
+    border-radius: 3px;
+}
+.gral_all_ad{
+    margin: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #eae8e8;
+
+}
+.btn_gr div{
+    color: rgb(38, 142, 254);
+    cursor: pointer;
+}
+.modal__body{
+    width: 600px;
+    background-color:  white;
+    margin: auto;
+    margin-top: 100px;
+    z-index: 2;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.modal__body-address{
+    position: fixed;
+    top:5%;
+    left:35%;
+    /* display: none; */
+}
+.form2{
+    padding: 36px;
+}
+.modal__inner-heard_ad{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+}
+.modal__inner-content-input{
+    width: 100%;
+    height: 50px;
+    padding: 0px 12px;
+    border-radius: 2px;
+    border: 1px solid rgb(192, 189, 189);
+    margin-bottom: 15px;
+    outline: none;
+}
+.modall_ad {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: none;
+    background-color: rgba(0,0,0,0.3);
+}
+.form_control_2_number{
+    width: 30%;
+    margin-left: 20px !important;
+}
+.form_control_22{
+    width: 65% !important;
+}
+.btn_com{
+    padding: 8px 20px;
+    color: white;
+    background-color: rgb(253, 85, 24);
+    border: transparent;
+    border-radius: 3px;
+}
+/* css profile */
+/* css pass */
+.btn_profile_pass{
+    padding: 12px 15px;
+    color: white;
+    background-color: rgb(253, 85, 24);
+    border: transparent;
+    border-radius: 3px;
+    margin-left: 170px;
+    margin-top: 20px;
+}
+/* css pass */

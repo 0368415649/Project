@@ -29,20 +29,42 @@ li {
   background: 0 0;
   border: 0;
   border-radius: 0.25rem;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
   display: block;
   text-decoration: none;
-  color: black
+  color: black;
 }
-
+.chang_color_admin{
+  background-color: #ffb751;
+  color: white;
+  font-weight: 700;
+  border: transparent;
+}
+.chang_color_admin .sidebar_icon{
+  border: transparent ;
+}
 .header_title {
   color: white;
 }
+.nav_link:hover{
+  color: black;
+  background-color: #fff  ;
+  font-weight: 700;
+  border-right: 3px solid rgb(108, 149, 255);
+}
+.nav_sidebar i{
+  font-size: 1.2rem;
+}
 
 .sidebar_icon {
-  border: 0.5px solid #6a5353;
+  border: 0.5px solid #bebebe;
   width: 100%;
   padding-left: 15px;
   display: block;
+  border-right: transparent;
+  border-left: transparent;
+  border-top: transparent;
 }
 
 .side_item3 {
@@ -50,6 +72,13 @@ li {
 }
 
 .sidebar_wrap {
-  height: 100%;
-  background-color: blue;
+  position: fixed;
+  top: 63px;
+  left: 0px;
+  bottom: 0px;
+  right: 25%;
+  /* background-color: red; */
+  padding: 0px;
+  border: 1px solid #ddd;
+  border-top: transparent ;
 }
