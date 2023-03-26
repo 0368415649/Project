@@ -1,0 +1,213 @@
+.flex_grap{
+    display: flex;
+}
+.flex-aline{
+    align-items: center !important;
+}
+.flex_center{
+    justify-content: center !important;
+}
+.flex_space{
+    justify-content: space-between;
+}
+.view_cart_grap{
+    padding: 170px 0px 0px 0px ;
+}
+.shop_cart_title{
+    font-size: 25px;
+    font-weight: 700;
+}
+.clean_cart{
+    font-size: 16px;
+    color: brown;
+}
+.sen{
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0px 10px;
+    text-align: end;
+    font-size: 19px;
+}
+.sen2{
+    border-bottom: 1px solid #ddd;
+    margin: 20px 0px; 
+}
+
+.content-more-quantity-number{
+    display:flex;
+    margin: 20px 0px ;
+}
+.content-more-op{
+    height: 40px;
+    text-align: center;
+    font-weight: 200;
+    border: 1px solid rgb(197, 194, 194);
+    font-size: 20px;
+    width: 30px;
+    cursor: pointer;
+}
+.buy_input2{
+    height: 40px;
+    text-align: center;
+    font-weight: 200;
+    border: 1px solid rgb(197, 194, 194);
+    font-size: 20px;
+    width: 50px;
+    padding-left: 15px;
+    cursor: pointer;
+    pointer-events: none;
+}
+.buy_input{
+    text-align: center;
+    font-weight: 200;
+    border: 1px solid rgb(197, 194, 194);
+    font-size: 14px;
+    width: 150px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.view_cart_img img{
+    border-radius: 5px;
+}
+.view_cart_grap_title{
+    font-size: 18px;
+    font-weight: 700;
+}
+.view_cart_grap_price{
+    padding: 13px 0px;
+}
+.list_cart_view_grap{
+    margin-top: 30px !important;
+}
+.list_cart_view_grap_all{
+    max-height: 350px;
+}
+.grap_all_cart{
+}
+.calendar{
+    position: relative;
+    padding-left: 20px !important;
+}
+.calendar::after{
+    width: 0.5px;
+    content: '';
+    position: absolute;
+    height: 100%;
+    min-height: 500px;
+    top: 0px;
+    left: -0px;
+    background: #ddd;
+}
+.input-text {
+    text-shadow: none;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    outline: 0;
+    background-color: #fff;
+    padding: 13px;
+    font-size: 12px;
+    border-radius: 0;
+    font-family: "Noto Serif",serif;
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+    font-size: 11px!important;
+    margin-bottom: 10px;
+}
+/* Css calendar */
+.table_calendar{
+width: 200px;
+height: 100px;
+}
+.table_calendar th {
+height: 20px;
+text-align: center;
+    width:20px;
+font-weight: 700;
+}
+
+.table_calendar td {
+height: 20px;
+width:20px;
+cursor: pointer;
+}
+
+.today {
+background: rgb(0, 0, 0) !important;
+color: white;
+}
+
+.table_calendar  th:nth-of-type(7),
+.table_calendar  td:nth-of-type(7) {
+font-weight: bold;
+}
+
+.table_calendar  th:nth-of-type(1),
+.table_calendar  td:nth-of-type(1) {
+font-weight: bold;
+}
+.history{
+    pointer-events: none;
+    color: #c5c5c5;
+}
+/* Css calendar */
+.btn_commom{
+    padding: 5px 10px;
+    border: 1px solid rgb(160, 160, 160);
+    text-align: center;
+}
+.btn_color{
+    font-size: 11px;
+    font-weight: normal;
+    color: #CACDDC;
+    background-color: #383C4F;
+    border-radius: 3px;
+    margin-bottom: 3px;
+}
+.TOTAL_COLOR{
+    font-size: 18px;
+    font-weight: 700;
+    color: #333333;
+    margin: 10px 0px;
+}
+.btn_checkout{
+    font-weight: 700;
+    font-style: normal;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-break: break-word;
+    cursor: pointer;
+    transition: all .2s linear;
+    border-color: #383c4f;
+    background-color: #383c4f;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    padding: 13px 20px;
+    text-align: center;
+    line-height: 1.2;
+    width: 100%;
+    color: white;
+    border-radius: 4px;
+    margin: 15px;
+}
+.btn_checkout:hover{
+    background-color: #04736b;
+}
+.continue-shopping{
+    text-decoration: none;
+    color: #383c4f!important;
+    text-align: center;
+    font-family: Roboto,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 20px 0px;
+}
+.continue-shopping:hover{
+    text-decoration: none;
+    color: #5d637a!important;
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/view_cart.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/b369642a0f.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+<div class="container mb-5">
+    <div class="d-flex flex_space view_cart_grap">
+        <div class="shop_cart_title">Shopping Cart</div>
+        <div class="clean_cart">Clear Cart</div>
+    </div>
+    <div class="sen"></div>
+        <div class="row list_cart_view_grap">
+            <div class="col-8 row list_cart_view_grap_all">
+                <div class="col-2 view_cart_img">
+                    <img src="./img/home/prjt0001.jpg" width="100%" height="80%" alt="">
+                </div>
+                <div class="col-10">
+                    <div class="view_cart_grap_title">Pretty Pastels Flower Jars</div>
+                    <div class="view_cart_grap_price">$54.90</div>
+                    <div class="content-more-quantity-number"> 
+                        <div  class="content-more-op content-more-op_minus2">-</div>  
+                        <input  type="number" id="quantity" value="1" class="buy_input2">
+                        <div class="content-more-op content-more-op_plus2">+</div> 
+                    </div>
+                </div>
+                
+                <div class="sen2"></div>
+
+                <div class="col-2 view_cart_img">
+                    <img src="./img/home/prjt0001.jpg" width="100%" height="70%" alt="">
+                </div>
+                <div class="col-10">
+                    <div class="view_cart_grap_title">Pretty Pastels Flower Jars</div>
+                    <div class="view_cart_grap_price">$54.90</div>
+                    <div class="content-more-quantity-number"> 
+                        <div  class="content-more-op content-more-op_minus2">-</div>  
+                        <input  type="number" id="quantity" value="1" class="buy_input2">
+                        <div class="content-more-op content-more-op_plus2">+</div> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 calendar">
+                <div class="view_cart_grap_title">Delivery Information</div>
+                <p style="font-size: 12px;">Please Select A Delivery Date:</p>
+                 <div class="container">
+                    <div style="justify-content: space-between; padding: 20px 0px ;" class="d-flex">
+                        <i class="prev-month fa fa-chevron-left fa-3x"></i> 
+                        <div class="month-year text-center">
+                            <h3></h3>
+                        </div>
+                        <i class="next-month fa fa-chevron-right fa-3x"></i>
+                    </div>
+                    <div class="min_width">
+                      <table class="table table-bordered table_calendar">
+                      <tr>
+                        <th>S</th>
+                        <th>M</th>
+                        <th>T</th>
+                        <th>W</th>
+                        <th>T</th>
+                        <th>F</th>
+                        <th>S</th>
+                      </tr>
+                    </table>
+                </div>
+                <p style="margin: 10px 0px ; font-size: 15px;">Please select a delivery time:</p>
+                <div class="content-more-quantity-number"> 
+                    <div  type="text" id="quantity" class="buy_input">9 AM - 1 PM</div>
+                    <div  type="text" id="quantity" class="buy_input">1 PM - 6 PM</div>
+                    <div  type="text" id="quantity" class="buy_input">6 PM - 9 PM</div>
+                </div>
+                <p>* Office Deliveries Will Be Completed Latest By 5 PM</p>
+                <p style="font-size: 17px;" class="">Choose Your Personal Card Message:</p>
+                <textarea title="Please provide message note here." placeholder="You're better than the best!"
+                 class="input-text question-field note" rows="6" cols="20" name="note" maxlength="140"></textarea>
+                 <div class="mt-5">
+                    <button class="btn_commom btn_color">Happy birthday</button>
+                    <button class="btn_commom btn_color">Happy birt</button>
+                    <button class="btn_commom btn_color">py birthday</button>
+                    <button class="btn_commom btn_color">Happy birthday</button>
+                    <button class="btn_commom btn_color">Happy biray</button>   
+                    <button class="btn_commom btn_color">Hapy birthday</button>
+                 </div>
+                 <div class="d-flex" style="justify-content: space-between;">
+                    <div class="TOTAL_COLOR">Subtotal</div>
+                    <div class="TOTAL_COLOR">$59.90</div>
+                 </div>
+                 <p>Orders will be processed in SGD.</p>
+                 <div class="">
+                    <button class="btn_checkout">CHECKOUT</button>
+                 </div>
+                 <div class="text-center mt-4 mb-4">
+                    <a class="continue-shopping" href="#">CONTINUE SHOPPING</a>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="./js/view_cart.js"></script>

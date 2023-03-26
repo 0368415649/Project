@@ -1,0 +1,202 @@
+.ar64 {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.ar64 .s8.s8c {
+    color: #fff;
+    background-color: #8115c4;
+}
+.ar64 .s8:first-child {
+    margin-left: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.ar64 .s8 {
+    min-width: 28%;
+}
+.ar64 .s8 {
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    cursor: default;
+    margin: 0 1px;
+    padding: 9px 10px 9px 30px;
+    float: left;
+    position: relative;
+    background-color: #bfc0c2;
+    transition: all 1s ease;
+}
+.ar64 .s8:before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    right: -19px;
+    width: 0;
+    height: 0;
+    border-top: 19px solid transparent;
+    border-bottom: 17px solid transparent;
+    border-left: 17px solid white;
+    z-index: 2;
+    transition: border-color 0.2s ease;
+}
+.ar64 .s8:after {
+    content: ' ';
+    position: absolute;
+    top: 0px;
+    right: -16.5px;
+    width: 0;
+    height: 0;
+    border-top: 19px solid transparent;
+    border-bottom: 17px solid transparent;
+    border-left: 17px solid #bfc0c2;
+    z-index: 2;
+    transition: border-color 0.2s ease;
+}
+.ar64 .s8.s8c:after {
+    border-left: 17px solid #8115c4;
+}
+.grap_position_img{
+    position: relative;
+}
+.num_cart{
+    position: absolute;
+    top: -13%;
+    right: 20%;
+    padding: 0px 7.6px;
+    border-radius: 20px;
+    color: white;
+    background: #6a6260;
+    opacity: 0.8;
+}
+
+.grap_cart_comfirm {
+    border-left: 1px solid #ddd; 
+    min-height: 800px;
+    padding: 100px 60px 0px;
+    background-color: #f5f5f5;
+}
+.grap_image_cart{
+    position: relative;
+}
+.grap_image_cart img{
+    border-radius: 4px;
+}
+.sen22{
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+.gral_cart_text_comfirm div{
+    font-size: 13px;
+    font-weight: 400;
+    margin-right: 20px;
+}
+.grap_full{
+    justify-content: space-between; align-items: center;
+}
+.price_c{
+    font-size: 13px; font-weight: 700; margin-right: 15px;
+}
+.sen_cart_confirm{
+    border-bottom: 1px solid #ddd;
+    margin: 20px 0px;
+}
+.grap_total_c{
+    justify-content: space-between;
+    padding: 20px 0px;
+}
+.grap_left_cart{
+    margin-top: 100px;
+    padding-left: 50px;
+    padding-right: 100px;
+}
+.color_usui{
+    color: #aaa9a9;
+}
+.color_pink_half{
+    color: palevioletred;
+}
+.input_width{
+    width: 100%;
+    height: 45px;
+}
+.grap_btn_comfirm_cart{
+    margin: 40px 0px;
+    padding-left: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+.grap_btn_comfirm_cart a{
+    text-decoration: none;
+    color: palevioletred;
+    font-size: 15px;
+    font-weight: 400;
+}
+.grap_btn_comfirm_cart button{
+    padding: 20px 17px;
+    color: white;
+    background-color: #ee4382;
+    font-weight: 600;
+    border-color: transparent;
+    border-radius: 7px;
+    
+}
+/* css delivery */
+.comfirm_infor{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+.grap_com{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.bd-none{
+    border: transparent;
+    padding: 0px;
+}
+/* css delivery */
+/* css payment */
+.visa{
+    background-color: #142688;
+    color: white;
+    padding: 0;
+}
+.grap_discard{
+    border: 1px solid #ddd;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 10px 10px;
+}
+.grap_card_number{
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-top: transparent;
+}
+.font_input{
+    font-size: 13px;
+}
+.amex{
+    color: rgb(4, 102, 194);
+}
+.grap_btn_payment{
+    margin: 20px 0px;
+    padding-left: 30px;
+    align-items: center;
+}
+.grap_btn_payment a{
+    text-decoration: none;
+    color: palevioletred;
+    font-size: 15px;
+    font-weight: 400;
+}
+.grap_btn_payment button{
+    padding: 20px 17px;
+    color: white;
+    background-color: #ee4382;
+    font-weight: 600;
+    border-color: transparent;
+    border-radius: 7px;
+    
+}
+/* css payment */
