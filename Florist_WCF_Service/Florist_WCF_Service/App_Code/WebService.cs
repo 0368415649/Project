@@ -57,7 +57,12 @@ public class WebService : System.Web.Services.WebService
     public DataSet GetAllProduct()
     {
         SqlConnection cnn = new SqlConnection(connstr);
-        string sql = "SELECT Product.Product_id, Product.Product_name, Product.Description, Product.Image, Product.Price, Product.Discount, Category.Category_name, Supplier.Supplier_name, Account.Account_id, Account.User_name, Product.Sold, Product.Inventory, Product.Update_at FROM     Product LEFT OUTER JOIN    Category ON Product.Category_id = Category.Category_id LEFT OUTER JOIN  Account ON Product.Update_by = Account.Account_id LEFT OUTER JOIN  Supplier ON Product.Supplier_id = Supplier.Supplier_id";
+        string sql = "SELECT Product.Product_id, Product.Product_name, Product.Description," +
+            " Product.Image, Product.Price, Product.Discount, Category.Category_name," +
+            " Supplier.Supplier_name, Account.Account_id, Account.User_name, Product.Sold," +
+            " Product.Inventory, Product.Update_at FROM     Product" +
+            " LEFT OUTER JOIN    Category ON Product.Category_id = Category.Category_id" +
+            " LEFT OUTER JOIN  Account ON Product.Update_by = Account.Account_id LEFT OUTER JOIN  Supplier ON Product.Supplier_id = Supplier.Supplier_id";
 
         SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
         DataSet ds = new DataSet();

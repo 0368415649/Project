@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+<!--  Header  -->
+        <div class="header">
+            <div class="row header-title">
+                <div class="col-3"></div>
+                <div class="col-6 header_title" >
+                    <p>Order by 5pm for same-day delivery Mon - Sat, 2pm for Sun, 7 days a week across Singapore.
+                    <br>Fresh premium blooms, handmade by our team of florists.</p>
+                </div>
+                <div class="col-3 grap">
+                    <div class="register_css">
+                        <div id="register_btn">Register</div>
+                    </div>
+                    <span style=" color: darkgrey; ">/</span>
+                    <div class="register_css">
+                        <div id="login_btn">Login</div>
+                    </div>
+                     <!-- <div class="">
+                        Xin chao nguyen dinh duy
+                        <i class="fa-solid fa-user login_icon"></i>
+                    </div> -->
+           
+                </div>
+            </div>
+            <div class="container_width">
+                <div class="row link_grap">
+                    <div class="col-5 link_col">
+                        <!-- Category link -->
+                        <ul class="grap category_css">
+                            <li class="left_item"><a class="left_item_hover" href="#">Flower basket</a> </li>
+                            <li class="left_item"><a class="left_item_hover" href="#">Bouquet</a></li>
+                            <li class="left_item"><a class="left_item_hover" href="#">Birthday</a> </li>
+                            <li class="left_item"><a class="left_item_hover" href="#">Graduate</a></li>
+                            <li class="left_item"><a class="left_item_hover bd_none" href="#">Grand opening flower</a> </li>
+
+                        </ul>       
+                    </div>
+                    <!-- Category link -->
+                    <div class="col-2 logo_flex">
+                        <img style="margin-left: 25%;" src="./img/home/logo.png" alt="">
+                    </div>
+                    <!-- cart- -->
+                    <div class="col-5 grap_cart">
+                        <div class="header-search">
+                            <div class="header-search-grap">
+                                <input type="text" class="header-search-input" placeholder="Search here ...">
+                                <a href="#" class="header-search-icon">
+                                    <i style="font-size: 25px;" class="fa-solid fa-magnifying-glass header-search-icons"></i>
+                                </a>
+                            </div>
+                            <div class="grap_icon_cart">
+                                <label for="check_boxx" class="header-search-cart"><i class="fa-solid fa-cart-arrow-down cart_cl"></i></label>
+                            </div>
+                        </div>  
+                    </div>
+                    <!-- cart- -->
+                </div>
+            </div>
+        </div>
+<!--  Header  -->
+            @RenderBody()
+<!-- footer -->
+    <div class="footer">
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 boxz">
+                <iframe style="width:100%; height:100%; border-radius:5px ;padding:0px 60px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.7295561235915!2d105.84769451473096!3d21.003475286012016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad58455db2ab%3A0x9b3550bc22fd8bb!2zNTQgUC4gTMOqIFRoYW5oIE5naOG7iywgQsOhY2ggS2hvYSwgSGFpIELDoCBUcsawbmcsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1651162056247!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <div class="col-lg-2 col-sm-3 boxz">
+                <div class="footer-one-title">BRIGHT WORLD RESOURCES</div>
+                <ul class="">
+                    <li class="footer-item"><a href="#">Customer Service</a></li>
+                    <li class="footer-item"><a href="#">Product Catalog</a></li>
+                    <li class="footer-item"><a href="./about_us.html">About us</a></li>
+                    <li class="footer-item"><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-2 col-sm-3 boxz">
+                <div class="footer-one-title">CHAT ONLINE</div>
+                <ul class="">
+                    <li class="footer-item"><a style="color:white;" href="https://www.facebook.com/tatsu.michio.5"><i class="fa-brands fa-facebook"></i>Facebook</a></li>
+                    <li class="footer-item"><a style="color:white;" href="https://www.facebook.com/VuLongDzai"><i class="fa-brands fa-facebook-messenger"></i>Messenger</a></li>
+                    <li class="footer-item"><a style="color:white;" href="https://www.facebook.com/profile.php?id=100036256956949"><i class="fa-brands fa-instagram"></i>Instagram</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 col-sm-12 boxz">
+                <div class="footer-one-title">ABOUT US</div>
+                <div class="footer-content">
+                    LVLY is a collaboration between Co-Founders Hannah Spilva and Verity Tuck. The idea for LVLY started with a purpose rather than a product. They wanted to build a business that would help keep loved ones connected and spread a bit of joy in the world. Han and Vez were living away from home, missing friends and family and saw a gap in the market to send affordable flowers and gifts that were authentic, fun and thoughtful.
+                    <a class="footer-link" href="./">Online Store.</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+<!-- footer -->
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
+</body>
+</html>

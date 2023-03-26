@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetAllMessage">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllMessageResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessageByCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CategoryName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessageByCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMessageByCategoryResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllProduct">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllProductResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllProductResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginAccountResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginCustomerResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllEvalute">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllEvaluteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllEvaluteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEvaluteByProduct">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProductID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEvaluteByProductResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEvaluteByProductResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEvaluteByRate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Rate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEvaluteByRateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEvaluteByRateResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageByCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetMessageByCategory" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageByCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetMessageByCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllProductSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllProduct" />
+  </wsdl:message>
+  <wsdl:message name="GetAllProductSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:LoginAccount" />
+  </wsdl:message>
+  <wsdl:message name="LoginAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:LoginCustomer" />
+  </wsdl:message>
+  <wsdl:message name="LoginCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEvaluteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllEvalute" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEvaluteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllEvaluteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEvaluteByProductSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEvaluteByProduct" />
+  </wsdl:message>
+  <wsdl:message name="GetEvaluteByProductSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEvaluteByProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEvaluteByRateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEvaluteByRate" />
+  </wsdl:message>
+  <wsdl:message name="GetEvaluteByRateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEvaluteByRateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="GetAllMessage">
+      <wsdl:input message="tns:GetAllMessageSoapIn" />
+      <wsdl:output message="tns:GetAllMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageByCategory">
+      <wsdl:input message="tns:GetMessageByCategorySoapIn" />
+      <wsdl:output message="tns:GetMessageByCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProduct">
+      <wsdl:input message="tns:GetAllProductSoapIn" />
+      <wsdl:output message="tns:GetAllProductSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginAccount">
+      <wsdl:input message="tns:LoginAccountSoapIn" />
+      <wsdl:output message="tns:LoginAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginCustomer">
+      <wsdl:input message="tns:LoginCustomerSoapIn" />
+      <wsdl:output message="tns:LoginCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEvalute">
+      <wsdl:input message="tns:GetAllEvaluteSoapIn" />
+      <wsdl:output message="tns:GetAllEvaluteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEvaluteByProduct">
+      <wsdl:input message="tns:GetEvaluteByProductSoapIn" />
+      <wsdl:output message="tns:GetEvaluteByProductSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEvaluteByRate">
+      <wsdl:input message="tns:GetEvaluteByRateSoapIn" />
+      <wsdl:output message="tns:GetEvaluteByRateSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllMessage">
+      <soap:operation soapAction="http://tempuri.org/GetAllMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageByCategory">
+      <soap:operation soapAction="http://tempuri.org/GetMessageByCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProduct">
+      <soap:operation soapAction="http://tempuri.org/GetAllProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginAccount">
+      <soap:operation soapAction="http://tempuri.org/LoginAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginCustomer">
+      <soap:operation soapAction="http://tempuri.org/LoginCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEvalute">
+      <soap:operation soapAction="http://tempuri.org/GetAllEvalute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvaluteByProduct">
+      <soap:operation soapAction="http://tempuri.org/GetEvaluteByProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvaluteByRate">
+      <soap:operation soapAction="http://tempuri.org/GetEvaluteByRate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllMessage">
+      <soap12:operation soapAction="http://tempuri.org/GetAllMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageByCategory">
+      <soap12:operation soapAction="http://tempuri.org/GetMessageByCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProduct">
+      <soap12:operation soapAction="http://tempuri.org/GetAllProduct" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginAccount">
+      <soap12:operation soapAction="http://tempuri.org/LoginAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginCustomer">
+      <soap12:operation soapAction="http://tempuri.org/LoginCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEvalute">
+      <soap12:operation soapAction="http://tempuri.org/GetAllEvalute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvaluteByProduct">
+      <soap12:operation soapAction="http://tempuri.org/GetEvaluteByProduct" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvaluteByRate">
+      <soap12:operation soapAction="http://tempuri.org/GetEvaluteByRate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
+      <soap:address location="http://localhost:65200/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
+      <soap12:address location="http://localhost:65200/WebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
