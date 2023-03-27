@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System.Configuration;
 using System.Data;
-using System.Linq;
-using System.Web;
+using System.Data.SqlClient;
 using System.Web.Services;
-using System.Configuration;
 
 /// <summary>
 /// Summary description for WebService
@@ -70,7 +66,7 @@ public class WebService : System.Web.Services.WebService
         SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
         DataSet ds = new DataSet();
         adapter.Fill(ds);
-        return  int.Parse(ds.Tables[0].Rows[0]["count"].ToString());
+        return int.Parse(ds.Tables[0].Rows[0]["count"].ToString());
     }
 
     //1. Api get All Product by search, page, sort 
@@ -79,7 +75,7 @@ public class WebService : System.Web.Services.WebService
     {
         SqlConnection cnn = new SqlConnection(connstr);
         string queryCategory = "";
-        if(category != 0)
+        if (category != 0)
         {
             queryCategory = "AND Category.Category_id = " + category;
         }
@@ -90,7 +86,7 @@ public class WebService : System.Web.Services.WebService
             " LEFT OUTER JOIN    Category ON Product.Category_id = Category.Category_id" +
             " LEFT OUTER JOIN  Account ON Product.Update_by = Account.Account_id LEFT OUTER JOIN  Supplier ON Product.Supplier_id = Supplier.Supplier_id  " +
             " Where  Product.Product_name LIKE '%" + searchName + "%' " + queryCategory +
-            " ORder by " + sortName + " " + typeSort  +
+            " ORder by " + sortName + " " + typeSort +
             " OFFSET " + offset + " ROWS " +
             " FETCH NEXT  " + limit + "  ROWS ONLY";
 
@@ -119,6 +115,18 @@ public class WebService : System.Web.Services.WebService
         return ds;
     }
 
+    //1. Api get All Product by search, page, sort 
+    [WebMethod]
+    public string GetCategoryName(int category)
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT Category_name FROM [FloristDB].[dbo].[Category]  Where  Category.Category_id = " + category;
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds.Tables[0].Rows[0]["Category_name"].ToString();
+    }
+
     //// ------------------API For Authentication -----------------
 
     // 1. Api Login Account Table
@@ -140,12 +148,23 @@ public class WebService : System.Web.Services.WebService
     public DataSet LoginCustomer(string Phone, string Password)
     {
         SqlConnection cnn = new SqlConnection(connstr);
-        string sql = "SELECT Customer_id, First_name, Last_name, Password, Sex, Birth_day, Phone, Address FROM  Customer WHERE Phone = N'" + Phone + "'AND Password = N'" + Password + "'";
+        string sql = "SELECT Customer_id, First_name, Last_name, Password, Sex, Birth_day, Phone, Address FROM  [FloristDB].[dbo].[Customer] WHERE Phone = N'" + Phone + "'AND Password = N'" + Password + "'";
         SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
         DataSet ds = new DataSet();
         adapter.Fill(ds);
-      
+
         return ds;
+    }
+
+    [WebMethod]
+    public int checkLoginCustomer(string Phone, string Password)
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT Count(*) as count FROM  [FloristDB].[dbo].[Customer] WHERE Phone = N'" + Phone + "'AND Password = N'" + Password + "'";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return int.Parse(ds.Tables[0].Rows[0]["count"].ToString());
     }
 
     ////3. Api Register Customer Table

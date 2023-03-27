@@ -43,6 +43,15 @@ namespace Florist_Client.Controllers
                     totalPage = (countRecord / limit);
                 }
             }
+            string category_title = "";
+            if(category > 0)
+            {
+                category_title += webService.GetCategoryName((int)category);
+            }
+            if (searchName != null && searchName != "")
+            {
+                category_title = searchName;
+            }
             DataSet dataSet = new DataSet();
             dataSet = webService.GetAllProduct(searchName, sortName, typeSort, offset, limit, (int)category);
             List<Products> listProduct = new List<Products>();
@@ -70,6 +79,7 @@ namespace Florist_Client.Controllers
             ViewBag.currenPage = currenPage;
             ViewBag.sortName = sortName;
             ViewBag.typeSort = typeSort;
+            ViewBag.category_title = category_title;
 
             return View();
         }

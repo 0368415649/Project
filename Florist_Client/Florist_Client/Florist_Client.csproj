@@ -123,6 +123,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\About_usController.cs" />
+    <Compile Include="Controllers\CheckLoginController.cs" />
     <Compile Include="Controllers\Florist_valuesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
@@ -163,6 +164,7 @@
     <Content Include="Resources\css\serach.css" />
     <Content Include="Resources\css\show_more.css" />
     <Content Include="Resources\css\view_cart.css" />
+    <Content Include="Resources\js\login.js" />
     <Content Include="Resources\js\test.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -212,6 +214,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Resources\img\" />
+    <Folder Include="Views\CheckLogin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

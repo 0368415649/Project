@@ -102,6 +102,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetCategoryName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="category" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCategoryNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCategoryNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="LoginAccount">
         <s:complexType>
           <s:sequence>
@@ -143,6 +157,21 @@
                 </s:sequence>
               </s:complexType>
             </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkLoginCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkLoginCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="checkLoginCustomerResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -237,6 +266,12 @@
   <wsdl:message name="GetProductByCategorySoapOut">
     <wsdl:part name="parameters" element="tns:GetProductByCategoryResponse" />
   </wsdl:message>
+  <wsdl:message name="GetCategoryNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCategoryName" />
+  </wsdl:message>
+  <wsdl:message name="GetCategoryNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCategoryNameResponse" />
+  </wsdl:message>
   <wsdl:message name="LoginAccountSoapIn">
     <wsdl:part name="parameters" element="tns:LoginAccount" />
   </wsdl:message>
@@ -248,6 +283,12 @@
   </wsdl:message>
   <wsdl:message name="LoginCustomerSoapOut">
     <wsdl:part name="parameters" element="tns:LoginCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkLoginCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:checkLoginCustomer" />
+  </wsdl:message>
+  <wsdl:message name="checkLoginCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:checkLoginCustomerResponse" />
   </wsdl:message>
   <wsdl:message name="GetAllEvaluteSoapIn">
     <wsdl:part name="parameters" element="tns:GetAllEvalute" />
@@ -288,6 +329,10 @@
       <wsdl:input message="tns:GetProductByCategorySoapIn" />
       <wsdl:output message="tns:GetProductByCategorySoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetCategoryName">
+      <wsdl:input message="tns:GetCategoryNameSoapIn" />
+      <wsdl:output message="tns:GetCategoryNameSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="LoginAccount">
       <wsdl:input message="tns:LoginAccountSoapIn" />
       <wsdl:output message="tns:LoginAccountSoapOut" />
@@ -295,6 +340,10 @@
     <wsdl:operation name="LoginCustomer">
       <wsdl:input message="tns:LoginCustomerSoapIn" />
       <wsdl:output message="tns:LoginCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkLoginCustomer">
+      <wsdl:input message="tns:checkLoginCustomerSoapIn" />
+      <wsdl:output message="tns:checkLoginCustomerSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetAllEvalute">
       <wsdl:input message="tns:GetAllEvaluteSoapIn" />
@@ -356,6 +405,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetCategoryName">
+      <soap:operation soapAction="http://tempuri.org/GetCategoryName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="LoginAccount">
       <soap:operation soapAction="http://tempuri.org/LoginAccount" style="document" />
       <wsdl:input>
@@ -367,6 +425,15 @@
     </wsdl:operation>
     <wsdl:operation name="LoginCustomer">
       <soap:operation soapAction="http://tempuri.org/LoginCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkLoginCustomer">
+      <soap:operation soapAction="http://tempuri.org/checkLoginCustomer" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -449,6 +516,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetCategoryName">
+      <soap12:operation soapAction="http://tempuri.org/GetCategoryName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="LoginAccount">
       <soap12:operation soapAction="http://tempuri.org/LoginAccount" style="document" />
       <wsdl:input>
@@ -460,6 +536,15 @@
     </wsdl:operation>
     <wsdl:operation name="LoginCustomer">
       <soap12:operation soapAction="http://tempuri.org/LoginCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkLoginCustomer">
+      <soap12:operation soapAction="http://tempuri.org/checkLoginCustomer" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

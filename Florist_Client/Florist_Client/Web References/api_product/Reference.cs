@@ -40,9 +40,13 @@ namespace Florist_Client.api_product {
         
         private System.Threading.SendOrPostCallback GetProductByCategoryOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetCategoryNameOperationCompleted;
+        
         private System.Threading.SendOrPostCallback LoginAccountOperationCompleted;
         
         private System.Threading.SendOrPostCallback LoginCustomerOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback checkLoginCustomerOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetAllEvaluteOperationCompleted;
         
@@ -104,10 +108,16 @@ namespace Florist_Client.api_product {
         public event GetProductByCategoryCompletedEventHandler GetProductByCategoryCompleted;
         
         /// <remarks/>
+        public event GetCategoryNameCompletedEventHandler GetCategoryNameCompleted;
+        
+        /// <remarks/>
         public event LoginAccountCompletedEventHandler LoginAccountCompleted;
         
         /// <remarks/>
         public event LoginCustomerCompletedEventHandler LoginCustomerCompleted;
+        
+        /// <remarks/>
+        public event checkLoginCustomerCompletedEventHandler checkLoginCustomerCompleted;
         
         /// <remarks/>
         public event GetAllEvaluteCompletedEventHandler GetAllEvaluteCompleted;
@@ -274,6 +284,35 @@ namespace Florist_Client.api_product {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetCategoryName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetCategoryName(int category) {
+            object[] results = this.Invoke("GetCategoryName", new object[] {
+                        category});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetCategoryNameAsync(int category) {
+            this.GetCategoryNameAsync(category, null);
+        }
+        
+        /// <remarks/>
+        public void GetCategoryNameAsync(int category, object userState) {
+            if ((this.GetCategoryNameOperationCompleted == null)) {
+                this.GetCategoryNameOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCategoryNameOperationCompleted);
+            }
+            this.InvokeAsync("GetCategoryName", new object[] {
+                        category}, this.GetCategoryNameOperationCompleted, userState);
+        }
+        
+        private void OnGetCategoryNameOperationCompleted(object arg) {
+            if ((this.GetCategoryNameCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetCategoryNameCompleted(this, new GetCategoryNameCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/LoginAccount", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public System.Data.DataSet LoginAccount(string Phone, string Password) {
             object[] results = this.Invoke("LoginAccount", new object[] {
@@ -332,6 +371,37 @@ namespace Florist_Client.api_product {
             if ((this.LoginCustomerCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.LoginCustomerCompleted(this, new LoginCustomerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/checkLoginCustomer", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int checkLoginCustomer(string Phone, string Password) {
+            object[] results = this.Invoke("checkLoginCustomer", new object[] {
+                        Phone,
+                        Password});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void checkLoginCustomerAsync(string Phone, string Password) {
+            this.checkLoginCustomerAsync(Phone, Password, null);
+        }
+        
+        /// <remarks/>
+        public void checkLoginCustomerAsync(string Phone, string Password, object userState) {
+            if ((this.checkLoginCustomerOperationCompleted == null)) {
+                this.checkLoginCustomerOperationCompleted = new System.Threading.SendOrPostCallback(this.OncheckLoginCustomerOperationCompleted);
+            }
+            this.InvokeAsync("checkLoginCustomer", new object[] {
+                        Phone,
+                        Password}, this.checkLoginCustomerOperationCompleted, userState);
+        }
+        
+        private void OncheckLoginCustomerOperationCompleted(object arg) {
+            if ((this.checkLoginCustomerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.checkLoginCustomerCompleted(this, new checkLoginCustomerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -571,6 +641,32 @@ namespace Florist_Client.api_product {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetCategoryNameCompletedEventHandler(object sender, GetCategoryNameCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetCategoryNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetCategoryNameCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void LoginAccountCompletedEventHandler(object sender, LoginAccountCompletedEventArgs e);
     
     /// <remarks/>
@@ -617,6 +713,32 @@ namespace Florist_Client.api_product {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void checkLoginCustomerCompletedEventHandler(object sender, checkLoginCustomerCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class checkLoginCustomerCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal checkLoginCustomerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

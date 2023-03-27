@@ -5,12 +5,13 @@
 
     @Styles.Render("~/Resources/css/serach.css")
     @Scripts.Render("~/Resources/js/test.js")
+
 }
 <div class="container grap_serach_product" style="padding-top: 170px;">
     <a href="HomePage"><i class="fa-solid fa-house" style="color: #f962b2;"></i></a>
     <i class="fa-solid fa-angles-right" style="color: #132139;"></i>
-    <span>Bó hoa tươi</span>
-    <div class="grap_s_title">Bó hoa tươi</div>
+    <span>@(ViewBag.category_title)</span>
+    <div class="grap_s_title">@(ViewBag.category_title)</div>
     <div class="row">
         <div class="col-3 mt-4">
             <div class="title_left_s">Bộ Sưu Tập</div>
@@ -20,51 +21,54 @@
             <div class="narbar_grap"><a class="narbar_item @((ViewBag.categoryHover == 4) ? "narbar_item_hover" : "")" href="SearchProduct?category=4">Graduate</a></div>
             <div class="narbar_grap"><a class="narbar_item @((ViewBag.categoryHover == 5) ? "narbar_item_hover" : "")" href="SearchProduct?category=5">Grand opening flower</a></div>
         </div>
-        
+
 
         <div style="" class="col-9 mt-4">
-            @if(ViewBag.totalPage > 0){
-            <div class="grap_serach row">
-                <div class="col-2 grap_price_hot">
-                    <a href="SearchProduct?sortName=sold&typeSort=DESC&searchName=@(ViewBag.searchName)">Ban chay</a>
-                </div>
-                <div class="col-8">
-                    <div class="grap_price">
-                        <div class="grap_price_label"><span>Gia</span> <i class="fa-solid fa-chevron-down" style="color: #000000;"></i></div>
-                        <div class="chirld_grap">
-                            <div><a href="SearchProduct?sortName=Price&typeSort=DESC&searchName=@(ViewBag.searchName)">Gia: Cap den thap</a></div>
-                            <div><a href="SearchProduct?sortName=Price&typeSort=ASC&searchName=@(ViewBag.searchName)">Gia: Thap den cao</a></div>
-                        </div>
+            @if (ViewBag.totalPage > 0)
+            {
+                <div class="grap_serach row">
+                    <div class="col-2 grap_price_hot">
+                        <a href="SearchProduct?sortName=sold&typeSort=DESC&searchName=@(ViewBag.searchName)">Ban chay</a>
                     </div>
-                </div>
-                <div style="margin-left: auto;" class="col-2 mt-1">
-                    <span>@(ViewBag.currenPage)</span>/<span>@(ViewBag.totalPage)</span>
-                    <a href="SearchProduct?sortName=@(ViewBag.sortName)&typeSort=@(ViewBag.typeSort)&searchName=@(ViewBag.searchName)&currenPage=@(ViewBag.currenPage-1)" class="icon_pagging ms-3 @((ViewBag.currenPage == 1) ? "none_icon" : "")"><i class="fa-solid fa-angle-left"></i></a>
-                    <a href="SearchProduct?sortName=@(ViewBag.sortName)&typeSort=@(ViewBag.typeSort)&searchName=@(ViewBag.searchName)&currenPage=@(ViewBag.currenPage+1)" class="icon_pagging @((ViewBag.totalPage <= 1 || ViewBag.currenPage == ViewBag.totalPage) ? "none_icon" : "")"><i class="fa-solid fa-angle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="grap_list_product">
-                <div class="row grap_product_image">
-                    @foreach (var item in ViewBag.Product1)
-                    {
-                        <div style="padding-top: 50px;" class="col-xl-3 col-lg-4 col-md-6 grap_product_click">
-                            <a href="#">
-                                <img width="100%" height="82%" src="~/Resources/img/product/@(item.Image).png" alt="">
-                            </a>
-                            <div class="font_product">
-                                <div class="product_name">@(item.Product_name)</div>
-                                <div class="product_price">
-                                    <div class="pricr">@(item.Price)$</div>
-                                    <div class="price_cart"><i class="fa-solid fa-cart-arrow-down cart_cl"></i></div>
-                                </div>
+                    <div class="col-8">
+                        <div class="grap_price">
+                            <div class="grap_price_label"><span>Gia</span> <i class="fa-solid fa-chevron-down" style="color: #000000;"></i></div>
+                            <div class="chirld_grap">
+                                <div><a href="SearchProduct?sortName=Price&typeSort=DESC&searchName=@(ViewBag.searchName)">Gia: Cap den thap</a></div>
+                                <div><a href="SearchProduct?sortName=Price&typeSort=ASC&searchName=@(ViewBag.searchName)">Gia: Thap den cao</a></div>
                             </div>
                         </div>
-                    }
-
+                    </div>
+                    <div style="margin-left: auto;" class="col-2 mt-1">
+                        <span>@(ViewBag.currenPage)</span>/<span>@(ViewBag.totalPage)</span>
+                        <a href="SearchProduct?sortName=@(ViewBag.sortName)&typeSort=@(ViewBag.typeSort)&searchName=@(ViewBag.searchName)&currenPage=@(ViewBag.currenPage-1)" class="icon_pagging ms-3 @((ViewBag.currenPage == 1) ? "none_icon" : "")"><i class="fa-solid fa-angle-left"></i></a>
+                        <a href="SearchProduct?sortName=@(ViewBag.sortName)&typeSort=@(ViewBag.typeSort)&searchName=@(ViewBag.searchName)&currenPage=@(ViewBag.currenPage+1)" class="icon_pagging @((ViewBag.totalPage <= 1 || ViewBag.currenPage == ViewBag.totalPage) ? "none_icon" : "")"><i class="fa-solid fa-angle-right"></i></a>
+                    </div>
                 </div>
-            </div>
-            }else{
+
+                <div class="grap_list_product">
+                    <div class="row grap_product_image">
+                        @foreach (var item in ViewBag.Product1)
+                        {
+                            <div style="padding-top: 50px;" class="col-xl-3 col-lg-4 col-md-6 grap_product_click">
+                                <a href="#">
+                                    <img width="100%" height="82%" src="~/Resources/img/product/@(item.Image).png" alt="">
+                                </a>
+                                <div class="font_product">
+                                    <div class="product_name">@(item.Product_name)</div>
+                                    <div class="product_price">
+                                        <div class="pricr">@(item.Price)$</div>
+                                        <div class="price_cart"><i class="fa-solid fa-cart-arrow-down cart_cl"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            }
+            else
+            {
                 <div>No item</div>
             }
         </div>
@@ -75,7 +79,7 @@
         <div class="row">
             <div class="col-3 d-flex flex-aline grap_fea">
                 <div class="">
-                    <img width="80%" src="./img/show_more/service_1.png" alt="">
+                    <img width="80%" src="~/Resources/img/show_more/service_1.png" alt="">
                 </div>
                 <div class="featured_text_why">
                     <h4>FREE DELIVERY 63 PROVINCE</h4>
@@ -84,7 +88,7 @@
             </div>
             <div class="col-3 d-flex flex-aline grap_fea">
                 <div class="">
-                    <img width="80%" src="./img/show_more/service_2.png" alt="">
+                    <img width="80%" src="~/Resources/img/show_more/service_2.png" alt="">
                 </div>
                 <div class="featured_text_why">
                     <h4>SERVICE 24/24</h4>
@@ -93,7 +97,7 @@
             </div>
             <div class="col-3 d-flex flex-aline grap_fea">
                 <div class="">
-                    <img width="80%" src="./img/show_more/service_3.png" alt="">
+                    <img width="80%" src="~/Resources/img/show_more/service_3.png" alt="">
                 </div>
                 <div class="featured_text_why">
                     <h4>PRICE INCLUDES 10% VAT</h4>
@@ -102,7 +106,7 @@
             </div>
             <div class="col-3 d-flex flex-aline grap_fea">
                 <div class="">
-                    <img width="80%" src="./img/show_more/service_8.png" alt="">
+                    <img width="80%" src="~/Resources/img/show_more/service_8.png" alt="">
                 </div>
                 <div class="featured_text_why">
                     <h4>FAST DELIVERY IN 60 MINUTES BILLION</h4>
@@ -111,7 +115,7 @@
             </div>
             <div class="col-3 d-flex flex-aline grap_fea">
                 <div class="">
-                    <img width="80%" src="./img/show_more/service_4.png" alt="">
+                    <img width="80%" src="~/Resources/img/show_more/service_4.png" alt="">
                 </div>
                 <div class="featured_text_why">
                     <h4>100% SATISFACTION GUARANTEE</h4>
@@ -120,7 +124,7 @@
             </div>
             <div class="col-3 d-flex flex-aline grap_fea">
                 <div class="">
-                    <img width="80%" src="./img/show_more/service_7.png" alt="">
+                    <img width="80%" src="~/Resources/img/show_more/service_7.png" alt="">
                 </div>
                 <div class="featured_text_why">
                     <h4>UP TO 10% OFF</h4>
@@ -129,7 +133,7 @@
             </div>
             <div class="col-3 d-flex flex-aline grap_fea">
                 <div class="">
-                    <img width="80%" src="./img/show_more/service_5.png" alt="">
+                    <img width="80%" src="~/Resources/img/show_more/service_5.png" alt="">
                 </div>
                 <div class="featured_text_why">
                     <h4>COMMITMENT OF FRESH FRESH FLOWERS 3+ DAYS</h4>
@@ -138,7 +142,7 @@
             </div>
             <div class="col-3 d-flex flex-aline grap_fea">
                 <div class="">
-                    <img width="80%" src="./img/show_more/service_6.png" alt="">
+                    <img width="80%" src="~/Resources/img/show_more/service_6.png" alt="">
                 </div>
                 <div class="featured_text_why">
                     <h4>PREMIUM CARDS</h4>
