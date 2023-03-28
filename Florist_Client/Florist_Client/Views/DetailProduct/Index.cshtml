@@ -1,0 +1,202 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutCommom.cshtml";
+    @Styles.Render("~/Resources/css/show_more.css")
+
+}
+
+<!-- more product -->
+<div class="container container_title">
+    <div class="product_more_title">
+        @(ViewBag.detailProduct.Product_name)
+    </div>
+</div>
+<div class="container container_more">
+    <div class="row">
+        <div class="col-6" style="background :#d7eaf1;">
+            <img width="60%" height="100%" style="display: block; margin: auto; " src="~/Resources/img/product/@(ViewBag.detailProduct.Image).png" alt="">
+        </div>
+        <div class="col-lg-6 col-sm-5 col-12 boxx contant-more-grap" style="">
+            <div class="content-more-discription">@(ViewBag.detailProduct.Description)</div>
+            <ul class="content-more-list">
+                <li class="content-more-item">Beautiful flower arrangement in our trademark LVLY jar</li>
+                <li class="content-more-item">A LVLY glass jar with assorted quotes including ‘Have a LVLY day’, ‘You LVLY thing’ , ‘Sending LVLY Vibes’.</li>
+                <li class="content-more-item">A message card for a personal note</li>
+            </ul>
+            <div class="content-more-discription">All packaged in a 'Someone Thinks You're Awesome' gift box.</div>
+            <div class="sen"></div>
+            <div class="sen">Total</div>
+            <div class="sen sen_text">@(ViewBag.detailProduct.Price)$</div>
+            <div class="text-end">
+                <button class="content-more-cart">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- more product -->
+<!-- review -->
+<div id="rivew" class="container review_grap_big">
+    <div class="grap_rivew_title">US PRODUCT REVIEW</div>
+    <div class="row review_grap">
+        <div class="col-2 review_grap_color">
+            <span class="review_grap_text">4.7</span> <span>trên 5</span>
+            <div class="">
+                <span class="color-change">
+                    <i class="fa-solid fa-star "></i>
+                    <i class="fa-solid fa-star "></i>
+                    <i class="fa-solid fa-star "></i>
+                    <i class="fa-solid fa-star "></i>
+                    <i class="fa-solid fa-star "></i>
+                </span>
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="d-flex">
+                <a href="DetailProduct?product_id=@(ViewBag.detailProduct.Product_id)#rivew"><div class="btn_rivew @((ViewBag.rate == 0) ? "btn_rivew_all" : "")">Tất cả</div></a>
+                <a href="DetailProduct?product_id=@(ViewBag.detailProduct.Product_id)&rate=5#rivew"><div class="btn_rivew @((ViewBag.rate == 5) ? "btn_rivew_all" : "")">5 sao (@(ViewBag.countRate5))</div></a>
+                <a href="DetailProduct?product_id=@(ViewBag.detailProduct.Product_id)&rate=4#rivew"><div class="btn_rivew @((ViewBag.rate == 4) ? "btn_rivew_all" : "")">4 sao (@(ViewBag.countRate4))</div></a>
+                <a href="DetailProduct?product_id=@(ViewBag.detailProduct.Product_id)&rate=3#rivew"><div class="btn_rivew @((ViewBag.rate == 3) ? "btn_rivew_all" : "")">3 sao (@(ViewBag.countRate3))</div></a>
+                <a href="DetailProduct?product_id=@(ViewBag.detailProduct.Product_id)&rate=2#rivew"><div class="btn_rivew @((ViewBag.rate == 2) ? "btn_rivew_all" : "")">2 sao (@(ViewBag.countRate2))</div></a>
+                <a href="DetailProduct?product_id=@(ViewBag.detailProduct.Product_id)&rate=1#rivew"><div class="btn_rivew @((ViewBag.rate == 1) ? "btn_rivew_all" : "")">1 sao (@(ViewBag.countRate1))</div></a>
+            </div>
+        </div>
+    </div>
+    @foreach (var item in ViewBag.listEvalute)
+    {
+                <div class="row review_grap_all">
+                    <div class="col-1 review_logo">
+                        <i class="fa-solid fa-user login_icon"></i>
+                    </div>
+                    <div class="col-11 review_content_text">
+                        <div class="review_name">@(item.Customer_Name)</div>
+                        <div class="">@(item.Create_at)</div>
+                        <div class="">
+                            <span class="color-change_font">
+                                @for (int i = 1; i <= item.Rate; i++)
+                                {
+                                    <i class="fa-solid fa-star change_font"></i>
+
+                                }
+                            </span>
+                        </div>
+                        <div class="content_rivwe">
+                            @(item.Evalute_content)
+                        </div>
+                    </div>
+                    <div class="sen"></div>
+                </div>
+    }
+    
+
+</div>
+</div>
+<!-- review -->
+<!-- list product -->
+<div class="container">
+    <div class="grap_list_product">
+        <div class="grap_title flex_aline d-flex justify-content-between">
+            <div class="category_title">@(ViewBag.detailProduct.Category_name)</div>
+            <div class="show_more">
+                <a href="SearchProduct?category=1">Show more</a>
+            </div>
+        </div>
+        <div class="row grap_product_image">
+            @foreach (var item in ViewBag.Product1)
+            {
+                <div class="col-xl-3 col-lg-4 col-md-6 grap_product_click">
+                    <a href="DetailProduct?product_id=@(item.Product_id)">
+                        <img width="100%" height="82%" src="~/Resources/img/product/@(item.Image).png" alt="">
+                    </a>
+                    <div class="font_product">
+                        <div class="product_name">@(item.Product_name)</div>
+                        <div class="product_price">
+                            <div class="pricr">@(item.Price)$</div>
+                            <div class="price_cart"><i class="fa-solid fa-cart-arrow-down cart_cl"></i></div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- list product -->
+<!-- Featured in -->
+<div class="container mb-5">
+    <div class="text-center featured_why">WHY SHOULD YOU USE OUR SERVICES?</div>
+    <div class="row">
+        <div class="col-3 d-flex flex-aline grap_fea">
+            <div class="">
+                <img width="80%" src="~/Resources/img/show_more/service_1.png" alt="">
+            </div>
+            <div class="featured_text_why">
+                <h4>FREE DELIVERY 63 PROVINCE</h4>
+                <span>Free shipping (inner city)</span>
+            </div>
+        </div>
+        <div class="col-3 d-flex flex-aline grap_fea">
+            <div class="">
+                <img width="80%" src="~/Resources/img/show_more/service_2.png" alt="">
+            </div>
+            <div class="featured_text_why">
+                <h4>SERVICE 24/24</h4>
+                <span>24-7 service</span>
+            </div>
+        </div>
+        <div class="col-3 d-flex flex-aline grap_fea">
+            <div class="">
+                <img width="80%" src="~/Resources/img/show_more/service_3.png" alt="">
+            </div>
+            <div class="featured_text_why">
+                <h4>PRICE INCLUDES 10% VAT</h4>
+                <span>Price include VAT</span>
+            </div>
+        </div>
+        <div class="col-3 d-flex flex-aline grap_fea">
+            <div class="">
+                <img width="80%" src="~/Resources/img/show_more/service_8.png" alt="">
+            </div>
+            <div class="featured_text_why">
+                <h4>FAST DELIVERY IN 60 MINUTES BILLION</h4>
+                <span>60 minutes quick delivery</span>
+            </div>
+        </div>
+        <div class="col-3 d-flex flex-aline grap_fea">
+            <div class="">
+                <img width="80%" src="~/Resources/img/show_more/service_4.png" alt="">
+            </div>
+            <div class="featured_text_why">
+                <h4>100% SATISFACTION GUARANTEE</h4>
+                <span>100% guarantee smile</span>
+            </div>
+        </div>
+        <div class="col-3 d-flex flex-aline grap_fea">
+            <div class="">
+                <img width="80%" src="~/Resources/img/show_more/service_7.png" alt="">
+            </div>
+            <div class="featured_text_why">
+                <h4>UP TO 10% OFF</h4>
+                <span>Receive 3-10% discount</span>
+            </div>
+        </div>
+        <div class="col-3 d-flex flex-aline grap_fea">
+            <div class="">
+                <img width="80%" src="~/Resources/img/show_more/service_5.png" alt="">
+            </div>
+            <div class="featured_text_why">
+                <h4>COMMITMENT OF FRESH FRESH FLOWERS 3+ DAYS</h4>
+                <span>3+ days fresh warranty</span>
+            </div>
+        </div>
+        <div class="col-3 d-flex flex-aline grap_fea">
+            <div class="">
+                <img width="80%" src="~/Resources/img/show_more/service_6.png" alt="">
+            </div>
+            <div class="featured_text_why">
+                <h4>PREMIUM CARDS</h4>
+                <span>Free greeting cards</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Featured in -->

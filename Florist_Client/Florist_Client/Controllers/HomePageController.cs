@@ -99,7 +99,11 @@ namespace Florist_Client.Controllers
                 listProduct3.Add(product);
             }
             ViewBag.Product3 = listProduct3;
-
+            if (Session["checklogin"] != null)
+            {
+                ViewBag.checkLogin = Session["checklogin"];
+                Session["checklogin"] = null;
+            }
             return View();
         }
     }

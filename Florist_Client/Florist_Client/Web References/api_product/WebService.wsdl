@@ -102,6 +102,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetProductByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="productID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProductByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProductByIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetCategoryName">
         <s:complexType>
           <s:sequence>
@@ -196,6 +217,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="ProductID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="rate" nillable="true" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -213,24 +235,18 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetEvaluteByRate">
+      <s:element name="GetCountEvaluteByRate">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Rate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProductID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Rate" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetEvaluteByRateResponse">
+      <s:element name="GetCountEvaluteByRateResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetEvaluteByRateResult">
-              <s:complexType>
-                <s:sequence>
-                  <s:element ref="s:schema" />
-                  <s:any />
-                </s:sequence>
-              </s:complexType>
-            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCountEvaluteByRateResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -265,6 +281,12 @@
   </wsdl:message>
   <wsdl:message name="GetProductByCategorySoapOut">
     <wsdl:part name="parameters" element="tns:GetProductByCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProductByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProductByID" />
+  </wsdl:message>
+  <wsdl:message name="GetProductByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProductByIDResponse" />
   </wsdl:message>
   <wsdl:message name="GetCategoryNameSoapIn">
     <wsdl:part name="parameters" element="tns:GetCategoryName" />
@@ -302,11 +324,11 @@
   <wsdl:message name="GetEvaluteByProductSoapOut">
     <wsdl:part name="parameters" element="tns:GetEvaluteByProductResponse" />
   </wsdl:message>
-  <wsdl:message name="GetEvaluteByRateSoapIn">
-    <wsdl:part name="parameters" element="tns:GetEvaluteByRate" />
+  <wsdl:message name="GetCountEvaluteByRateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCountEvaluteByRate" />
   </wsdl:message>
-  <wsdl:message name="GetEvaluteByRateSoapOut">
-    <wsdl:part name="parameters" element="tns:GetEvaluteByRateResponse" />
+  <wsdl:message name="GetCountEvaluteByRateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCountEvaluteByRateResponse" />
   </wsdl:message>
   <wsdl:portType name="WebServiceSoap">
     <wsdl:operation name="GetAllMessage">
@@ -328,6 +350,10 @@
     <wsdl:operation name="GetProductByCategory">
       <wsdl:input message="tns:GetProductByCategorySoapIn" />
       <wsdl:output message="tns:GetProductByCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductByID">
+      <wsdl:input message="tns:GetProductByIDSoapIn" />
+      <wsdl:output message="tns:GetProductByIDSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetCategoryName">
       <wsdl:input message="tns:GetCategoryNameSoapIn" />
@@ -353,9 +379,9 @@
       <wsdl:input message="tns:GetEvaluteByProductSoapIn" />
       <wsdl:output message="tns:GetEvaluteByProductSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetEvaluteByRate">
-      <wsdl:input message="tns:GetEvaluteByRateSoapIn" />
-      <wsdl:output message="tns:GetEvaluteByRateSoapOut" />
+    <wsdl:operation name="GetCountEvaluteByRate">
+      <wsdl:input message="tns:GetCountEvaluteByRateSoapIn" />
+      <wsdl:output message="tns:GetCountEvaluteByRateSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
@@ -398,6 +424,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetProductByCategory">
       <soap:operation soapAction="http://tempuri.org/GetProductByCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductByID">
+      <soap:operation soapAction="http://tempuri.org/GetProductByID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -459,8 +494,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetEvaluteByRate">
-      <soap:operation soapAction="http://tempuri.org/GetEvaluteByRate" style="document" />
+    <wsdl:operation name="GetCountEvaluteByRate">
+      <soap:operation soapAction="http://tempuri.org/GetCountEvaluteByRate" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -509,6 +544,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetProductByCategory">
       <soap12:operation soapAction="http://tempuri.org/GetProductByCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductByID">
+      <soap12:operation soapAction="http://tempuri.org/GetProductByID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -570,8 +614,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetEvaluteByRate">
-      <soap12:operation soapAction="http://tempuri.org/GetEvaluteByRate" style="document" />
+    <wsdl:operation name="GetCountEvaluteByRate">
+      <soap12:operation soapAction="http://tempuri.org/GetCountEvaluteByRate" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

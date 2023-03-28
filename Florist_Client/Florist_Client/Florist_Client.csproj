@@ -124,14 +124,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\About_usController.cs" />
     <Compile Include="Controllers\CheckLoginController.cs" />
+    <Compile Include="Controllers\DetailProductController.cs" />
     <Compile Include="Controllers\Florist_valuesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
+    <Compile Include="Controllers\LogoutPageController.cs" />
     <Compile Include="Controllers\MarketingController.cs" />
     <Compile Include="Controllers\SearchProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Evalute.cs" />
     <Compile Include="Models\Products.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -188,6 +192,7 @@
     <Content Include="Views\Marketing\Index.cshtml" />
     <Content Include="Views\Florist_values\Index.cshtml" />
     <Content Include="Views\SearchProduct\Index.cshtml" />
+    <Content Include="Views\DetailProduct\Index.cshtml" />
     <None Include="Web References\api_product\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -215,6 +220,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Resources\img\" />
     <Folder Include="Views\CheckLogin\" />
+    <Folder Include="Views\LogoutPage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -40,6 +40,8 @@ namespace Florist_Client.api_product {
         
         private System.Threading.SendOrPostCallback GetProductByCategoryOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetProductByIDOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetCategoryNameOperationCompleted;
         
         private System.Threading.SendOrPostCallback LoginAccountOperationCompleted;
@@ -52,7 +54,7 @@ namespace Florist_Client.api_product {
         
         private System.Threading.SendOrPostCallback GetEvaluteByProductOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetEvaluteByRateOperationCompleted;
+        private System.Threading.SendOrPostCallback GetCountEvaluteByRateOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -108,6 +110,9 @@ namespace Florist_Client.api_product {
         public event GetProductByCategoryCompletedEventHandler GetProductByCategoryCompleted;
         
         /// <remarks/>
+        public event GetProductByIDCompletedEventHandler GetProductByIDCompleted;
+        
+        /// <remarks/>
         public event GetCategoryNameCompletedEventHandler GetCategoryNameCompleted;
         
         /// <remarks/>
@@ -126,7 +131,7 @@ namespace Florist_Client.api_product {
         public event GetEvaluteByProductCompletedEventHandler GetEvaluteByProductCompleted;
         
         /// <remarks/>
-        public event GetEvaluteByRateCompletedEventHandler GetEvaluteByRateCompleted;
+        public event GetCountEvaluteByRateCompletedEventHandler GetCountEvaluteByRateCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllMessage", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -284,6 +289,35 @@ namespace Florist_Client.api_product {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetProductByID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet GetProductByID(string productID) {
+            object[] results = this.Invoke("GetProductByID", new object[] {
+                        productID});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetProductByIDAsync(string productID) {
+            this.GetProductByIDAsync(productID, null);
+        }
+        
+        /// <remarks/>
+        public void GetProductByIDAsync(string productID, object userState) {
+            if ((this.GetProductByIDOperationCompleted == null)) {
+                this.GetProductByIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetProductByIDOperationCompleted);
+            }
+            this.InvokeAsync("GetProductByID", new object[] {
+                        productID}, this.GetProductByIDOperationCompleted, userState);
+        }
+        
+        private void OnGetProductByIDOperationCompleted(object arg) {
+            if ((this.GetProductByIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetProductByIDCompleted(this, new GetProductByIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetCategoryName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string GetCategoryName(int category) {
             object[] results = this.Invoke("GetCategoryName", new object[] {
@@ -434,24 +468,26 @@ namespace Florist_Client.api_product {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetEvaluteByProduct", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet GetEvaluteByProduct(string ProductID) {
+        public System.Data.DataSet GetEvaluteByProduct(string ProductID, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] System.Nullable<int> rate) {
             object[] results = this.Invoke("GetEvaluteByProduct", new object[] {
-                        ProductID});
+                        ProductID,
+                        rate});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void GetEvaluteByProductAsync(string ProductID) {
-            this.GetEvaluteByProductAsync(ProductID, null);
+        public void GetEvaluteByProductAsync(string ProductID, System.Nullable<int> rate) {
+            this.GetEvaluteByProductAsync(ProductID, rate, null);
         }
         
         /// <remarks/>
-        public void GetEvaluteByProductAsync(string ProductID, object userState) {
+        public void GetEvaluteByProductAsync(string ProductID, System.Nullable<int> rate, object userState) {
             if ((this.GetEvaluteByProductOperationCompleted == null)) {
                 this.GetEvaluteByProductOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetEvaluteByProductOperationCompleted);
             }
             this.InvokeAsync("GetEvaluteByProduct", new object[] {
-                        ProductID}, this.GetEvaluteByProductOperationCompleted, userState);
+                        ProductID,
+                        rate}, this.GetEvaluteByProductOperationCompleted, userState);
         }
         
         private void OnGetEvaluteByProductOperationCompleted(object arg) {
@@ -462,31 +498,33 @@ namespace Florist_Client.api_product {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetEvaluteByRate", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet GetEvaluteByRate(string Rate) {
-            object[] results = this.Invoke("GetEvaluteByRate", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetCountEvaluteByRate", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int GetCountEvaluteByRate(string ProductID, int Rate) {
+            object[] results = this.Invoke("GetCountEvaluteByRate", new object[] {
+                        ProductID,
                         Rate});
-            return ((System.Data.DataSet)(results[0]));
+            return ((int)(results[0]));
         }
         
         /// <remarks/>
-        public void GetEvaluteByRateAsync(string Rate) {
-            this.GetEvaluteByRateAsync(Rate, null);
+        public void GetCountEvaluteByRateAsync(string ProductID, int Rate) {
+            this.GetCountEvaluteByRateAsync(ProductID, Rate, null);
         }
         
         /// <remarks/>
-        public void GetEvaluteByRateAsync(string Rate, object userState) {
-            if ((this.GetEvaluteByRateOperationCompleted == null)) {
-                this.GetEvaluteByRateOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetEvaluteByRateOperationCompleted);
+        public void GetCountEvaluteByRateAsync(string ProductID, int Rate, object userState) {
+            if ((this.GetCountEvaluteByRateOperationCompleted == null)) {
+                this.GetCountEvaluteByRateOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCountEvaluteByRateOperationCompleted);
             }
-            this.InvokeAsync("GetEvaluteByRate", new object[] {
-                        Rate}, this.GetEvaluteByRateOperationCompleted, userState);
+            this.InvokeAsync("GetCountEvaluteByRate", new object[] {
+                        ProductID,
+                        Rate}, this.GetCountEvaluteByRateOperationCompleted, userState);
         }
         
-        private void OnGetEvaluteByRateOperationCompleted(object arg) {
-            if ((this.GetEvaluteByRateCompleted != null)) {
+        private void OnGetCountEvaluteByRateOperationCompleted(object arg) {
+            if ((this.GetCountEvaluteByRateCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetEvaluteByRateCompleted(this, new GetEvaluteByRateCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetCountEvaluteByRateCompleted(this, new GetCountEvaluteByRateCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -626,6 +664,32 @@ namespace Florist_Client.api_product {
         private object[] results;
         
         internal GetProductByCategoryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetProductByIDCompletedEventHandler(object sender, GetProductByIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetProductByIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetProductByIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -797,26 +861,26 @@ namespace Florist_Client.api_product {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    public delegate void GetEvaluteByRateCompletedEventHandler(object sender, GetEvaluteByRateCompletedEventArgs e);
+    public delegate void GetCountEvaluteByRateCompletedEventHandler(object sender, GetCountEvaluteByRateCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetEvaluteByRateCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetCountEvaluteByRateCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetEvaluteByRateCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetCountEvaluteByRateCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public System.Data.DataSet Result {
+        public int Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((System.Data.DataSet)(this.results[0]));
+                return ((int)(this.results[0]));
             }
         }
     }

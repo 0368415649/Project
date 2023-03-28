@@ -381,3 +381,40 @@ a{
 }
 /* Css login */
 
+.chirld_grap_2{
+    background-color: white;
+    position: absolute;
+    top: 103%;
+    width: 100px;
+    right: 0;
+    border: 1px solid #f0f0f0;
+    border-radius: 3px;
+}
+.chirld_grap_2 a{
+    display: block;
+    padding: 5px 10px;
+    color: black;
+    padding-left: 15px;
+    text-decoration: none;
+
+}
+.chirld_grap_2 a:hover{
+    color: rgb(253, 91, 32);
+}
+.chirld_grap_2::after{
+    content: "";
+    position: absolute;
+    background-color: transparent;
+    height: 10px;
+    width: 200px;
+    top: -10px;
+}
+.chirld_grap_2{
+    display: none;
+}
+.grap_price_2{
+    position: relative;
+}
+.grap_price_2:hover .chirld_grap_2{
+    display: block;
+}

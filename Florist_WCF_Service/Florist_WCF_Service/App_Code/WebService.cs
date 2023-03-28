@@ -46,9 +46,9 @@ public class WebService : System.Web.Services.WebService
         return ds;
     }
 
-    // -----------------API For Product Table -------------
+    // -----------------API For Product font end Table -------------
 
-    //1. Api get All Product by search, page, sort 
+    //1. Api getcount product by searchName,category
     [WebMethod]
     public int GetCountProduct(string searchName, int category)
     {
@@ -69,7 +69,7 @@ public class WebService : System.Web.Services.WebService
         return int.Parse(ds.Tables[0].Rows[0]["count"].ToString());
     }
 
-    //1. Api get All Product by search, page, sort 
+    //2. Api get All Product by search, page, sort 
     [WebMethod]
     public DataSet GetAllProduct(string searchName, string sortName, string typeSort, int offset, int limit, int category)
     {
@@ -96,7 +96,7 @@ public class WebService : System.Web.Services.WebService
         return ds;
     }
 
-    //1. Api get All Product by category(
+    //3. Api get All Product by category
     [WebMethod]
     public DataSet GetProductByCategory(int categoryID)
     {
@@ -114,6 +114,26 @@ public class WebService : System.Web.Services.WebService
         adapter.Fill(ds);
         return ds;
     }
+
+    //4. Api get All Product by id(
+    [WebMethod]
+    public DataSet GetProductByID(string productID)
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT Product.Product_id, Product.Product_name, Product.Description," +
+            " Product.Image, Product.Price, Product.Discount, Category.Category_id, Category.Category_name," +
+            " Supplier.Supplier_name, Account.Account_id, Account.User_name, Product.Sold," +
+            " Product.Inventory, Product.Update_at FROM     Product" +
+            " LEFT OUTER JOIN    Category ON Product.Category_id = Category.Category_id" +
+            " LEFT OUTER JOIN  Account ON Product.Update_by = Account.Account_id LEFT OUTER JOIN  Supplier ON Product.Supplier_id = Supplier.Supplier_id " +
+            " Where  Product.Product_id = '" + productID + "'";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds;
+    }
+
+
 
     //1. Api get All Product by search, page, sort 
     [WebMethod]
@@ -199,10 +219,20 @@ public class WebService : System.Web.Services.WebService
 
     //1.Api get Evalute by Product
     [WebMethod]
-    public DataSet GetEvaluteByProduct(string ProductID)
+    public DataSet GetEvaluteByProduct(string ProductID, int? rate)
     {
         SqlConnection cnn = new SqlConnection(connstr);
-        string sql = "SELECT Evalute.Evalute_id, Evalute.Evalute_content, Evalute.Rate, Evalute.Create_at, Product.Product_id, Customer.Customer_id, Customer.First_name, Customer.Last_name, Product.Product_name FROM     Evalute LEFT OUTER JOIN    Customer ON Evalute.Create_by = Customer.Customer_id LEFT OUTER JOIN    Product ON Evalute.Product_id = Product.Product_id WHERE Evalute.Product_id = N'" + ProductID + "'";
+        string sql = "SELECT Evalute.Evalute_id, Evalute.Evalute_content, Evalute.Create_by , Evalute.Rate," +
+            " Evalute.Create_at, Product.Product_id, Customer.Customer_id," +
+            " CONCAT(Customer.First_name,' ', Customer.Last_name) as Customer_Name, Product.Product_name" +
+            " FROM     Evalute " +
+            "LEFT OUTER JOIN    Customer ON Evalute.Create_by = Customer.Customer_id " +
+            "LEFT OUTER JOIN    Product ON Evalute.Product_id = Product.Product_id " +
+            "WHERE Evalute.Product_id = N'" + ProductID + "'";
+        if(rate != 0)
+        {
+            sql += "AND Evalute.Rate = " + rate;
+        }
         SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
 
         DataSet ds = new DataSet();
@@ -212,15 +242,15 @@ public class WebService : System.Web.Services.WebService
 
     // 2. API get Evalute by Rate
     [WebMethod]
-    public DataSet GetEvaluteByRate(string Rate)
+    public int GetCountEvaluteByRate(string ProductID,int Rate)
     {
         SqlConnection cnn = new SqlConnection(connstr);
-        string sql = "SELECT Evalute.Evalute_id, Evalute.Evalute_content, Evalute.Rate, Evalute.Create_at, Product.Product_id, Customer.Customer_id, Customer.First_name, Customer.Last_name, Product.Product_name FROM     Evalute LEFT OUTER JOIN    Customer ON Evalute.Create_by = Customer.Customer_id LEFT OUTER JOIN    Product ON Evalute.Product_id = Product.Product_id WHERE Evalute.Rate = " + Rate;
+        string sql = "SELECT Count(*) as count FROM Evalute" +
+            " WHERE Evalute.Product_id = N'" + ProductID + "' And Rate = " + Rate;
         SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
-
         DataSet ds = new DataSet();
         adapter.Fill(ds);
-        return ds;
+        return int.Parse(ds.Tables[0].Rows[0]["count"].ToString());
     }
 
 }

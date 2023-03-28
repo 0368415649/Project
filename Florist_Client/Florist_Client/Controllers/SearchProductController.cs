@@ -80,7 +80,7 @@ namespace Florist_Client.Controllers
             ViewBag.sortName = sortName;
             ViewBag.typeSort = typeSort;
             ViewBag.category_title = category_title;
-
+      
             return View();
         }
     }
