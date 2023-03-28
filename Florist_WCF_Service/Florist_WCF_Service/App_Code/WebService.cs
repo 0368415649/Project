@@ -1,6 +1,8 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 using System.Web.Services;
 
 /// <summary>
@@ -50,27 +52,6 @@ public class WebService : System.Web.Services.WebService
 
     //1. Api get All Product by search, page, sort 
     [WebMethod]
-    public int GetCountProduct(string searchName, int category)
-    {
-        SqlConnection cnn = new SqlConnection(connstr);
-        string queryCategory = "";
-        if (category != 0)
-        {
-            queryCategory = "AND Category.Category_id = " + category;
-        }
-        string sql = "SELECT Count(*) as count FROM     Product" +
-            " LEFT OUTER JOIN    Category ON Product.Category_id = Category.Category_id" +
-            " LEFT OUTER JOIN  Account ON Product.Update_by = Account.Account_id LEFT OUTER JOIN  Supplier ON Product.Supplier_id = Supplier.Supplier_id  " +
-            " Where  Product.Product_name LIKE '%" + searchName + "%' " + queryCategory;
-
-        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
-        DataSet ds = new DataSet();
-        adapter.Fill(ds);
-        return int.Parse(ds.Tables[0].Rows[0]["count"].ToString());
-    }
-
-    //1. Api get All Product by search, page, sort 
-    [WebMethod]
     public DataSet GetAllProduct(string searchName, string sortName, string typeSort, int offset, int limit, int category)
     {
         SqlConnection cnn = new SqlConnection(connstr);
@@ -96,7 +77,28 @@ public class WebService : System.Web.Services.WebService
         return ds;
     }
 
-    //1. Api get All Product by category(
+    //2. Api get Count Product by Name and Category_id
+    [WebMethod]
+    public int GetCountProduct(string searchName, int category)
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string queryCategory = "";
+        if (category != 0)
+        {
+            queryCategory = "AND Category.Category_id = " + category;
+        }
+        string sql = "SELECT Count(*) as count FROM     Product" +
+            " LEFT OUTER JOIN    Category ON Product.Category_id = Category.Category_id" +
+            " LEFT OUTER JOIN  Account ON Product.Update_by = Account.Account_id LEFT OUTER JOIN  Supplier ON Product.Supplier_id = Supplier.Supplier_id  " +
+            " Where  Product.Product_name LIKE '%" + searchName + "%' " + queryCategory;
+
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return int.Parse(ds.Tables[0].Rows[0]["count"].ToString());
+    }
+
+    //3. Api get Product By Category_id
     [WebMethod]
     public DataSet GetProductByCategory(int categoryID)
     {
@@ -115,7 +117,107 @@ public class WebService : System.Web.Services.WebService
         return ds;
     }
 
-    //1. Api get All Product by search, page, sort 
+    //4.Api Insert new Product
+    [WebMethod]
+    public int InsertProduct(string ProductID, string Product_name, string InputDescription, string Image, float Price, float Discount, int Category_id, int Supplier_id, int Sold, int Inventory)
+    {
+        DateTime CurrentDate = DateTime.Now;
+        int day = CurrentDate.Day;
+        string dayString = day > 9 ? day.ToString() : '0' + day.ToString();
+        int month = CurrentDate.Month;
+        string monthString = month > 9 ? month.ToString() : '0' + month.ToString();
+        int year = CurrentDate.Year;
+        string Update_at = year.ToString() + '-'+ monthString + '-' + dayString;
+
+        string pattern = "'";
+        string replacement = "''";
+        string Description = Regex.Replace(InputDescription, pattern, replacement);
+
+        try
+        {
+            SqlConnection cnn = new SqlConnection(connstr);
+            if (cnn.State == ConnectionState.Closed)
+            {
+                cnn.Open();
+            }
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = cnn;
+            string sql = "INSERT INTO Product (Product_id, Product_name, Description,Image,Price,Discount,Category_id,Supplier_id,Update_by,Sold,Inventory,Update_at) VALUES (N'" + ProductID + "', N'" + Product_name + "' ,N'" + Description+ "',N'"+ Image + "',"+ Price + "," + Discount+ ", "+ Category_id+ ", "+ Supplier_id+ ", "+ 1+ ", "+ Sold+ ", "+ Inventory+ ", '"+ Update_at + "')";
+            cmd.CommandText = sql;
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            return (int)1;
+
+        }
+        catch (Exception)
+        {
+            return (int)0;
+        }
+    }
+    //5. Api Update a Product 
+    [WebMethod]
+    public int UpdateProduct(string ProductID, string Product_name, string InputDescription,string Image, float Price, float Discount,int Category_id, int Supplier_id, int Sold, int Inventory)
+    {
+        DateTime CurrentDate = DateTime.Now;
+        int day = CurrentDate.Day;
+        string dayString = day > 9 ? day.ToString() : '0' + day.ToString();
+        int month = CurrentDate.Month;
+        string monthString = month > 9 ? month.ToString() : '0' + month.ToString();
+        int year = CurrentDate.Year;
+        string Update_at = year.ToString() + '-' + monthString + '-' + dayString;
+
+        string pattern = "'";
+        string replacement = "''";
+        string Description = Regex.Replace(InputDescription, pattern, replacement);
+
+        try
+        {
+            SqlConnection cnn = new SqlConnection(connstr);
+            if (cnn.State == ConnectionState.Closed)
+            {
+                cnn.Open();
+            }
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = cnn;
+            string sql = "UPDATE Product SET Product_id = N'" + ProductID + "', Product_name = N'" + Product_name + "', Description = N'" + Description + "',Image = N'" + Image + "', Price =  " + Price + ",Discount = " + Discount+ ", Category_id = " + Category_id + ", Supplier_id = "+ Supplier_id + ",Update_by =  "+ 1 + ", Sold = "+ Sold + ", Inventory = "+ Inventory + ", Update_at = '" + Update_at + "' WHERE Product_id = N'" + ProductID + "'";
+            cmd.CommandText = sql;
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            return (int)1;
+        }
+        catch (Exception)
+        {
+            return (int)0;
+        }
+    }
+    //6. Api Delete a Product
+    [WebMethod]
+    public int DeleteProduct(string ProductID)
+    {
+        try
+        {
+            SqlConnection cnn = new SqlConnection(connstr);
+            if (cnn.State == ConnectionState.Closed)
+            {
+                cnn.Open();
+            }
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = cnn;
+            string sql = "DELETE FROM Product WHERE Product_id = N'" + ProductID + "'";
+            cmd.CommandText = sql;
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            return (int)1;
+        }
+        catch (Exception)
+        {
+            return (int)0;
+        }
+    }
+
+
+    // --------------------------API For Category Table -------------------------------
+    //1. Api get Category by Category_id
     [WebMethod]
     public string GetCategoryName(int category)
     {
