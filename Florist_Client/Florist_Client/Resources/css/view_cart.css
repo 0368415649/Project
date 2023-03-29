@@ -1,7 +1,9 @@
 ﻿.flex_grap {
 	display: flex;
 }
-
+.click_date{
+	background:red;
+}
 .flex-aline {
 	align-items: center !important;
 }
@@ -95,7 +97,7 @@
 }
 
 .list_cart_view_grap_all {
-	max-height: 350px;
+	/*height: 350px;*/
 }
 
 .grap_all_cart {
@@ -111,7 +113,8 @@
 		content: '';
 		position: absolute;
 		height: 100%;
-		min-height: 500px;
+		min-height: 300px;
+		max-height: 20000px;
 		top: 0px;
 		left: -0px;
 		background: #ddd;
@@ -135,7 +138,6 @@
 }
 /* Css calendar */
 .table_calendar {
-	width: 200px;
 	height: 100px;
 }
 
@@ -167,7 +169,7 @@
 	font-weight: bold;
 }
 
-.history {
+.history_2 {
 	pointer-events: none;
 	color: #c5c5c5;
 }

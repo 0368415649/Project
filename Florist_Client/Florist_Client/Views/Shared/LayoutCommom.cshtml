@@ -79,7 +79,8 @@
                             </a>
                         </div>
                         <div class="grap_icon_cart">
-                            <label for="check_boxx" class="header-search-cart"><i class="fa-solid fa-cart-arrow-down cart_cl"></i></label>
+                            <label for="check_boxx" class="header-search-cart"><a href="View_cart"><i class="fa-solid fa-cart-arrow-down cart_cl"></i></a></label>
+                            <div class="grap_icon_cart_number">0</div>
                         </div>
                     </div>
                 </div>
@@ -185,8 +186,9 @@
             @RenderSection("scripts", required: false)*@
 </body>
 <script>
-    
+
 </script>
 @Scripts.Render("~/Resources/js/login.js")
+@Scripts.Render("~/Resources/js/cart.js")
 
 </html>

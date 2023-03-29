@@ -135,22 +135,24 @@ namespace Florist_Client.api_product {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllMessage", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet GetAllMessage() {
-            object[] results = this.Invoke("GetAllMessage", new object[0]);
+        public System.Data.DataSet GetAllMessage(int Customer_id) {
+            object[] results = this.Invoke("GetAllMessage", new object[] {
+                        Customer_id});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void GetAllMessageAsync() {
-            this.GetAllMessageAsync(null);
+        public void GetAllMessageAsync(int Customer_id) {
+            this.GetAllMessageAsync(Customer_id, null);
         }
         
         /// <remarks/>
-        public void GetAllMessageAsync(object userState) {
+        public void GetAllMessageAsync(int Customer_id, object userState) {
             if ((this.GetAllMessageOperationCompleted == null)) {
                 this.GetAllMessageOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllMessageOperationCompleted);
             }
-            this.InvokeAsync("GetAllMessage", new object[0], this.GetAllMessageOperationCompleted, userState);
+            this.InvokeAsync("GetAllMessage", new object[] {
+                        Customer_id}, this.GetAllMessageOperationCompleted, userState);
         }
         
         private void OnGetAllMessageOperationCompleted(object arg) {

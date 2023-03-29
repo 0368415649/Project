@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutCommom.cshtml";
+    @Styles.Render("~/Resources/css/view_cart.css")
+
+}
+
+<div class="container mb-5">
+    <div class="d-flex flex_space view_cart_grap">
+        <div class="shop_cart_title">Shopping Cart</div>
+        <div class="clean_cart">Clear Cart</div>
+    </div>
+    <div class="sen"></div>
+    <div class="row list_cart_view_grap">
+        <div class="col-8 list_cart_view_grap_all">
+            @* View cart here*@
+
+
+        </div>
+        <div class="col-4 calendar">
+            <div class="view_cart_grap_title">Delivery Information</div>
+            <p style="font-size: 12px;">Please Select A Delivery Date:</p>
+            <div class="container">
+                <div style="justify-content: space-between; padding: 20px 0px ;" class="d-flex">
+                    <i class="prev-month fa fa-chevron-left fa-3x"></i>
+                    <div class="month-year text-center">
+                        <h3></h3>
+                    </div>
+                    <i class="next-month fa fa-chevron-right fa-3x"></i>
+                </div>
+                <div class="min_width">
+                    <table class="table table-bordered table_calendar">
+                        <tr>
+                            <th>S</th>
+                            <th>M</th>
+                            <th>T</th>
+                            <th>W</th>
+                            <th>T</th>
+                            <th>F</th>
+                            <th>S</th>
+                        </tr>
+                    </table>
+                </div>
+                <p style="margin: 10px 0px ; font-size: 15px;">Please select a delivery time:</p>
+                <div class="content-more-quantity-number">
+                    <div type="text" id="quantity" class="buy_input time_buy_now">9 AM - 1 PM</div>
+                    <div type="text" id="quantity" class="buy_input time_buy_now">1 PM - 6 PM</div>
+                    <div type="text" id="quantity" class="buy_input time_buy_now">6 PM - 9 PM</div>
+                </div>
+                <p>* Office Deliveries Will Be Completed Latest By 5 PM</p>
+                <p style="font-size: 17px;" class="">Choose Your Personal Card Message:</p>
+                <input type="hidden" id="date_buy" name="date_buy" value="" />
+                <input type="hidden" id="time_buy" name="time_buy" value="" />
+                <textarea title="Please provide message note here." placeholder="You're better than the best!"
+                          id="message_show" class="input-text question-field note" rows="6" cols="20" name="note_message" maxlength="140"></textarea>
+                <div class="mt-5">
+                    @foreach (var item in ViewBag.listMessage)
+                    {
+                        <button data-id="@(item.Message_id)" data-content="@(item.Message_content)"
+                                class="btn_commom btn_color message_click">
+                            @(item.Category)
+                        </button>
+                    }
+
+                </div>
+                <div class="d-flex" style="justify-content: space-between;">
+                    <div class="TOTAL_COLOR">Subtotal</div>
+                    <div class="TOTAL_COLOR total_total">$59.90</div>
+                </div>
+                <p>Orders will be processed in SGD.</p>
+                <div class="">
+                    <button class="btn_checkout">CHECKOUT</button>
+                </div>
+                <div class="text-center mt-4 mb-4">
+                    <a class="continue-shopping" href="HomePage">CONTINUE SHOPPING</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/Resources/js/view_cart.js")
+@Scripts.Render("~/Resources/js/message.js")

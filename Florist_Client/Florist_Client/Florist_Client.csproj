@@ -131,11 +131,13 @@
     <Compile Include="Controllers\LogoutPageController.cs" />
     <Compile Include="Controllers\MarketingController.cs" />
     <Compile Include="Controllers\SearchProductController.cs" />
+    <Compile Include="Controllers\View_cartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Evalute.cs" />
+    <Compile Include="Models\Messages.cs" />
     <Compile Include="Models\Products.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -168,8 +170,11 @@
     <Content Include="Resources\css\serach.css" />
     <Content Include="Resources\css\show_more.css" />
     <Content Include="Resources\css\view_cart.css" />
+    <Content Include="Resources\js\cart.js" />
     <Content Include="Resources\js\login.js" />
+    <Content Include="Resources\js\message.js" />
     <Content Include="Resources\js\test.js" />
+    <Content Include="Resources\js\view_cart.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
@@ -193,6 +198,7 @@
     <Content Include="Views\Florist_values\Index.cshtml" />
     <Content Include="Views\SearchProduct\Index.cshtml" />
     <Content Include="Views\DetailProduct\Index.cshtml" />
+    <Content Include="Views\View_cart\Index.cshtml" />
     <None Include="Web References\api_product\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

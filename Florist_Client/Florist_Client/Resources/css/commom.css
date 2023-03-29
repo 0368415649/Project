@@ -164,6 +164,22 @@ a {
 .grap_icon_cart {
     font-size: 25px;
     margin-left: 10%;
+    position:relative;
+}
+.grap_icon_cart_number {
+    position: absolute;
+    top: -8%;
+    padding: 1px 7px;
+    background-color: black;
+    opacity: 0.8;
+    right: -35%;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight:700;
+    border: 1px solid #ddd;
+}
 }
 
 .container_width {
@@ -182,6 +198,9 @@ a {
 }
 /* Css image home */
 /* Css lisst product */
+.sold_colorr{
+    color:orangered
+}
 .category_title {
     font-size: 23px;
     font-weight: 700;
@@ -214,9 +233,10 @@ a {
 
 .pricr {
     font-weight: 200;
-    margin-top: 5px;
 }
-
+.text_ngang {
+    text-decoration: line-through;
+}
 .product_price {
     display: flex;
     justify-content: center;
