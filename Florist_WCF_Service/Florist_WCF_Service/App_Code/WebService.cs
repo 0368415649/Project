@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System.Activities.Expressions;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Services;
@@ -24,10 +25,15 @@ public class WebService : System.Web.Services.WebService
 
     ////1. Api get all message
     [WebMethod]
-    public DataSet GetAllMessage()
+    public DataSet GetAllMessage(int Customer_id)
     {
         SqlConnection cnn = new SqlConnection(connstr);
-        SqlDataAdapter adapter = new SqlDataAdapter("SELECT Message_content,Category FROM Message", cnn);
+        string sql = "SELECT Message_id, Message_content, Category, Customer_id FROM [FloristDB].[dbo].[Message] Where Customer_id IS NULL ";
+        if(Customer_id != 0)
+        {
+            sql += "OR Customer_id = " + Customer_id;
+        }
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
         DataSet ds = new DataSet();
         adapter.Fill(ds);
         return ds;
@@ -229,7 +235,7 @@ public class WebService : System.Web.Services.WebService
             "LEFT OUTER JOIN    Customer ON Evalute.Create_by = Customer.Customer_id " +
             "LEFT OUTER JOIN    Product ON Evalute.Product_id = Product.Product_id " +
             "WHERE Evalute.Product_id = N'" + ProductID + "'";
-        if(rate != 0)
+        if(rate != 0)   
         {
             sql += "AND Evalute.Rate = " + rate;
         }

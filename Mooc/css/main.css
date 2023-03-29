@@ -135,6 +135,18 @@ a{
 .grap_icon_cart{
     font-size: 25px;
     margin-left: 10%;
+    position: relative;
+}
+.grap_icon_cart_number{
+    position: absolute;
+    top: 0;
+    padding: 3px 7px;
+    background-color: #383c4f;
+    opacity: 0.6;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    
 }
 .container_width{
     margin: 0px auto;
