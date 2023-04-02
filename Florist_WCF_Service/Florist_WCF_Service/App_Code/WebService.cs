@@ -1,7 +1,9 @@
-﻿using System.Activities.Expressions;
+﻿using System;
+using System.Activities.Expressions;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text;
 using System.Web.Services;
 
 /// <summary>
@@ -38,6 +40,49 @@ public class WebService : System.Web.Services.WebService
         adapter.Fill(ds);
         return ds;
     }
+    [WebMethod]
+    public int createMessage(int Customer_id, string Message_content)
+    {
+        try
+        {
+            SqlConnection cnn = new SqlConnection(connstr);
+            string sql = "INSERT INTO [FloristDB].[dbo].[Message] (Message_content ,Customer_id) " +
+                " VALUES( N'" + Message_content + "', " +
+                + Customer_id + ")";
+
+            if (cnn.State == ConnectionState.Closed)
+            {
+                cnn.Open();
+            }
+            SqlCommand cmd = cnn.CreateCommand();
+            cmd.Connection = cnn;
+            cmd.CommandText = sql.ToString();
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            return 1;
+        }
+        catch (System.Exception)
+        {
+
+            return 0;
+            throw;
+        }
+        return 0;
+
+    }
+
+    [WebMethod]
+    public int getMessageMax()
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT Max(Message_id) as max  " +
+            " FROM [FloristDB].[dbo].[Message] ";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return int.Parse(ds.Tables[0].Rows[0]["max"].ToString());
+    }
+
 
     // 2. Api get Message_content by Category
     [WebMethod]
@@ -153,7 +198,7 @@ public class WebService : System.Web.Services.WebService
         return ds.Tables[0].Rows[0]["Category_name"].ToString();
     }
 
-    //// ------------------API For Authentication -----------------
+    //// ------------------API For Customer Table -----------------
 
     // 1. Api Login Account Table
     [WebMethod]
@@ -163,7 +208,6 @@ public class WebService : System.Web.Services.WebService
         string sql = "SELECT  Account.User_name,  Account.Password,  Account.Account_id,  Account.Employee_name,  Account.Phone,  [Group].Group_name,  [Function].Function_name,  [Function].Base_url FROM      Account LEFT OUTER JOIN  [Group] ON  Account.Group_id =  [Group].Group_id FULL OUTER JOIN  Group_function FULL OUTER JOIN  [Function] ON  Group_function.Function_id =  [Function].Function_id ON  [Group].Group_id =  Group_function.Group_id WHERE Account.Phone = N'" + Phone + "' AND Account.Password = N'" + Password + "'";
         //string sql = "SELECT * FROM Account WHERE Phone = '" + Phone + "' AND Password = '" + Password + "'";
         SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
-
         DataSet ds = new DataSet();
         adapter.Fill(ds);
         return ds;
@@ -178,7 +222,6 @@ public class WebService : System.Web.Services.WebService
         SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
         DataSet ds = new DataSet();
         adapter.Fill(ds);
-
         return ds;
     }
 
@@ -208,8 +251,110 @@ public class WebService : System.Web.Services.WebService
     //    return 1;
     //}
 
+    [WebMethod]
+    public DataSet getInformationCustomer(int customerID)
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT *  FROM  [FloristDB].[dbo].[Customer] WHERE Customer_id = " + customerID;
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds;
+    }
 
-    //------------------API For Evalute Table -----------------------
+    [WebMethod]
+    public int checkPhoneExits(string oldPhone, string newphone)
+    {
+        if (oldPhone.Equals(newphone))
+        {
+            return 0;
+        }
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT  Count(*) as count  FROM  [FloristDB].[dbo].[Customer] WHERE  Phone = N'" + newphone + "'" ;
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return int.Parse(ds.Tables[0].Rows[0]["count"].ToString());
+    }
+
+    [WebMethod]
+    public int checkPasswordExits(string password)
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT  Count(*) as count  FROM  [FloristDB].[dbo].[Customer] WHERE  Password = N'" + password + "'";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return int.Parse(ds.Tables[0].Rows[0]["count"].ToString());
+    }
+
+    [WebMethod]
+    public int changePassword(int customerID,  string password)
+    {
+        try
+        {
+            SqlConnection cnn = new SqlConnection(connstr);
+            string sql = "UPDATE [FloristDB].[dbo].[Customer] SET " +
+                " Password = N'" + password + "' " +
+                " WHERE Customer_id = " + customerID;
+
+            if (cnn.State == ConnectionState.Closed)
+            {
+                cnn.Open();
+            }
+            SqlCommand cmd = cnn.CreateCommand();
+            cmd.Connection = cnn;
+            cmd.CommandText = sql.ToString();
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            return 1;
+        }
+        catch (System.Exception)
+        {
+
+            return 0;
+            throw;
+        }
+        return 0;
+
+    }
+
+    [WebMethod]
+    public int updateCustomerById(int customerID, string First_name, string Last_name, string Sex, DateTime Birth_day, string Phone)
+    {
+        try
+        {
+            SqlConnection cnn = new SqlConnection(connstr);
+            string sql = "UPDATE [FloristDB].[dbo].[Customer] SET " +
+                " First_name = N'" + First_name + "', " +
+                " Last_name = N'" + Last_name + "', " +
+                " Sex = N'" + Sex + "', " +
+                " Birth_day = N'" + Birth_day + "', " +
+                " Phone = N'" + Phone + "' " +
+                " WHERE Customer_id = " + customerID;
+
+            if (cnn.State == ConnectionState.Closed)
+            {
+                cnn.Open();
+            }
+            SqlCommand cmd = cnn.CreateCommand();
+            cmd.Connection = cnn;
+            cmd.CommandText = sql.ToString();
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            return 1;
+        }
+        catch (System.Exception)
+        {
+
+            return 0;
+            throw;
+        }
+        return 0;
+
+    }
+
+    //// ------------------API For Customer Table -----------------
 
     //1.0 API get All Evalute Table
     [WebMethod]
@@ -258,5 +403,269 @@ public class WebService : System.Web.Services.WebService
         adapter.Fill(ds);
         return int.Parse(ds.Tables[0].Rows[0]["count"].ToString());
     }
+
+
+    //// ------------------API For Flower_recipient Table -----------------
+    [WebMethod]
+    public DataSet getAddressByCustomer(int customerID)
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT Flower_recipient_id, Name, Address, Phone, Customer_id " +
+            " FROM Flower_recipient WHERE Customer_id = " + customerID;
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds;
+    }
+
+    [WebMethod]
+    public DataSet getAddressByID(int ID)
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT Flower_recipient_id, Name, Address, Phone, Customer_id " +
+            " FROM Flower_recipient WHERE Flower_recipient_id = " + ID;
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds;
+    }
+
+    [WebMethod]
+    public int getAddressMax()
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT Max(Flower_recipient_id) as max  " +
+            " FROM Flower_recipient ";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return int.Parse(ds.Tables[0].Rows[0]["max"].ToString());
+    }
+
+    [WebMethod]
+     public int insertAddressByCustomer(int customerID, string Name, string Address, string Phone) { 
+        try
+        {
+            SqlConnection cnn = new SqlConnection(connstr);
+            string sql = "INSERT INTO Flower_recipient (Name , Address , Phone ,Customer_id) " +
+                " VALUES( N'" + Name + "', " +
+                " N'" + Address + "', " +
+                " N'" + Phone + "', " +
+                + customerID  + ")";
+
+            if (cnn.State == ConnectionState.Closed)
+            {
+                cnn.Open();
+            }
+            SqlCommand cmd = cnn.CreateCommand();
+            cmd.Connection = cnn;
+            cmd.CommandText = sql.ToString();
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            return 1;
+        }
+        catch (System.Exception)
+        {
+
+            return 0;
+            throw;
+        }
+        return 0;
+
+    }
+
+    [WebMethod]
+    public int updateAddressByID(int Flower_recipient_id, string Name, string Address, string Phone)
+    {
+        try
+        {
+            SqlConnection cnn = new SqlConnection(connstr);
+            StringBuilder sql = new StringBuilder();
+            sql.Append(" UPDATE Flower_recipient SET ");
+            sql.Append(" Name = N'" + Name + "', ");
+            sql.Append(" Address = N'" + Address + "', ");
+            sql.Append(" Phone  =  N'" + Phone + "' ");
+            sql.Append(" WHERE  Flower_recipient_id  =  " + Flower_recipient_id );
+
+            if (cnn.State == ConnectionState.Closed)
+            {
+                cnn.Open();
+            }
+            SqlCommand cmd = cnn.CreateCommand();
+            cmd.Connection = cnn;
+            cmd.CommandText = sql.ToString();
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            return 1;
+        }
+        catch (System.Exception)
+        {
+
+            return 0;
+            throw;
+        }
+        return 0;
+
+    }
+
+
+    [WebMethod]
+    public int deleteAddressByID(int Flower_recipient_id)
+    {
+        try
+        {
+            SqlConnection cnn = new SqlConnection(connstr);
+            StringBuilder sql = new StringBuilder();
+            sql.Append(" DELETE FROM Flower_recipient ");
+            sql.Append(" WHERE  Flower_recipient_id  =  " + Flower_recipient_id);
+
+            if (cnn.State == ConnectionState.Closed)
+            {
+                cnn.Open();
+            }
+            SqlCommand cmd = cnn.CreateCommand();
+            cmd.Connection = cnn;
+            cmd.CommandText = sql.ToString();
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            return 1;
+        }
+        catch (System.Exception)
+        {
+            return 0;
+            throw;
+        }
+        return 0;
+
+    }
+
+
+    //// ------------------API For Flower_recipient Table -----------------
+    ///
+
+    //// ------------------API For Order Table -----------------
+
+
+    [WebMethod]
+    public int insertOrder(int customerID, int Flower_recipient_id, int Total, int Message_id, string Received_date, string Received_time)
+    {
+        try
+        {
+            SqlConnection cnn = new SqlConnection(connstr);
+            string sql = "INSERT INTO [FloristDB].[dbo].[Order] (Status , Flower_recipient_id , Total, Create_at, Create_by ,Message_id, Received_date, Received_time) " +
+                " VALUES( N'Pending', " +
+                + Flower_recipient_id + " , " +
+                + Total + " , " +
+                " GETDATE() , " +
+                + customerID  +" , " +
+                + Message_id + " , " +
+                " N'" + Received_date + "', " +
+                " N'" + Received_time + "' )";
+            if (cnn.State == ConnectionState.Closed)
+            {
+                cnn.Open();
+            }
+            SqlCommand cmd = cnn.CreateCommand();
+            cmd.Connection = cnn;
+            cmd.CommandText = sql.ToString();
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            return 1;
+        }
+        catch (System.Exception)
+        {
+
+            return 0;
+            throw;
+        }
+        return 0;
+
+    }
+
+    [WebMethod]
+    public int getOrderMax()
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT Max(Order_id) as max  " +
+            " FROM [FloristDB].[dbo].[Order] ";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return int.Parse(ds.Tables[0].Rows[0]["max"].ToString());
+    }
+
+    //// ------------------API For Order Table -----------------
+
+    //// ------------------API For OrderDetails Table -----------------
+
+    [WebMethod]
+    public int insertOrderDetails(string Product_id, int Order_id, int Quantity, float Price, float Discount)
+    {
+        try
+        {
+            SqlConnection cnn = new SqlConnection(connstr);
+            string sql = "INSERT INTO [FloristDB].[dbo].[Order_detail] (Product_id , Order_id , Quantity, Price, Discount ) " +
+                " VALUES( N'" + Product_id + "' , " +
+                + Order_id + " , " +
+                + Quantity + " , " +
+                + Price + " , " +
+                +Discount + ")";
+            if (cnn.State == ConnectionState.Closed)
+            {
+                cnn.Open();
+            }
+            SqlCommand cmd = cnn.CreateCommand();
+            cmd.Connection = cnn;
+            cmd.CommandText = sql.ToString();
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            return 1;
+        }
+        catch (System.Exception)
+        {
+
+            return 0;
+            throw;
+        }
+        return 0;
+
+    }
+    //// ------------------API For Banking Table -----------------
+
+    [WebMethod]
+    public int insertBanking(string Banking_name, string Number, int Customer_id, int Order_id, float Total)
+    {
+        try
+        {
+            SqlConnection cnn = new SqlConnection(connstr);
+            string sql = "INSERT INTO [FloristDB].[dbo].[Banking] (Banking_name , Number , Customer_id, Order_id, Total ) " +
+                " VALUES( N'" + Banking_name + "' , " +
+                " N'" + Number + "', " +
+                +Customer_id + " , " +
+                +Order_id + " , " +
+                +Total + ")";
+            if (cnn.State == ConnectionState.Closed)
+            {
+                cnn.Open();
+            }
+            SqlCommand cmd = cnn.CreateCommand();
+            cmd.Connection = cnn;
+            cmd.CommandText = sql.ToString();
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            return 1;
+        }
+        catch (System.Exception)
+        {
+
+            return 0;
+            throw;
+        }
+        return 0;
+
+    }
+
+    //// ------------------API For Banking Table -----------------
+
 
 }

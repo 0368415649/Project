@@ -2,6 +2,7 @@
 .grap_profile_color {
 	background: #f5f5f5;
 	padding: 20px 200px;
+	margin-top: 130px;
 }
 
 .grap_profile_color_name {
@@ -184,7 +185,6 @@ a {
 
 .form_control_2_number {
 	width: 30%;
-	margin-left: 20px !important;
 }
 
 .form_control_22 {
@@ -210,3 +210,12 @@ a {
 	margin-top: 20px;
 }
 /* css pass */
+.disable_number{
+	pointer-events: none !important;
+}
+.color_profile{
+	color: orange;
+}
+.modal__body-address{
+	display:none;
+}

@@ -32,6 +32,10 @@ namespace Florist_Client.api_product {
         
         private System.Threading.SendOrPostCallback GetAllMessageOperationCompleted;
         
+        private System.Threading.SendOrPostCallback createMessageOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getMessageMaxOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetMessageByCategoryOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetCountProductOperationCompleted;
@@ -50,11 +54,41 @@ namespace Florist_Client.api_product {
         
         private System.Threading.SendOrPostCallback checkLoginCustomerOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getInformationCustomerOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback checkPhoneExitsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback checkPasswordExitsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback changePasswordOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback updateCustomerByIdOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetAllEvaluteOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetEvaluteByProductOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetCountEvaluteByRateOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getAddressByCustomerOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getAddressByIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getAddressMaxOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback insertAddressByCustomerOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback updateAddressByIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback deleteAddressByIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback insertOrderOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getOrderMaxOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback insertOrderDetailsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback insertBankingOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -98,6 +132,12 @@ namespace Florist_Client.api_product {
         public event GetAllMessageCompletedEventHandler GetAllMessageCompleted;
         
         /// <remarks/>
+        public event createMessageCompletedEventHandler createMessageCompleted;
+        
+        /// <remarks/>
+        public event getMessageMaxCompletedEventHandler getMessageMaxCompleted;
+        
+        /// <remarks/>
         public event GetMessageByCategoryCompletedEventHandler GetMessageByCategoryCompleted;
         
         /// <remarks/>
@@ -125,6 +165,21 @@ namespace Florist_Client.api_product {
         public event checkLoginCustomerCompletedEventHandler checkLoginCustomerCompleted;
         
         /// <remarks/>
+        public event getInformationCustomerCompletedEventHandler getInformationCustomerCompleted;
+        
+        /// <remarks/>
+        public event checkPhoneExitsCompletedEventHandler checkPhoneExitsCompleted;
+        
+        /// <remarks/>
+        public event checkPasswordExitsCompletedEventHandler checkPasswordExitsCompleted;
+        
+        /// <remarks/>
+        public event changePasswordCompletedEventHandler changePasswordCompleted;
+        
+        /// <remarks/>
+        public event updateCustomerByIdCompletedEventHandler updateCustomerByIdCompleted;
+        
+        /// <remarks/>
         public event GetAllEvaluteCompletedEventHandler GetAllEvaluteCompleted;
         
         /// <remarks/>
@@ -132,6 +187,36 @@ namespace Florist_Client.api_product {
         
         /// <remarks/>
         public event GetCountEvaluteByRateCompletedEventHandler GetCountEvaluteByRateCompleted;
+        
+        /// <remarks/>
+        public event getAddressByCustomerCompletedEventHandler getAddressByCustomerCompleted;
+        
+        /// <remarks/>
+        public event getAddressByIDCompletedEventHandler getAddressByIDCompleted;
+        
+        /// <remarks/>
+        public event getAddressMaxCompletedEventHandler getAddressMaxCompleted;
+        
+        /// <remarks/>
+        public event insertAddressByCustomerCompletedEventHandler insertAddressByCustomerCompleted;
+        
+        /// <remarks/>
+        public event updateAddressByIDCompletedEventHandler updateAddressByIDCompleted;
+        
+        /// <remarks/>
+        public event deleteAddressByIDCompletedEventHandler deleteAddressByIDCompleted;
+        
+        /// <remarks/>
+        public event insertOrderCompletedEventHandler insertOrderCompleted;
+        
+        /// <remarks/>
+        public event getOrderMaxCompletedEventHandler getOrderMaxCompleted;
+        
+        /// <remarks/>
+        public event insertOrderDetailsCompletedEventHandler insertOrderDetailsCompleted;
+        
+        /// <remarks/>
+        public event insertBankingCompletedEventHandler insertBankingCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllMessage", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -159,6 +244,64 @@ namespace Florist_Client.api_product {
             if ((this.GetAllMessageCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetAllMessageCompleted(this, new GetAllMessageCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/createMessage", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int createMessage(int Customer_id, string Message_content) {
+            object[] results = this.Invoke("createMessage", new object[] {
+                        Customer_id,
+                        Message_content});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void createMessageAsync(int Customer_id, string Message_content) {
+            this.createMessageAsync(Customer_id, Message_content, null);
+        }
+        
+        /// <remarks/>
+        public void createMessageAsync(int Customer_id, string Message_content, object userState) {
+            if ((this.createMessageOperationCompleted == null)) {
+                this.createMessageOperationCompleted = new System.Threading.SendOrPostCallback(this.OncreateMessageOperationCompleted);
+            }
+            this.InvokeAsync("createMessage", new object[] {
+                        Customer_id,
+                        Message_content}, this.createMessageOperationCompleted, userState);
+        }
+        
+        private void OncreateMessageOperationCompleted(object arg) {
+            if ((this.createMessageCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.createMessageCompleted(this, new createMessageCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getMessageMax", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int getMessageMax() {
+            object[] results = this.Invoke("getMessageMax", new object[0]);
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getMessageMaxAsync() {
+            this.getMessageMaxAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getMessageMaxAsync(object userState) {
+            if ((this.getMessageMaxOperationCompleted == null)) {
+                this.getMessageMaxOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetMessageMaxOperationCompleted);
+            }
+            this.InvokeAsync("getMessageMax", new object[0], this.getMessageMaxOperationCompleted, userState);
+        }
+        
+        private void OngetMessageMaxOperationCompleted(object arg) {
+            if ((this.getMessageMaxCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getMessageMaxCompleted(this, new getMessageMaxCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -442,6 +585,165 @@ namespace Florist_Client.api_product {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getInformationCustomer", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet getInformationCustomer(int customerID) {
+            object[] results = this.Invoke("getInformationCustomer", new object[] {
+                        customerID});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getInformationCustomerAsync(int customerID) {
+            this.getInformationCustomerAsync(customerID, null);
+        }
+        
+        /// <remarks/>
+        public void getInformationCustomerAsync(int customerID, object userState) {
+            if ((this.getInformationCustomerOperationCompleted == null)) {
+                this.getInformationCustomerOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetInformationCustomerOperationCompleted);
+            }
+            this.InvokeAsync("getInformationCustomer", new object[] {
+                        customerID}, this.getInformationCustomerOperationCompleted, userState);
+        }
+        
+        private void OngetInformationCustomerOperationCompleted(object arg) {
+            if ((this.getInformationCustomerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getInformationCustomerCompleted(this, new getInformationCustomerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/checkPhoneExits", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int checkPhoneExits(string oldPhone, string newphone) {
+            object[] results = this.Invoke("checkPhoneExits", new object[] {
+                        oldPhone,
+                        newphone});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void checkPhoneExitsAsync(string oldPhone, string newphone) {
+            this.checkPhoneExitsAsync(oldPhone, newphone, null);
+        }
+        
+        /// <remarks/>
+        public void checkPhoneExitsAsync(string oldPhone, string newphone, object userState) {
+            if ((this.checkPhoneExitsOperationCompleted == null)) {
+                this.checkPhoneExitsOperationCompleted = new System.Threading.SendOrPostCallback(this.OncheckPhoneExitsOperationCompleted);
+            }
+            this.InvokeAsync("checkPhoneExits", new object[] {
+                        oldPhone,
+                        newphone}, this.checkPhoneExitsOperationCompleted, userState);
+        }
+        
+        private void OncheckPhoneExitsOperationCompleted(object arg) {
+            if ((this.checkPhoneExitsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.checkPhoneExitsCompleted(this, new checkPhoneExitsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/checkPasswordExits", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int checkPasswordExits(string password) {
+            object[] results = this.Invoke("checkPasswordExits", new object[] {
+                        password});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void checkPasswordExitsAsync(string password) {
+            this.checkPasswordExitsAsync(password, null);
+        }
+        
+        /// <remarks/>
+        public void checkPasswordExitsAsync(string password, object userState) {
+            if ((this.checkPasswordExitsOperationCompleted == null)) {
+                this.checkPasswordExitsOperationCompleted = new System.Threading.SendOrPostCallback(this.OncheckPasswordExitsOperationCompleted);
+            }
+            this.InvokeAsync("checkPasswordExits", new object[] {
+                        password}, this.checkPasswordExitsOperationCompleted, userState);
+        }
+        
+        private void OncheckPasswordExitsOperationCompleted(object arg) {
+            if ((this.checkPasswordExitsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.checkPasswordExitsCompleted(this, new checkPasswordExitsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/changePassword", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int changePassword(int customerID, string password) {
+            object[] results = this.Invoke("changePassword", new object[] {
+                        customerID,
+                        password});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void changePasswordAsync(int customerID, string password) {
+            this.changePasswordAsync(customerID, password, null);
+        }
+        
+        /// <remarks/>
+        public void changePasswordAsync(int customerID, string password, object userState) {
+            if ((this.changePasswordOperationCompleted == null)) {
+                this.changePasswordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnchangePasswordOperationCompleted);
+            }
+            this.InvokeAsync("changePassword", new object[] {
+                        customerID,
+                        password}, this.changePasswordOperationCompleted, userState);
+        }
+        
+        private void OnchangePasswordOperationCompleted(object arg) {
+            if ((this.changePasswordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.changePasswordCompleted(this, new changePasswordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/updateCustomerById", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int updateCustomerById(int customerID, string First_name, string Last_name, string Sex, System.DateTime Birth_day, string Phone) {
+            object[] results = this.Invoke("updateCustomerById", new object[] {
+                        customerID,
+                        First_name,
+                        Last_name,
+                        Sex,
+                        Birth_day,
+                        Phone});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void updateCustomerByIdAsync(int customerID, string First_name, string Last_name, string Sex, System.DateTime Birth_day, string Phone) {
+            this.updateCustomerByIdAsync(customerID, First_name, Last_name, Sex, Birth_day, Phone, null);
+        }
+        
+        /// <remarks/>
+        public void updateCustomerByIdAsync(int customerID, string First_name, string Last_name, string Sex, System.DateTime Birth_day, string Phone, object userState) {
+            if ((this.updateCustomerByIdOperationCompleted == null)) {
+                this.updateCustomerByIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdateCustomerByIdOperationCompleted);
+            }
+            this.InvokeAsync("updateCustomerById", new object[] {
+                        customerID,
+                        First_name,
+                        Last_name,
+                        Sex,
+                        Birth_day,
+                        Phone}, this.updateCustomerByIdOperationCompleted, userState);
+        }
+        
+        private void OnupdateCustomerByIdOperationCompleted(object arg) {
+            if ((this.updateCustomerByIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.updateCustomerByIdCompleted(this, new updateCustomerByIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllEvalute", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public System.Data.DataSet GetAllEvalute() {
             object[] results = this.Invoke("GetAllEvalute", new object[0]);
@@ -531,6 +833,330 @@ namespace Florist_Client.api_product {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAddressByCustomer", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet getAddressByCustomer(int customerID) {
+            object[] results = this.Invoke("getAddressByCustomer", new object[] {
+                        customerID});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAddressByCustomerAsync(int customerID) {
+            this.getAddressByCustomerAsync(customerID, null);
+        }
+        
+        /// <remarks/>
+        public void getAddressByCustomerAsync(int customerID, object userState) {
+            if ((this.getAddressByCustomerOperationCompleted == null)) {
+                this.getAddressByCustomerOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAddressByCustomerOperationCompleted);
+            }
+            this.InvokeAsync("getAddressByCustomer", new object[] {
+                        customerID}, this.getAddressByCustomerOperationCompleted, userState);
+        }
+        
+        private void OngetAddressByCustomerOperationCompleted(object arg) {
+            if ((this.getAddressByCustomerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAddressByCustomerCompleted(this, new getAddressByCustomerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAddressByID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet getAddressByID(int ID) {
+            object[] results = this.Invoke("getAddressByID", new object[] {
+                        ID});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAddressByIDAsync(int ID) {
+            this.getAddressByIDAsync(ID, null);
+        }
+        
+        /// <remarks/>
+        public void getAddressByIDAsync(int ID, object userState) {
+            if ((this.getAddressByIDOperationCompleted == null)) {
+                this.getAddressByIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAddressByIDOperationCompleted);
+            }
+            this.InvokeAsync("getAddressByID", new object[] {
+                        ID}, this.getAddressByIDOperationCompleted, userState);
+        }
+        
+        private void OngetAddressByIDOperationCompleted(object arg) {
+            if ((this.getAddressByIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAddressByIDCompleted(this, new getAddressByIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAddressMax", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int getAddressMax() {
+            object[] results = this.Invoke("getAddressMax", new object[0]);
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAddressMaxAsync() {
+            this.getAddressMaxAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getAddressMaxAsync(object userState) {
+            if ((this.getAddressMaxOperationCompleted == null)) {
+                this.getAddressMaxOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAddressMaxOperationCompleted);
+            }
+            this.InvokeAsync("getAddressMax", new object[0], this.getAddressMaxOperationCompleted, userState);
+        }
+        
+        private void OngetAddressMaxOperationCompleted(object arg) {
+            if ((this.getAddressMaxCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAddressMaxCompleted(this, new getAddressMaxCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/insertAddressByCustomer", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int insertAddressByCustomer(int customerID, string Name, string Address, string Phone) {
+            object[] results = this.Invoke("insertAddressByCustomer", new object[] {
+                        customerID,
+                        Name,
+                        Address,
+                        Phone});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void insertAddressByCustomerAsync(int customerID, string Name, string Address, string Phone) {
+            this.insertAddressByCustomerAsync(customerID, Name, Address, Phone, null);
+        }
+        
+        /// <remarks/>
+        public void insertAddressByCustomerAsync(int customerID, string Name, string Address, string Phone, object userState) {
+            if ((this.insertAddressByCustomerOperationCompleted == null)) {
+                this.insertAddressByCustomerOperationCompleted = new System.Threading.SendOrPostCallback(this.OninsertAddressByCustomerOperationCompleted);
+            }
+            this.InvokeAsync("insertAddressByCustomer", new object[] {
+                        customerID,
+                        Name,
+                        Address,
+                        Phone}, this.insertAddressByCustomerOperationCompleted, userState);
+        }
+        
+        private void OninsertAddressByCustomerOperationCompleted(object arg) {
+            if ((this.insertAddressByCustomerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.insertAddressByCustomerCompleted(this, new insertAddressByCustomerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/updateAddressByID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int updateAddressByID(int Flower_recipient_id, string Name, string Address, string Phone) {
+            object[] results = this.Invoke("updateAddressByID", new object[] {
+                        Flower_recipient_id,
+                        Name,
+                        Address,
+                        Phone});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void updateAddressByIDAsync(int Flower_recipient_id, string Name, string Address, string Phone) {
+            this.updateAddressByIDAsync(Flower_recipient_id, Name, Address, Phone, null);
+        }
+        
+        /// <remarks/>
+        public void updateAddressByIDAsync(int Flower_recipient_id, string Name, string Address, string Phone, object userState) {
+            if ((this.updateAddressByIDOperationCompleted == null)) {
+                this.updateAddressByIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdateAddressByIDOperationCompleted);
+            }
+            this.InvokeAsync("updateAddressByID", new object[] {
+                        Flower_recipient_id,
+                        Name,
+                        Address,
+                        Phone}, this.updateAddressByIDOperationCompleted, userState);
+        }
+        
+        private void OnupdateAddressByIDOperationCompleted(object arg) {
+            if ((this.updateAddressByIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.updateAddressByIDCompleted(this, new updateAddressByIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/deleteAddressByID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int deleteAddressByID(int Flower_recipient_id) {
+            object[] results = this.Invoke("deleteAddressByID", new object[] {
+                        Flower_recipient_id});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void deleteAddressByIDAsync(int Flower_recipient_id) {
+            this.deleteAddressByIDAsync(Flower_recipient_id, null);
+        }
+        
+        /// <remarks/>
+        public void deleteAddressByIDAsync(int Flower_recipient_id, object userState) {
+            if ((this.deleteAddressByIDOperationCompleted == null)) {
+                this.deleteAddressByIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OndeleteAddressByIDOperationCompleted);
+            }
+            this.InvokeAsync("deleteAddressByID", new object[] {
+                        Flower_recipient_id}, this.deleteAddressByIDOperationCompleted, userState);
+        }
+        
+        private void OndeleteAddressByIDOperationCompleted(object arg) {
+            if ((this.deleteAddressByIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.deleteAddressByIDCompleted(this, new deleteAddressByIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/insertOrder", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int insertOrder(int customerID, int Flower_recipient_id, int Total, int Message_id, string Received_date, string Received_time) {
+            object[] results = this.Invoke("insertOrder", new object[] {
+                        customerID,
+                        Flower_recipient_id,
+                        Total,
+                        Message_id,
+                        Received_date,
+                        Received_time});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void insertOrderAsync(int customerID, int Flower_recipient_id, int Total, int Message_id, string Received_date, string Received_time) {
+            this.insertOrderAsync(customerID, Flower_recipient_id, Total, Message_id, Received_date, Received_time, null);
+        }
+        
+        /// <remarks/>
+        public void insertOrderAsync(int customerID, int Flower_recipient_id, int Total, int Message_id, string Received_date, string Received_time, object userState) {
+            if ((this.insertOrderOperationCompleted == null)) {
+                this.insertOrderOperationCompleted = new System.Threading.SendOrPostCallback(this.OninsertOrderOperationCompleted);
+            }
+            this.InvokeAsync("insertOrder", new object[] {
+                        customerID,
+                        Flower_recipient_id,
+                        Total,
+                        Message_id,
+                        Received_date,
+                        Received_time}, this.insertOrderOperationCompleted, userState);
+        }
+        
+        private void OninsertOrderOperationCompleted(object arg) {
+            if ((this.insertOrderCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.insertOrderCompleted(this, new insertOrderCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getOrderMax", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int getOrderMax() {
+            object[] results = this.Invoke("getOrderMax", new object[0]);
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getOrderMaxAsync() {
+            this.getOrderMaxAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getOrderMaxAsync(object userState) {
+            if ((this.getOrderMaxOperationCompleted == null)) {
+                this.getOrderMaxOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetOrderMaxOperationCompleted);
+            }
+            this.InvokeAsync("getOrderMax", new object[0], this.getOrderMaxOperationCompleted, userState);
+        }
+        
+        private void OngetOrderMaxOperationCompleted(object arg) {
+            if ((this.getOrderMaxCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getOrderMaxCompleted(this, new getOrderMaxCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/insertOrderDetails", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int insertOrderDetails(string Product_id, int Order_id, int Quantity, float Price, float Discount) {
+            object[] results = this.Invoke("insertOrderDetails", new object[] {
+                        Product_id,
+                        Order_id,
+                        Quantity,
+                        Price,
+                        Discount});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void insertOrderDetailsAsync(string Product_id, int Order_id, int Quantity, float Price, float Discount) {
+            this.insertOrderDetailsAsync(Product_id, Order_id, Quantity, Price, Discount, null);
+        }
+        
+        /// <remarks/>
+        public void insertOrderDetailsAsync(string Product_id, int Order_id, int Quantity, float Price, float Discount, object userState) {
+            if ((this.insertOrderDetailsOperationCompleted == null)) {
+                this.insertOrderDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OninsertOrderDetailsOperationCompleted);
+            }
+            this.InvokeAsync("insertOrderDetails", new object[] {
+                        Product_id,
+                        Order_id,
+                        Quantity,
+                        Price,
+                        Discount}, this.insertOrderDetailsOperationCompleted, userState);
+        }
+        
+        private void OninsertOrderDetailsOperationCompleted(object arg) {
+            if ((this.insertOrderDetailsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.insertOrderDetailsCompleted(this, new insertOrderDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/insertBanking", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int insertBanking(string Banking_name, string Number, int Customer_id, int Order_id, float Total) {
+            object[] results = this.Invoke("insertBanking", new object[] {
+                        Banking_name,
+                        Number,
+                        Customer_id,
+                        Order_id,
+                        Total});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void insertBankingAsync(string Banking_name, string Number, int Customer_id, int Order_id, float Total) {
+            this.insertBankingAsync(Banking_name, Number, Customer_id, Order_id, Total, null);
+        }
+        
+        /// <remarks/>
+        public void insertBankingAsync(string Banking_name, string Number, int Customer_id, int Order_id, float Total, object userState) {
+            if ((this.insertBankingOperationCompleted == null)) {
+                this.insertBankingOperationCompleted = new System.Threading.SendOrPostCallback(this.OninsertBankingOperationCompleted);
+            }
+            this.InvokeAsync("insertBanking", new object[] {
+                        Banking_name,
+                        Number,
+                        Customer_id,
+                        Order_id,
+                        Total}, this.insertBankingOperationCompleted, userState);
+        }
+        
+        private void OninsertBankingOperationCompleted(object arg) {
+            if ((this.insertBankingCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.insertBankingCompleted(this, new insertBankingCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -571,6 +1197,58 @@ namespace Florist_Client.api_product {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void createMessageCompletedEventHandler(object sender, createMessageCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class createMessageCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal createMessageCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getMessageMaxCompletedEventHandler(object sender, getMessageMaxCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getMessageMaxCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getMessageMaxCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }
@@ -811,6 +1489,136 @@ namespace Florist_Client.api_product {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getInformationCustomerCompletedEventHandler(object sender, getInformationCustomerCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getInformationCustomerCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getInformationCustomerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void checkPhoneExitsCompletedEventHandler(object sender, checkPhoneExitsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class checkPhoneExitsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal checkPhoneExitsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void checkPasswordExitsCompletedEventHandler(object sender, checkPasswordExitsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class checkPasswordExitsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal checkPasswordExitsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void changePasswordCompletedEventHandler(object sender, changePasswordCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class changePasswordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal changePasswordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void updateCustomerByIdCompletedEventHandler(object sender, updateCustomerByIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class updateCustomerByIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal updateCustomerByIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetAllEvaluteCompletedEventHandler(object sender, GetAllEvaluteCompletedEventArgs e);
     
     /// <remarks/>
@@ -874,6 +1682,266 @@ namespace Florist_Client.api_product {
         private object[] results;
         
         internal GetCountEvaluteByRateCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getAddressByCustomerCompletedEventHandler(object sender, getAddressByCustomerCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAddressByCustomerCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAddressByCustomerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getAddressByIDCompletedEventHandler(object sender, getAddressByIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAddressByIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAddressByIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getAddressMaxCompletedEventHandler(object sender, getAddressMaxCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAddressMaxCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAddressMaxCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void insertAddressByCustomerCompletedEventHandler(object sender, insertAddressByCustomerCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class insertAddressByCustomerCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal insertAddressByCustomerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void updateAddressByIDCompletedEventHandler(object sender, updateAddressByIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class updateAddressByIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal updateAddressByIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void deleteAddressByIDCompletedEventHandler(object sender, deleteAddressByIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class deleteAddressByIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal deleteAddressByIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void insertOrderCompletedEventHandler(object sender, insertOrderCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class insertOrderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal insertOrderCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getOrderMaxCompletedEventHandler(object sender, getOrderMaxCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getOrderMaxCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getOrderMaxCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void insertOrderDetailsCompletedEventHandler(object sender, insertOrderDetailsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class insertOrderDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal insertOrderDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void insertBankingCompletedEventHandler(object sender, insertBankingCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class insertBankingCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal insertBankingCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

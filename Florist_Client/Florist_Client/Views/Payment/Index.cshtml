@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutCommomCart.cshtml";
+}
+<style>
+    .grap_price_3 {
+        position: relative;
+    }
+    .grap_price_3_2 {
+        padding: 50px 20px;
+    }
+    .grap_price_3:hover .chirld_grap_3 {
+        display: block;
+    }
+    .chirld_grap_3 div {
+        display: block;
+        padding: 5px 10px;
+        color: black;
+        padding-left: 15px;
+        text-decoration: none;
+    }
+
+        .chirld_grap_3 div:hover {
+            color: rgb(253, 91, 32);
+            cursor:pointer;
+        }
+
+    .chirld_grap_3::after {
+        content: "";
+        position: absolute;
+        background-color: transparent;
+        height: 10px;
+        width: 200px;
+        top: -10px;
+    }
+
+    .chirld_grap_3 {
+        border: 1px solid #ddd;
+        display: none;
+        width: 250px;
+        text-align:center;
+        border-radius:15px;
+
+    }
+    .grap_price_3:hover .chirld_grap_3 {
+        display: block;
+    }
+</style>
+<div class="col-7 grap_left_cart">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <img src="~/Resources/img/home/logo_project.png" height="60px;" alt="">
+        <div class="d-flex mt-3">
+            <div class="ml-3 color_pink_half">Cart <i class="fa-solid fa-angle-right ms-2 color_usui"></i></div>
+            <div class="ml-3 ms-3">Information <i class="fa-solid fa-angle-right ms-2 color_usui"></i></div>
+            <div class="ml-3 ms-3">Shipping <i class="fa-solid fa-angle-right ms-2 color_usui"></i></div>
+            <div class="ml-3 ms-3">Payment</div>
+        </div>
+
+        <div class="grap_price_3_2">
+            <div class="grap_price_3 mt-3">
+                Payment method:
+                <span class="ms-2" style="color: palevioletred">
+                    <span class="name_pay">Payment on delivery</span> <i class="fa-solid fa-chevron-down ms-2"></i>
+                </span>
+                <div class="chirld_grap_3">
+                    <div class="click_off_pay">Payment on delivery</div>
+                    <div class="click_on_pay">Payment online</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="payment_cart" style="display:none;">
+
+            <div class="d-flex justify-content-between grap_discard mt-3">
+                <div class="fs-6 fw-bold ms-3">Credit card</div>
+                <div class="me-3">
+                    <i class="fa-brands fa-cc-visa visa ms-1 fs-2"></i>
+                    <i class="fa-brands fa-cc-mastercard ms-1 fs-2"></i>
+                    <i class="fa-brands fa-cc-amex amex ms-1 fs-2"></i>
+                </div>
+            </div>
+            <div class="grap_card_number">
+                <div class="input-group mb-3">
+                    <input type="number" name="card_num" class="form-control font_input  mb-3" placeholder="Card number">
+                </div>
+                <input type="text" name="card_name" class="form-control font_input  mb-3" placeholder="Name on card">
+                <div class="d-flex">
+                    <input type="text" name="card_date" class="form-control font_input  me-3" placeholder="Expiration date (MM / YY)">
+                    <input type="number" name="card_code" class="form-control font_input " placeholder="Securyticode">
+                </div>
+            </div>
+            <input type="text" hidden name="card_submit" class="form-control font_input cart_submit">
+            <input type="text" hidden name="card_total" class="form-control font_input cart_total" >
+
+        </div>
+
+        <div class="d-flex justify-content-between grap_btn_payment">
+            <a href="/CormfirmCalendar">Return to shipping</a>
+            <button type="submit">Confirm Order</button>
+        </div>
+    }
+</div>
+
+<script>
+    $(".click_off_pay").click(function () {
+        $(".name_pay").html($(".click_off_pay").html())
+        $(".payment_cart").slideUp()
+    })
+    $(".click_on_pay").click(function () {
+        $(".name_pay").html($(".click_on_pay").html())
+        $(".payment_cart").slideDown()
+
+    })
+
+</script>

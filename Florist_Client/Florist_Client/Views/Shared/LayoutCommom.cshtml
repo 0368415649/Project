@@ -44,21 +44,17 @@
                             <i class="fa-solid fa-user login_icon"></i>
                         </div>
                         <div class="chirld_grap_2">
-                            <div><a href="#">Profile</a></div>
+                            <div><a href="Profile">Profile</a></div>
                             <div><a href="LogoutPage">Logout</a></div>
                         </div>
                     </div>
 
                 }
-
-
-
-
             </div>
         </div>
         <div class="container_width">
             <div class="row link_grap">
-                <div class="col-7 link_col">
+                <div class="col-6 link_col">
                     <!-- Category link -->
                     <ul class="grap category_css">
                         <li class="left_item"><a class="left_item_hover" href="SearchProduct?category=1">Flower basket</a> </li>
@@ -69,8 +65,11 @@
                     </ul>
                 </div>
                 <!-- Category link -->
+                <div class="col-1 logo_flex" style="margin-left:-5px">
+                    <a href="HomePage"><img width="100%" src="~/Resources/img/home/logo_project.png" alt=""></a>
+                </div>
                 <!-- cart- -->
-                <div class="col-5 grap_cart">
+                <div class="col-3 grap_cart">
                     <div class="header-search">
                         <div class="header-search-grap">
                             <input type="text" class="header-search-input" placeholder="Search here ...">
@@ -190,5 +189,6 @@
 </script>
 @Scripts.Render("~/Resources/js/login.js")
 @Scripts.Render("~/Resources/js/cart.js")
+@Scripts.Render("~/Resources/js/test.js")
 
 </html>

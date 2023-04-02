@@ -1,0 +1,30 @@
+﻿@model IEnumerable < Florist_Client.Models.Flower_recipient>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutCommomProfile.cshtml";
+}
+
+<div class="col-9 grap_profile_color_image_2">
+    <div style="color:red">@(ViewBag.bugDeleteAddress != null ? ViewBag.bugDeleteAddress : "")</div>
+    <div class="grap_new_ad">
+        <div class="fs-6 fw-bold">Địa chỉ của tôi</div>
+        <button class="add_new_address"><a href="/ProfileAddress/Create" style="color:white"><i class="fa-solid fa-plus "></i> Thêm địa chỉ mới</a></button>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="gral_all_ad">
+            <div class="tlt_t fs-4 fw-normal">Địa chỉ</div>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="">
+                    <div class="n_n fw-normal mt-4">@(item.Name)</div>
+                    <div class="n_n fw-lighter">@(item.Phone)</div>
+                    <div class="n_n fw-lighter">@(item.Address)</div>
+                </div>
+                <div class="d-flex btn_gr">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Flower_recipient_id }) <span class="me-2 ms-2">|</span>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Flower_recipient_id }) 
+                </div>
+            </div>
+        </div>
+    }
+</div>

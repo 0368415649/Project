@@ -19,7 +19,9 @@
 	.ar64 .s8 {
 		min-width: 28%;
 	}
-
+.text_ngang {
+	text-decoration: line-through;
+}
 	.ar64 .s8 {
 		font-size: 12px;
 		text-align: center;
@@ -128,7 +130,6 @@
 }
 
 .grap_left_cart {
-	margin-top: 100px;
 	padding-left: 50px;
 	padding-right: 100px;
 }
@@ -234,3 +235,265 @@
 		border-radius: 7px;
 	}
 /* css payment */
+.add_new_address {
+	padding: 8px 20px;
+	color: white;
+	background-color: #ee4382;
+	border: transparent;
+	border-radius: 3px;
+	margin-top: 30px;
+}
+.add_new_address a {
+
+	text-decoration: none;
+}
+
+/* Css login */
+.modal__body {
+	width: 600px;
+	background-color: white;
+	margin: auto;
+	margin-top: 100px;
+	z-index: 2;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.modal__body-address {
+	position: fixed;
+	top: 5%;
+	left: 35%;
+	display: none; 
+}
+.gral_all_ad_grap {
+	height: 400px;
+	overflow: auto;
+}
+.form2 {
+	padding: 36px;
+}
+
+.modal__inner-heard_ad {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 30px;
+}
+
+.modal__inner-content-input {
+	width: 100%;
+	height: 50px;
+	padding: 0px 12px;
+	border-radius: 2px;
+	border: 1px solid rgb(192, 189, 189);
+	margin-bottom: 15px;
+	outline: none;
+}
+.gral_all_ad {
+	margin: 25px;
+	padding-bottom: 25px;
+	border-bottom: 1px solid #eae8e8;
+}
+
+.btn_gr div {
+	color: rgb(38, 142, 254);
+	cursor: pointer;
+}
+.btn_gr a {
+	text-decoration: none;
+	color : deeppink
+}
+.form_control_2_number {
+	width: 30%;
+}
+
+.form_control_22 {
+	width: 65% !important;
+}
+
+.btn_com {
+	padding: 8px 20px;
+	color: white;
+	background-color: rgb(253, 85, 24);
+	border: transparent;
+	border-radius: 3px;
+}
+/* css profile */
+.modal__body {
+	width: 600px;
+	background-color: white;
+	margin: auto;
+	margin-top: 100px;
+	z-index: 2;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.modal__inner {
+	z-index: 1;
+	width: 600px;
+}
+
+.modall {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	display: none;
+	background-color: rgba(0,0,0,0.3);
+}
+
+.form, .form2 {
+	padding: 36px;
+}
+
+.modal__inner-heard {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 70px;
+}
+
+.modal__inner-heard-register {
+	font-weight: 350px;
+	font-size: 1.6rem;
+}
+
+.modal__inner-heard-login, .modal__inner-heard-registration {
+	color: rgb(24, 125, 247);
+	text-decoration: none;
+	font-size: 1.2rem;
+}
+
+.modal__inner-content-input {
+	width: 100%;
+	height: 50px;
+	padding: 0px 12px;
+	border-radius: 2px;
+	border: 1px solid rgb(192, 189, 189);
+	margin-bottom: 15px;
+	outline: none;
+}
+
+.rules {
+	line-height: 16px;
+	font-size: 14px;
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 70px;
+}
+
+.btn-location {
+	display: flex;
+	justify-content: right;
+}
+
+.btn.btn--register {
+	color: white;
+	background-color: rgb(24, 125, 247);
+}
+
+.modal__body-registration, .modal__body-login {
+	position: fixed;
+	top: 5%;
+	left: 35%;
+	display: none;
+}
+
+.rules-content {
+	text-decoration: none;
+	color: rgb(24, 125, 247);
+}
+
+.modal__inner-help {
+	text-align: right;
+	margin-bottom: 100px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.modal__inner-help-link1, .modal__inner-help-link2 {
+	text-decoration: none;
+}
+
+.modal__inner-help-link1 {
+	color: rgb(24, 125, 247);
+}
+
+.modal__inner-help-link2 {
+	color: #939393;
+}
+
+.space {
+	width: 1px;
+	height: 22px;
+	background: #939393;
+	margin: 0 20px;
+}
+
+.chirld_grap_2 {
+	background-color: white;
+	position: absolute;
+	top: 103%;
+	width: 100px;
+	right: 0;
+	border: 1px solid #f0f0f0;
+	border-radius: 3px;
+}
+
+
+	.chirld_grap_2 a {
+		display: block;
+		padding: 5px 10px;
+		color: black;
+		padding-left: 15px;
+		text-decoration: none;
+	}
+
+		.chirld_grap_2 a:hover {
+			color: rgb(253, 91, 32);
+		}
+
+	.chirld_grap_2::after {
+		content: "";
+		position: absolute;
+		background-color: transparent;
+		height: 10px;
+		width: 200px;
+		top: -10px;
+	}
+
+.chirld_grap_2 {
+	display: none;
+}
+
+.grap_price_2 {
+	position: relative;
+}
+
+	.grap_price_2:hover .chirld_grap_2 {
+		display: block;
+	}
+
+.display_block {
+	display: block;
+}
+
+#message_error {
+	text-align: center;
+	margin-bottom: 20px;
+	color: red;
+}
+/* Css login */
+.modall_ad {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	display: none;
+	z-index:2;
+	background-color: rgba(0,0,0,0.3);
+}
+.none_click{pointer-events: none; opacity:0.8;}

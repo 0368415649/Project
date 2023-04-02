@@ -1,0 +1,60 @@
+﻿
+@model Florist_Client.Models.Customer
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutCommomProfile.cshtml";
+
+}
+<div class="col-9 grap_profile_color_image ">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="gral_pr_im">
+            <div class="fs-5 fw-normal">Hồ Sơ Của Tôi</div>
+            <div class="fw-lighter">Quản lý thông tin hồ sơ để bảo mật tài khoản</div>
+        </div>
+        
+        
+        <div class="input_alll">
+            <div class="grap_a_i mt-4" style="margin-left:80px">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                <div style="color:red;">@(ViewBag.updateFail)</div>
+            </div>
+            <div class="grap_a_i mt-4">
+
+                @Html.HiddenFor(model => model.Customer_id)
+                <label for="exampleInputEmail1" class="">First Name</label>
+                @Html.EditorFor(model => model.First_name, new { htmlAttributes = new { @class = "form-control form_control_2" } })
+            </div>
+            <div class="grap_a_i mt-4">
+                <label for="exampleInputEmail1" class="">Last Name</label>
+                @Html.EditorFor(model => model.Last_name, new { htmlAttributes = new { @class = "form-control form_control_22" } })
+            </div>
+            <div class="grap_a_i mt-4">
+                <label for="exampleInputEmail1" class="">Phone</label>
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control form_control_2_number disable_number" } })
+                <button type="button" class="btn btn-primary ms-3 edit_phone"> Edit phone</button>
+            </div>
+            <div class="grap_a_i mt-4">
+                <label for="exampleInputEmail1" class="">Sex</label>
+                @Html.RadioButtonFor(m => m.Sex, "Male") <span class="me-2 ms-2">Male</span>
+                @Html.RadioButtonFor(m => m.Sex, "Female") <span class="me-2 ms-2">Female</span>
+                @Html.RadioButtonFor(m => m.Sex, "Other") <span class="me-2 ms-2">Other</span>
+            </div>
+            <div class="grap_a_i mt-4">
+                <label for="exampleInputEmail1" class="">Date</label>
+                @Html.EditorFor(model => model.Birth_day, new { htmlAttributes = new { @class = "form-control form_control_2_date" } })
+            </div>
+            <button type="submit" class="btn_profile">Save</button>
+        </div>
+    }
+</div>
+<script>
+    $(".edit_phone").click(function(){
+        $(".form_control_2_number").removeClass("disable_number");
+    })
+</script>
+
+

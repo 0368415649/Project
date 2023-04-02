@@ -62,7 +62,7 @@ function show_cart_number() {
                 countInt += item.product.price * item.quantity;
             }
             view_cart += `
-                    <div class="row min_heigthth">
+                 <div class="row min_heigthth">
                             <div class="col-2 view_cart_img">
                                 <img src="/Resources/img/product/${item.product.img}.png" width="100%" alt="">
                             </div>
@@ -76,12 +76,10 @@ function show_cart_number() {
                                     <div onclick=plusCart("${item.product.id}") class="content-more-op content-more-op_plus2 plus_cart">+</div>
                                 </div>
                             </div>
-
                             <div class="sen2"></div>
                     </div>
 
                     `;
-
         })
     }
 

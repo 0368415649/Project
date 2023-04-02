@@ -1,0 +1,62 @@
+﻿@model Florist_Client.Models.Flower_recipient
+@{
+    Layout = "~/Views/Shared/LayoutCommomCart.cshtml";
+    @Styles.Render("~/Resources/css/cart_confirm.css")
+
+}
+
+<div class="col-7 grap_left_cart">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <img src="~/Resources/img/home/logo_project.png" height="60px;" alt="">
+        <div class="d-flex mt-3">
+            <div class="ml-3 color_pink_half">Cart <i class="fa-solid fa-angle-right ms-2 color_usui"></i></div>
+            <div class="ml-3 ms-3">Information <i class="fa-solid fa-angle-right ms-2 color_usui"></i></div>
+            <div class="ml-3 ms-3">Shipping <i class="fa-solid fa-angle-right ms-2 color_usui"></i></div>
+            <div class="ml-3 ms-3">Payment</div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="fs-4 fw-normal mt-4">Contact information</div>
+            <button type="button" class="add_new_address">Dùng lại địa chỉ mới</button>
+        </div>
+        @Html.HiddenFor(model => model.Flower_recipient_id)
+        @Html.HiddenFor(model => model.Customer_id)
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { placeholder = "Flower Recipient Name ...", @class = "form-control  mt-4 input_width" } })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { placeholder = "Address ...", @class = "form-control  mt-4 input_width" } })
+        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { placeholder = "Phone ...", type = "number", @class = "form-control  mt-4 input_width" } })
+        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+        <div class="d-flex  grap_btn_comfirm_cart">
+            <a href="/View_cart">Return to cart</a>
+            <button type="submit">Continue to shipping</button>
+        </div>
+    }
+</div>
+
+<div class="modall_ad" id="modal"></div>
+<div class="modal__body modal__body-address">
+    <div class="text-end">
+        <button type="button" class="btn btn-dark mt-2 me-3 btn_back_address">Back</button>
+    </div>
+    <div class="gral_all_ad_grap">
+        @foreach (var item in   ViewBag.listFlowerRecipient)
+        {
+            <div class="gral_all_ad">
+                <div class="tlt_t fs-4 fw-normal">Địa chỉ</div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="">
+                        <div class="n_n fw-normal mt-4">@(item.Name)</div>
+                        <div class="n_n fw-lighter">@(item.Phone)</div>
+                        <div class="n_n fw-lighter">@(item.Address)</div>
+                    </div>
+                    <div class="d-flex btn_gr">
+                        @Html.ActionLink("Use", "Index", new { id = item.Flower_recipient_id })
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

@@ -31,3 +31,19 @@ $(".btn--hover").click(function () {
     $(".modal__body-login").hide();
     $(".modall").hide();
 })
+
+
+$(".add_new_address").click(function () {
+    $(".modal__body-address").show();
+    $(".modall_ad").show();
+})
+
+$(".modall_ad").click(function () {
+    $(".modal__body-address").hide();
+    $(".modall_ad").hide();
+})
+
+$(".btn_back_address").click(function () {
+    $(".modal__body-address").hide();
+    $(".modall_ad").hide();
+})

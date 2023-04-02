@@ -16,7 +16,7 @@ namespace Florist_Client
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "SearchProduct", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Check_Out", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
