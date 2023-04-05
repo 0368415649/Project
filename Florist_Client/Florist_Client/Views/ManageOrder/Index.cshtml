@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Florist_Client.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<style>
+    .gral_th_form{
+        padding: 8px 16px;
+        border: 1px solid #ddd;
+        display: flex;
+        align-items: center;
+        margin-right: -1px;
+        margin-bottom: -1px;
+        max-width: 160px;
+        min-width: 60px;
+
+    }
+    .w_50 {
+        width: 50px;
+    }
+    .min_more{
+        display: none;
+    }
+    .w_100{
+        width: 150px;
+    }
+    .bg_green {
+        background: #1cb81c;
+        color: white;
+    }
+    .mt_59 {
+        margin-left: 59px;
+    }
+    .bg_2 {
+        background: #dddddd;
+    }
+</style
+><h2>Lisst Order</h2>
+ <table class="table">
+  
+     <div class="grap_biggg " style="margin-bottom: 0px;">
+         <div class="gral_th_form_big d-flex">
+             <div class="gral_th_form bg_green"></div>
+             <div class="gral_th_form w_50 bg_green">ID</div>
+             <div class="gral_th_form w_100 bg_green">Create at</div>
+             <div class="gral_th_form w_100 bg_green">Create Name</div>
+             <div class="gral_th_form w_100 bg_green">Received date</div>
+             <div class="gral_th_form w_100 bg_green">Received time</div>
+             <div class="gral_th_form w_50 bg_green">Total</div>
+             <div class="gral_th_form w_100 bg_green">Status</div>
+             <div class="gral_th_form w_100 bg_green"></div>
+         </div>
+     </div>
+         @foreach (var item in Model)
+         {
+             <div class="grap_biggg ">
+                 <div class="gral_th_form_big d-flex">
+                     <div class="gral_th_form click_show_more bg_2"><i class="fa-solid fa-plus"></i></div>
+                     <div class="gral_th_form w_50 bg_2">@Html.DisplayFor(modelItem => item.Order_id)</div>
+                     <div class="gral_th_form w_100 bg_2">@Html.DisplayFor(modelItem => item.Create_at)</div>
+                     <div class="gral_th_form w_100 bg_2">@Html.DisplayFor(modelItem => item.Create_Name)</div>
+                     <div class="gral_th_form w_100 bg_2">@Html.DisplayFor(modelItem => item.Received_date)</div>
+                     <div class="gral_th_form w_100 bg_2">@Html.DisplayFor(modelItem => item.Received_time)</div>
+                     <div class="gral_th_form w_50 bg_2">@Html.DisplayFor(modelItem => item.Total)</div>
+                     <div class="gral_th_form w_100 bg_2">@Html.DisplayFor(modelItem => item.Status)</div>
+                     <div class="gral_th_form w_100 bg_2">
+                         @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+                         <div class="me-2 ms-2">|</div>
+                         @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                     </div>
+                 </div>
+                 <div class="min_more mt_59">
+                     <div class="d-flex">
+                         <div class="gral_th_form w_50 bg_green ">Id </div>
+                         <div class="gral_th_form w_100 bg_green">Product Name</div>
+                         <div class="gral_th_form w_100 bg_green">Quantity</div>
+                         <div class="gral_th_form w_50 bg_green">Price</div>
+                         <div class="gral_th_form w_100 bg_green">Discount</div>
+                         <div class="gral_th_form w_100 bg_green"></div>
+                     </div>
+                 </div>
+                 @foreach (Florist_Client.Models.OrderDetails order in item.orderDetails)
+                 {
+                     <div class="min_more mt_59">
+                         <div class="d-flex">
+                             <div class="gral_th_form w_50 bg_2" >@(order.Order_detail_id) </div>
+                             <div class="gral_th_form w_100 bg_2">@(order.Product_Name)</div>
+                             <div class="gral_th_form w_100 bg_2">@(order.Quantity)</div>
+                             <div class="gral_th_form w_50 bg_2">@(order.Price)</div>
+                             <div class="gral_th_form w_100 bg_2">@(order.Discount)</div>
+                             <div class="gral_th_form w_100 bg_2">
+                                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+                                 <div class="me-2 ms-2">|</div>
+                                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                             </div>
+                         </div>
+                     </div>
+                 }
+
+             </div>
+         }
+
+</table>
+<script>
+    $('.click_show_more').each(function(ix,e){
+        $(e).click(function(element){
+            // alert($(this).html())
+            $(this).closest(".grap_biggg").children(".min_more").slideToggle(500)
+
+        })
+    })
+</script>

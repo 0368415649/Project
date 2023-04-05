@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Florist_Client.Models.AdminAccount>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<style>
+    a{
+        text-decoration: none;
+    }
+</style>
+
+<h2>List Account</h2>
+<div></div>
+<p>
+    @Html.ActionLink("Create Account", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Account_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Group_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Account_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Group_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.Account_id  }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Account_id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -8,9 +8,7 @@
 }
 
 <div class="col-6 grap_left_cart">
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+    <form id="form_calendar" method="post" action="">
         <img src="~/Resources/img/home/logo_project.png" height="60px;" alt="">
         <div class="    calendar">
             <div class="view_cart_grap_title">Delivery Information</div>
@@ -36,18 +34,23 @@
                         </tr>
                     </table>
                 </div>
+                <div style="color:red; " class="message_date text-center"></div>
                 <p style="margin: 10px 0px ; font-size: 15px;">Please select a delivery time:</p>
                 <div class="content-more-quantity-number">
                     <div type="text" id="quantity" class="buy_input time_buy_now">9 AM - 1 PM</div>
                     <div type="text" id="quantity" class="buy_input time_buy_now">1 PM - 6 PM</div>
                     <div type="text" id="quantity" class="buy_input time_buy_now">6 PM - 9 PM</div>
                 </div>
+                <div style="color:red; " class="message_time text-center"></div>
                 <p>* Office Deliveries Will Be Completed Latest By 5 PM</p>
                 <p style="font-size: 17px;" class="">Choose Your Personal Card Message:</p>
-                <input type="text" hidden id="date_buy" name="date_buy" value="" />
-                <input type="text"  hidden id="time_buy" name="time_buy" value="" />
-                <textarea title="Please provide message note here." placeholder="You're better than the best!"
-                          id="message_show" class="input-text question-field note" rows="6" cols="20" name="note_message" maxlength="140"></textarea>
+                <input type="text" relus="" id="date_buy" hidden class="date_buy" name="date_buy" value="" />
+
+                <input type="text" relus="" id="time_buy" hidden name="time_buy" value="" />
+
+                <textarea relus="" title="Please provide message note here." placeholder="You're better than the best!"
+                          id="message_show" class="input-text question-field note" rows="6" cols="20"  name="note_message" maxlength="140"></textarea>
+                <div style="color:red; " class="message_message text-center"></div>
                 <div class="mt-5">
                     @foreach (var item in ViewBag.listMessage)
                     {
@@ -67,8 +70,38 @@
             <a href="/Check_Out">Return to cart</a>
             <button type="submit" class="">Continue to payment</button>
         </div>
-    }
-  </div>
+    </form>
+</div>
 
-    @Scripts.Render("~/Resources/js/view_cart.js")
-    @Scripts.Render("~/Resources/js/message.js")
+
+@Scripts.Render("~/Resources/js/view_cart.js")
+@Scripts.Render("~/Resources/js/message.js")
+@Scripts.Render("~/Resources/js/vali.js")
+
+<script>
+    $("#form_calendar").submit(function (e) {
+        date_buy = $("#date_buy").val()
+        time_buy = $("#time_buy").val()
+        note_message = $("#message_show").val()
+        if (date_buy === "") {
+            $(".message_date").html("Please select delivery date");
+        } else {
+            $(".message_date").html("");
+        }
+        if (time_buy === "") {
+            $(".message_time").html("Choice select delivery time");
+        } else {
+            $(".message_time").html("");
+        }
+        if (note_message === "") {
+            $(".message_message").html("Please write a message");
+        } else {
+            $(".message_message").html("");
+        }
+        if ($("#date_buy").val() != "" && $("#time_buy").val() != "" && $("#message_show").val() != "") {
+            return 1;
+        } else {
+            e.preventDefault();
+        } 
+    });
+</script>

@@ -14,6 +14,49 @@
 body {
     animation: lightly ease-out 1s;
 }
+.alert_cart {
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+    background-color: black;
+    text-align: center;
+    width: 250px;
+    opacity: 0.9;
+    padding: 10px 20px;
+    border-radius: 4px;
+    position: fixed;
+    top: 30%;
+    left: 45%;
+    z-index: 100;
+    display: none;
+}
+.alert_registration, .alert_login, .alert_check_login {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: black;
+    text-align: center;
+    min-width: 250px;
+    opacity: 0.9;
+    padding: 10px 20px;
+    border-radius: 4px;
+    position: fixed;
+    top: 30%;
+    left: 45%;
+    z-index: 100;
+    display: none;
+}
+.cart_go_login{
+    border:none;
+    background-color: white;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 5px;
+    color: palevioletred;
+    margin: 15px 0px ;
+    padding: 5px 15px;
+        
+}
 /* animation */
 /* Commom */
 ul {
@@ -98,9 +141,10 @@ a {
 .left_item_hover {
     text-decoration: none;
     color: #666;
-    font-weight: 700;
+    font-weight: 300;
     font-size: 17px;
     padding: 0px 8px;
+    margin-left: 10px;
 }
 
     .left_item_hover:hover {
@@ -126,7 +170,8 @@ a {
 }
 
 .grap_cart {
-    margin-left: 2%;
+    margin-left: auto;
+    margin-right: 150px;
 }
 
 .header-search {
@@ -432,9 +477,11 @@ a {
 
 .modal__body-registration, .modal__body-login {
     position: fixed;
-    top: 5%;
+    top: -5%;
     left: 35%;
+    border: 1px solid #ddd;
     display: none;
+    z-index: 100;
 }
 
 .rules-content {

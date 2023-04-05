@@ -4,7 +4,15 @@
     @Styles.Render("~/Resources/css/cart_confirm.css")
 
 }
-
+<style>
+    .add_ddd{
+        margin: auto;
+        margin-top: 150px;
+        margin-left: 200px;
+        font-size: 25px;
+        font-weight: 800;
+    }
+</style>
 <div class="col-7 grap_left_cart">
     @using (Html.BeginForm())
     {
@@ -18,7 +26,7 @@
         </div>
         <div class="d-flex justify-content-between align-items-center">
             <div class="fs-4 fw-normal mt-4">Contact information</div>
-            <button type="button" class="add_new_address">Dùng lại địa chỉ mới</button>
+            <button type="button" class="add_new_address">Use old address</button>
         </div>
         @Html.HiddenFor(model => model.Flower_recipient_id)
         @Html.HiddenFor(model => model.Customer_id)
@@ -37,26 +45,31 @@
 
 <div class="modall_ad" id="modal"></div>
 <div class="modal__body modal__body-address">
-    <div class="text-end">
-        <button type="button" class="btn btn-dark mt-2 me-3 btn_back_address">Back</button>
+    <div class="text-end" style="padding-top:20px;">
+        <button type="button" class="btn btn-dark mt-2 me-3 btn_back_address" style="margin-top: 25px;">Back</button>
     </div>
     <div class="gral_all_ad_grap">
-        @foreach (var item in   ViewBag.listFlowerRecipient)
-        {
-            <div class="gral_all_ad">
-                <div class="tlt_t fs-4 fw-normal">Địa chỉ</div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="">
-                        <div class="n_n fw-normal mt-4">@(item.Name)</div>
-                        <div class="n_n fw-lighter">@(item.Phone)</div>
-                        <div class="n_n fw-lighter">@(item.Address)</div>
-                    </div>
-                    <div class="d-flex btn_gr">
-                        @Html.ActionLink("Use", "Index", new { id = item.Flower_recipient_id })
+        @if(ViewBag.listFlowerRecipient.Count != 0){
+            foreach (var item in ViewBag.listFlowerRecipient)
+            {
+                <div class="gral_all_ad">
+                    <div class="tlt_t fs-4 fw-normal">Địa chỉ</div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="">
+                            <div class="n_n fw-normal mt-4">@(item.Name)</div>
+                            <div class="n_n fw-lighter">@(item.Phone)</div>
+                            <div class="n_n fw-lighter">@(item.Address)</div>
+                        </div>
+                        <div class="d-flex btn_gr">
+                            @Html.ActionLink("Use", "Index", new { id = item.Flower_recipient_id })
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            }
+        }else{
+            <div class="add_ddd">No address yet!</div>
         }
+
     </div>
 </div>

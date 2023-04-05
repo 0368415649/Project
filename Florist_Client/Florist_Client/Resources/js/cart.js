@@ -1,46 +1,57 @@
 ﻿$('#add_cart').click(function (e) {
-    CartAraay = [];
-    let storage = localStorage.getItem('cart');
-    let Product_More = {
-        id: $(this).data("id"),
-        name: $(this).data("name"),
-        price: $(this).data("price"),
-        img: $(this).data("img"),
-        discount: $(this).data("discount"),
-    }
-    if (storage) {
-        CartAraay = JSON.parse(storage);
-    }
-    let item = CartAraay.find(c => c.product.id == $(this).data("id"));
-    if (item) {
-        item.quantity = Number(item.quantity) + 1;
+    if ($(this).data("check_login") == null || $(this).data("check_login") == "") {
+        showAlertCartLogin()
     } else {
-        CartAraay.push({ product: Product_More, quantity: 1 });
+        CartAraay = [];
+        let storage = localStorage.getItem('cart');
+        let Product_More = {
+            id: $(this).data("id"),
+            name: $(this).data("name"),
+            price: $(this).data("price"),
+            img: $(this).data("img"),
+            discount: $(this).data("discount"),
+        }
+        if (storage) {
+            CartAraay = JSON.parse(storage);
+        }
+        let item = CartAraay.find(c => c.product.id == $(this).data("id"));
+        if (item) {
+            item.quantity = Number(item.quantity) + 1;
+        } else {
+            CartAraay.push({ product: Product_More, quantity: 1 });
+        }
+        localStorage.setItem('cart', JSON.stringify(CartAraay));
+        show_cart_number();
+        showAlertCart()
     }
-    localStorage.setItem('cart', JSON.stringify(CartAraay));
-    show_cart_number();
 })
-function addToCart(id, name, img, price, discount) {
-    CartAraay = [];
-    let storage = localStorage.getItem('cart');
-    let Product_More = {
-        id: id,
-        name: name,
-        price: price,
-        img: img,
-        discount: discount,
-    }
-    if (storage) {
-        CartAraay = JSON.parse(storage);
-    }
-    let item = CartAraay.find(c => c.product.id == id);
-    if (item) {
-        item.quantity = Number(item.quantity) + 1;
+function addToCart(id, name, img, price, discount, checkLogin = null) {
+    /*checkLogin("")*/
+    if (checkLogin == null) {
+        showAlertCartLogin()
     } else {
-        CartAraay.push({ product: Product_More, quantity: 1 });
+        CartAraay = [];
+        let storage = localStorage.getItem('cart');
+        let Product_More = {
+            id: id,
+            name: name,
+            price: price,
+            img: img,
+            discount: discount,
+        }
+        if (storage) {
+            CartAraay = JSON.parse(storage);
+        }
+        let item = CartAraay.find(c => c.product.id == id);
+        if (item) {
+            item.quantity = Number(item.quantity) + 1;
+        } else {
+            CartAraay.push({ product: Product_More, quantity: 1 });
+        }
+        localStorage.setItem('cart', JSON.stringify(CartAraay));
+        show_cart_number();
+        showAlertCart();
     }
-    localStorage.setItem('cart', JSON.stringify(CartAraay));
-    show_cart_number();
 }
 show_cart_number();
 function show_cart_number() {
@@ -113,4 +124,26 @@ function subtractCart(id) {
     }
     localStorage.setItem('cart', JSON.stringify(CartAraay));
     show_cart_number();
+}
+
+function showAlertCart() {
+    $(".alert_cart").show()
+    $(".alert_cart").animate({ opacity: 0 }, 1200);
+    setTimeout(() => {
+        $(".alert_cart").animate({ opacity: 1 });
+        $(".alert_cart").hide()
+    },"1200");
+}
+
+function showAlertCartLogin() {
+    $(".alert_check_login").show()
+}
+
+function showAlertCart2() {
+    $(".alert_cart2").show()
+    $(".alert_cart2").animate({ opacity: 0 }, 1200);
+    setTimeout(() => {
+        $(".alert_cart2").animate({ opacity: 1 });
+        $(".alert_cart2").hide()
+    }, "1200");
 }

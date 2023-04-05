@@ -14,10 +14,13 @@ namespace Florist_Client.Controllers
         {
             HttpCookie customerPhone = new HttpCookie("customerPhone");
             HttpCookie customerName = new HttpCookie("customerName");
+            HttpCookie customerID = new HttpCookie("customerID");
             customerPhone.Expires = DateTime.Now.AddDays(-1d);
             customerName.Expires = DateTime.Now.AddDays(-1d);
+            customerID.Expires = DateTime.Now.AddDays(-1d);
             Response.Cookies.Add(customerName);
             Response.Cookies.Add(customerPhone);
+            Response.Cookies.Add(customerID);
             return RedirectToAction("Index", "HomePage");
         }
     }

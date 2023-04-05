@@ -43,8 +43,8 @@ namespace Florist_Client.Controllers
                 flower_Recipient_buy.Customer_id = int.Parse(dataSet.Tables[0].Rows[0]["Customer_id"].ToString());
             }
             ViewBag.listFlowerRecipient = listFlowerRecipient;
-            
 
+            ViewBag.addressCart = "addressCart";
             return View(flower_Recipient_buy);
         }
 
@@ -88,6 +88,7 @@ namespace Florist_Client.Controllers
                     flower_Recipient_buy.Customer_id = int.Parse(dataSet.Tables[0].Rows[0]["Customer_id"].ToString());
                 }
                 ViewBag.listFlowerRecipient = listFlowerRecipient;
+                ViewBag.addressCart = "addressCart";
                 return View(flower_Recipient_buy);
             }
 

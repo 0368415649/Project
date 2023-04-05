@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace Florist_Client.Controllers
 {
@@ -104,6 +105,33 @@ namespace Florist_Client.Controllers
                 ViewBag.checkLogin = Session["checklogin"];
                 Session["checklogin"] = null;
             }
+            if (Session["checkRegistration"] != null)
+            {
+                ViewBag.checkRegistration = Session["checkRegistration"];
+                Session["checkRegistration"] = null;
+            }
+            if (Session["registrationOk"] != null)
+            {
+                ViewBag.registrationOk = Session["registrationOk"];
+                Session["registrationOk"] = null;
+            }
+            if (Session["loginOk"] != null)
+            {
+                ViewBag.loginOk = Session["loginOk"];
+                Session["loginOk"] = null;
+            }
+            if (Session["notLogin"] != null)
+            {
+                ViewBag.notLogin = Session["notLogin"];
+                Session["notLogin"] = null;
+            }
+            if (Session["removeCart"] != null)
+            {
+                ViewBag.removeCart = Session["removeCart"];
+                Session["removeCart"] = null;
+            }
+
+
             return View();
         }
     }

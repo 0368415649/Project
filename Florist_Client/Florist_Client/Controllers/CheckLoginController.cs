@@ -32,6 +32,7 @@ namespace Florist_Client.Controllers
                 Response.Cookies.Add(customerPhone);
                 Response.Cookies.Add(customerName);
                 Response.Cookies.Add(customerID);
+                Session["loginOk"] = "ok";
                 return RedirectToAction("Index", "HomePage");
             }
             else

@@ -32,6 +32,7 @@ namespace Florist_Client.Controllers
                 listMessage.Add(message);
             }
             ViewBag.listMessage = listMessage;
+            ViewBag.calendar = "calendar";
             return View();
             
         }

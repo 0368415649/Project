@@ -29,7 +29,10 @@ namespace Florist_Client.Controllers
             customer.Last_name = dataSet.Tables[0].Rows[0]["Last_name"].ToString();
             customer.Sex = dataSet.Tables[0].Rows[0]["Sex"].ToString();
             customer.Phone = dataSet.Tables[0].Rows[0]["Phone"].ToString();
-            customer.Birth_day = DateTime.Parse(dataSet.Tables[0].Rows[0]["Birth_day"].ToString());
+            if(dataSet.Tables[0].Rows[0]["Birth_day"].ToString() != "")
+            {
+                customer.Birth_day =  DateTime.Parse(dataSet.Tables[0].Rows[0]["Birth_day"].ToString());
+            }
             if (Session["checkUpdate"] != null)
             {
                 ViewBag.updateFail = Session["checkUpdate"];

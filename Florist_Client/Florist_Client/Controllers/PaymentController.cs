@@ -15,7 +15,7 @@ namespace Florist_Client.Controllers
         // GET: Payment
         public ActionResult Index()
         {
-            
+            ViewBag.payment = "payment";
             return View();
         }
 
@@ -44,7 +44,7 @@ namespace Florist_Client.Controllers
             /* create Message*/
             string date = Session["date"].ToString();
             string time = Session["time"].ToString();
-            int total = int.Parse(formCollection["card_total"].ToString());
+            float total = float.Parse(formCollection["card_total"].ToString());
             /* create Order*/
             webService.insertOrder(cusID, recipientID, total, messageID, date, time);
             int order_id = webService.getOrderMax();
@@ -63,7 +63,7 @@ namespace Florist_Client.Controllers
 
                 webService.insertBanking(formCollection["card_name"].ToString(), formCollection["card_num"].ToString(), cusID, order_id, total);
             /* create Bankking*/
-
+            Session["removeCart"] = "remove";
             return RedirectToAction("index", "HomePage");
         }
     }

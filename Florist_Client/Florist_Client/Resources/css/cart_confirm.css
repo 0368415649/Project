@@ -237,8 +237,8 @@
 /* css payment */
 .add_new_address {
 	padding: 8px 20px;
-	color: white;
-	background-color: #ee4382;
+	color: #ee4382;
+	background-color: white;
 	border: transparent;
 	border-radius: 3px;
 	margin-top: 30px;

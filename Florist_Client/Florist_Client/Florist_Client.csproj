@@ -123,9 +123,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\About_usController.cs" />
+    <Compile Include="Controllers\AdminPagesController.cs" />
     <Compile Include="Controllers\CheckLoginController.cs" />
     <Compile Include="Controllers\Check_OutController.cs" />
     <Compile Include="Controllers\CormfirmCalendarController.cs" />
+    <Compile Include="Controllers\ManageAccountController.cs" />
+    <Compile Include="Controllers\ManageMessageController.cs" />
+    <Compile Include="Controllers\ManageCategoryController.cs" />
+    <Compile Include="Controllers\ManageEvaluteController.cs" />
+    <Compile Include="Controllers\ManageOrderController.cs" />
+    <Compile Include="Controllers\ManageSupplierController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProfilePasswordController.cs" />
     <Compile Include="Controllers\DetailProductController.cs" />
@@ -136,11 +143,19 @@
     <Compile Include="Controllers\MarketingController.cs" />
     <Compile Include="Controllers\ProfileAddressController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\RegistrationPageController.cs" />
     <Compile Include="Controllers\SearchProductController.cs" />
     <Compile Include="Controllers\View_cartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderDetails.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\AdminAccount .cs" />
+    <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\BaseUrl.cs" />
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\ChangePass.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Evalute.cs" />
@@ -171,6 +186,8 @@
     <Content Include="Content\Site.css" />
     <Compile Include="Models\ProductCart.cs" />
     <Content Include="Resources\css\about_us.css" />
+    <Content Include="Resources\css\adminMain.css" />
+    <Content Include="Resources\css\adminpage.css" />
     <Content Include="Resources\css\calendar.css" />
     <Content Include="Resources\css\cart_confirm.css" />
     <Content Include="Resources\css\commom.css" />
@@ -186,6 +203,7 @@
     <Content Include="Resources\js\login.js" />
     <Content Include="Resources\js\message.js" />
     <Content Include="Resources\js\test.js" />
+    <Content Include="Resources\js\vali.js" />
     <Content Include="Resources\js\view_cart.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -222,6 +240,27 @@
     <Content Include="Views\CormfirmCalendar\Index.cshtml" />
     <Content Include="Views\Shared\LayoutCommomCart.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\AdminPages\Index.cshtml" />
+    <Content Include="Views\ManageAccount\Index.cshtml" />
+    <Content Include="Views\ManageAccount\Create.cshtml" />
+    <Content Include="Views\ManageAccount\Edit.cshtml" />
+    <Content Include="Views\ManageAccount\Delete.cshtml" />
+    <Content Include="Views\ManageMessage\Index.cshtml" />
+    <Content Include="Views\ManageMessage\Create.cshtml" />
+    <Content Include="Views\ManageMessage\Edit.cshtml" />
+    <Content Include="Views\ManageMessage\Delete.cshtml" />
+    <Content Include="Views\ManageSupplier\Index.cshtml" />
+    <Content Include="Views\ManageSupplier\Create.cshtml" />
+    <Content Include="Views\ManageSupplier\Edit.cshtml" />
+    <Content Include="Views\ManageSupplier\Delete.cshtml" />
+    <Content Include="Views\ManageCategory\Index.cshtml" />
+    <Content Include="Views\ManageCategory\Edit.cshtml" />
+    <Content Include="Views\ManageCategory\Delete.cshtml" />
+    <Content Include="Views\ManageCategory\Create.cshtml" />
+    <Content Include="Views\ManageEvalute\Index.cshtml" />
+    <Content Include="Views\ManageEvalute\Delete.cshtml" />
+    <Content Include="Views\ManageOrder\Index.cshtml" />
+    <None Include="Views\Shared\LayoutAdmin.cshtml" />
     <None Include="Web References\api_product\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -251,6 +290,7 @@
     <Folder Include="Views\CheckLogin\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\LogoutPage\" />
+    <Folder Include="Views\RegistrationPage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -12,16 +12,17 @@
 
 <div class="contaniner mt-3">
     <div class="ar64 cbwrap text-center">
-        <div id="sp1" class="s8 s8c">
+        <div id="sp1" class="s8 @((ViewBag.addressCart) != null ? "s8c" : "")">
             <span id="spn1">1.Address</span>
         </div>
-        <div id="sp2" class="s8 ">
-            <span id="spn2">2.Comfirm</span>
+        <div id="sp2" class="s8 @((ViewBag.calendar) != null ? "s8c" : "")">
+            <span id="spn2">2.Calendar</span>
         </div>
-        <div id="sp3" class="s8 ">
+        <div id="sp3" class="s8 @((ViewBag.payment) != null ? "s8c" : "")">
             <span id="spn3">3.Payment</span>
         </div>
     </div>
+</div>
 </div>
 
 

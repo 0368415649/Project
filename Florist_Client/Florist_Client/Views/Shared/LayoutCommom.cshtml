@@ -14,6 +14,31 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    @*alert cart*@
+    <div class="alert_cart">
+        Added to cart
+    </div>
+    <div class="alert_cart2">
+        Thank you for your purchase
+    </div>
+
+    <div class="alert_registration">
+        Registration successed!
+    </div>
+
+    <div class="alert_login">
+        Welcome!
+    </div>
+
+    <div class="alert_check_login">
+        Please login to add items!
+        <div>
+            <button class="cart_go_login">Go to Login</button>
+        </div>
+    </div>
+
+    @*alert cart*@
+
     <!--  Header  -->
     <div class="header">
         <div class="row header-title">
@@ -54,18 +79,18 @@
         </div>
         <div class="container_width">
             <div class="row link_grap">
-                <div class="col-6 link_col">
+                <div class="col-5 link_col" style="margin-left:45px">
                     <!-- Category link -->
                     <ul class="grap category_css">
-                        <li class="left_item"><a class="left_item_hover" href="SearchProduct?category=1">Flower basket</a> </li>
-                        <li class="left_item"><a class="left_item_hover" href="SearchProduct?category=2">Bouquet</a></li>
-                        <li class="left_item"><a class="left_item_hover" href="SearchProduct?category=3">Birthday</a> </li>
-                        <li class="left_item"><a class="left_item_hover" href="SearchProduct?category=4">Graduate</a></li>
+                        <li class="left_item"><a class="left_item_hover" href="//SearchProduct?category=1">Flower basket</a> </li>
+                        <li class="left_item"><a class="left_item_hover" href="/SearchProduct?category=2">Bouquet</a></li>
+                        <li class="left_item"><a class="left_item_hover" href="/SearchProduct?category=3">Birthday</a> </li>
+                        <li class="left_item"><a class="left_item_hover" href="/SearchProduct?category=4">Graduate</a></li>
                         <li class="left_item"><a class="left_item_hover bd_none" href="SearchProduct?category=5">Grand opening flower</a> </li>
                     </ul>
                 </div>
                 <!-- Category link -->
-                <div class="col-1 logo_flex" style="margin-left:-5px">
+                <div class="col-1 logo_flex" style="margin-left:25px">
                     <a href="HomePage"><img width="100%" src="~/Resources/img/home/logo_project.png" alt=""></a>
                 </div>
                 <!-- cart- -->
@@ -92,27 +117,32 @@
     @RenderBody()
     <!-- footer -->
     <div class="footer">
-        <div class="row">
-            <div class="col-lg-4 col-sm-6 boxz">
-                <iframe style="width:100%; height:100%; border-radius:5px ;padding:0px 60px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.7295561235915!2d105.84769451473096!3d21.003475286012016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad58455db2ab%3A0x9b3550bc22fd8bb!2zNTQgUC4gTMOqIFRoYW5oIE5naOG7iywgQsOhY2ggS2hvYSwgSGFpIELDoCBUcsawbmcsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1651162056247!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-
+        <div class="row" class="text-center" style="padding:30px 50px 10px 250px">
             <div class="col-lg-2 col-sm-3 boxz">
-                <div class="footer-one-title">Florist RESOURCES</div>
+                <div class="footer-one-title">
+                    Contact Us
+                </div>
                 <ul class="">
-                    <li class="footer-item"><a href="Florist_values">Florist Values</a></li>
-                    <li class="footer-item"><a href="Marketing">Thoughtful Marketing Movement</a></li>
-                    <li class="footer-item"><a href="About_us">About us</a></li>
-                    <li class="footer-item"><a href="#">Privacy Policy</a></li>
+                    <li class="footer-item"><a style="color:white;" href="https://www.facebook.com/tatsu.michio.5"><i class="fa-brands fa-facebook me-2"></i>Facebook</a></li>
+                    <li class="footer-item"><a style="color:white;" href="https://www.facebook.com/tatsu.michio.5"><i class="fa-brands fa-facebook-messenger me-2"></i>Messenger</a></li>
+                    <li class="footer-item"><a style="color:white;" href="https://www.facebook.com/tatsu.michio.5"><i class="fa-brands fa-instagram me-2"></i>Instagram</a></li>
                 </ul>
             </div>
 
             <div class="col-lg-2 col-sm-3 boxz">
-                <div class="footer-one-title">CHAT ONLINE</div>
+                <div class="footer-one-title">About Us</div>
                 <ul class="">
-                    <li class="footer-item"><a style="color:white;" href="https://www.facebook.com/tatsu.michio.5"><i class="fa-brands fa-facebook"></i>Facebook</a></li>
-                    <li class="footer-item"><a style="color:white;" href="https://www.facebook.com/VuLongDzai"><i class="fa-brands fa-facebook-messenger"></i>Messenger</a></li>
-                    <li class="footer-item"><a style="color:white;" href="https://www.facebook.com/profile.php?id=100036256956949"><i class="fa-brands fa-instagram"></i>Instagram</a></li>
+                    <li class="footer-item"><a href="/Florist_values">Florist Values</a></li>
+                    <li class="footer-item"><a href="/Marketing">Thoughtful Marketing Movement</a></li>
+                    <li class="footer-item"><a href="/About_us">About us</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-2 col-sm-3 boxz">
+                <div class="footer-one-title">Services</div>
+                <ul class="">
+                    <li class="footer-item"><a href=""></a>Terms & conditions</li>
+                    <li class="footer-item"><a href=""></a>Privacy Policy</li>
                 </ul>
             </div>
 
@@ -128,28 +158,41 @@
     </div>
     <!-- footer -->
     <!-- Css login -->
-    <div class="modall  @((ViewBag.checklogin != null) ? "display_block": "")" id="modal">
+    <div class="modall  @((ViewBag.checklogin != null) ? "display_block": "") @((ViewBag.checkRegistration != null) ? "display_block": "")" id="modal">
     </div>
-    <div class="modal__body modal__body-registration ">
+    <div class="modal__body modal__body-registration  @((ViewBag.checkRegistration != null) ? "display_block": "")">
         <div class="modal__inner">
-            <form action="" method="GET" class="form">
+            <form action="RegistrationPage" method="post" id="form_registration" class="form">
                 <div class="modal__inner-heard">
                     <div class="modal__inner-heard-register">Registration</div>
                     <label for="name" class="modal__inner-heard-login">Login</label>
                 </div>
+                <div id="message_error"> @((ViewBag.checkRegistration != null) ? "Phone number exists" : "")</div>
                 <div class="modal__inner-content">
                     <div class="modal__inner-content-model">
-                        <input type="number" class="modal__inner-content-input" name="phone" placeholder='Please enter phone number ....'>
-                        <input type="text" class="modal__inner-content-input" name="first_name" placeholder='First Name ...'>
-                        <input type="text" class="modal__inner-content-input" name="last_name" placeholder='Last Name ...'>
-                        <input type="password" class="modal__inner-content-input" name="password" placeholder='Please enter password ....'>
-                    </div>
-                    <div class="rules">
-                        By registering , you agree to <a href="#" class="rules-content">Terms of Service</a> & <a href="#" class="rules-content">Privacy Policy</a>
-                    </div>
-                    <div class="btn-location">
-                        <label for="name" class="btn btn--hover">Back</label>
-                        <div class="btn btn--register btn-login">Registration</div>
+                        <div class="grap_email">
+                            <input type="number" rules="min:10" class="modal__inner-content-input" name="phone" placeholder='Please enter phone number ....' />
+                            <span style="color: red" class="message"></span>
+                        </div>
+                        <div class="grap_email">
+                            <input type="text" rules="" class="modal__inner-content-input" name="first_name" placeholder='First Name ...' />
+                            <span style="color: red" class="message"></span>
+                        </div>
+                        <div class="grap_email">
+                            <input type="text" rules="" class="modal__inner-content-input" name="last_name" placeholder='Last Name ...' />
+                            <span style="color: red" class="message"></span>
+                        </div>
+                        <div class="grap_email">
+                            <input type="password" rules="" class="modal__inner-content-input" name="password" placeholder='Please enter password ....' />
+                            <span style="color: red" class="message"></span>
+                        </div>
+                        <div class="rules">
+                            By registering , you agree to <a href="#" class="rules-content">Terms of Service</a> & <a href="#" class="rules-content">Privacy Policy</a>
+                        </div>
+                        <div class="btn-location grap_button">
+                            <label for="name" class="btn btn--hover">Back</label>
+                            <button type="submit" class="btn btn--register btn-login">Registration</button>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -157,7 +200,7 @@
     </div>
     <div class="modal__body modal__body-login  @((ViewBag.checklogin != null) ? "display_block": "")">
         <div class="modal__inner">
-            <form action="CheckLogin" method="post">
+            <form id="login_form" action="CheckLogin" method="post">
                 <div class="form2">
                     <div class="modal__inner-heard">
                         <div class="modal__inner-heard-register">Login</div>
@@ -166,12 +209,16 @@
                     <div id="message_error"> @((ViewBag.checklogin != null) ? "Wrong username or password" : "")</div>
                     <div class="modal__inner-content">
                         <div class="modal__inner-content-model">
-                            <input type="number" id="login-email" name="login_phone" class="modal__inner-content-input" placeholder='Email của bạn'>
-                            <span class="regex login-email-span"></span>
-                            <input type="password" id="login-password" name="login_password" class="modal__inner-content-input" placeholder='Password của bạn'>
-                            <span class="regex login-password-span"></span>
+                            <div class="grap_email">
+                                <input type="number" rules="" id="login-email" name="login_phone" class="modal__inner-content-input" placeholder='Phone ....'>
+                                <span style="color: red" class="message"></span>
+                            </div>
+                            <div class="grap_email mt-2">
+                                <input type="password" rules="" id="login-password" name="login_password" class="modal__inner-content-input" placeholder='Password ....'>
+                                <span style="color: red" class="message"></span>
+                            </div>
                         </div>
-                        <div class="btn-location">
+                        <div class="btn-location grap_button">
                             <label for="name2" class="btn btn--hover btn--hover-back ">Back</label>
                             <button type="submit" class="btn btn--register btn-registration">Login</button>
                         </div>
@@ -184,11 +231,40 @@
             @Scripts.Render("~/bundles/bootstrap")
             @RenderSection("scripts", required: false)*@
 </body>
-<script>
 
-</script>
 @Scripts.Render("~/Resources/js/login.js")
 @Scripts.Render("~/Resources/js/cart.js")
 @Scripts.Render("~/Resources/js/test.js")
+@Scripts.Render("~/Resources/js/vali.js")
+<script>
+</script>
+@if (ViewBag.registrationOk != null)
+{
+    <script>
+        showAlerRegistration();
+    </script>
+}
+
+@if (ViewBag.loginOk != null)
+{
+    <script>
+        showAlerLogin();
+    </script>
+}
+
+@if (ViewBag.notLogin != null)
+{
+    <script>
+        showAlertCartLogin()
+    </script>
+}
+@if (ViewBag.removeCart != null)
+{
+    <script>
+        localStorage.removeItem("cart");
+        show_cart_number();
+        showAlertCart2()
+    </script>
+}
 
 </html>

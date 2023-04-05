@@ -1,5 +1,10 @@
 ﻿.row_header {
 	background-color: #0b86c9;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 84%;
 }
 
 .nav_sidebar {

@@ -15,13 +15,14 @@ namespace Florist_Client.Controllers
         // GET: View_cart
         public ActionResult Index()
         {
-            api_product.WebService webService = new api_product.WebService();
-            DataSet dataSet = new DataSet();
-            int cusID = 0;
             if (Request.Cookies["customerID"] != null)
             {
+                api_product.WebService webService = new api_product.WebService();
+            DataSet dataSet = new DataSet();
+            int cusID = 0;
+            
                 cusID = int.Parse(Request.Cookies["customerID"].Value);
-            }
+           
             dataSet = webService.GetAllMessage(cusID);
             List<Messages> listMessage = new List<Messages>();
             foreach (DataRow item in dataSet.Tables[0].Rows)
@@ -35,6 +36,13 @@ namespace Florist_Client.Controllers
             }
             ViewBag.listMessage = listMessage;
             return View();
+            }
+            else
+            {
+                Session["notLogin"] = "true";
+                return RedirectToAction("index", "homepage");
+
+            }
         }
     }
 }
