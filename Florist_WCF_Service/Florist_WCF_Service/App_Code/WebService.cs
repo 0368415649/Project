@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web.Services;
 
+
 /// <summary>
 /// Summary description for WebService
 /// </summary>
@@ -260,6 +261,42 @@ public class WebService : System.Web.Services.WebService
         return ds;
     }
 
+    [WebMethod]
+    public DataSet GetAllProducts()
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string queryCategory = "";
+        string sql = "SELECT Product.Product_id, Product.Product_name, Product.Description," +
+            " Product.Image, Product.Price, Product.Discount,Product.Category_id, Category.Category_name," +
+            " Product.Supplier_id, Supplier.Supplier_name, Product.Update_by, Account.User_name, Product.Sold," +
+            " Product.Inventory, Product.Update_at FROM     Product" +
+            " LEFT OUTER JOIN    Category ON Product.Category_id = Category.Category_id" +
+            " LEFT OUTER JOIN  Account ON Product.Update_by = Account.Account_id LEFT OUTER JOIN  Supplier ON Product.Supplier_id = Supplier.Supplier_id  ";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds;
+    }
+
+    [WebMethod]
+    public DataSet GetAllProductsID(string ID)
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string queryCategory = "";
+        string sql = "SELECT Product.Product_id, Product.Product_name, Product.Description," +
+            " Product.Image, Product.Price, Product.Discount,Product.Category_id, Category.Category_name," +
+            " Product.Supplier_id, Supplier.Supplier_name, Product.Update_by, Account.User_name, Product.Sold," +
+            " Product.Inventory, Product.Update_at FROM     Product" +
+            " LEFT OUTER JOIN    Category ON Product.Category_id = Category.Category_id" +
+            " LEFT OUTER JOIN  Account ON Product.Update_by = Account.Account_id LEFT OUTER JOIN  Supplier ON Product.Supplier_id = Supplier.Supplier_id  " +
+            " Where  Product.Product_id  = N'" + ID + "'";
+
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds;
+    }
+
     //3. Api get All Product by category
     [WebMethod]
     public DataSet GetProductByCategory(int categoryID)
@@ -297,7 +334,131 @@ public class WebService : System.Web.Services.WebService
         return ds;
     }
 
+    [WebMethod]
+    public int checkExitsProduct(string productID)
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT COUNT(*) as count FROM  Product " +
+            " Where  Product.Product_id = '" + productID + "'";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return int.Parse(ds.Tables[0].Rows[0]["count"].ToString());
+    }
+    [WebMethod]
+    public int updateProductByID(string Product_id, string Product_name, string Description, string Image,
+        float Price, float Discount, int Category_id, int Supplier_id, int Update_by, int Inventory, int Sold)
+    {
+        try
+        {
+            SqlConnection cnn = new SqlConnection(connstr);
+            string sql = "UPDATE [FloristDB].[dbo].[Product] SET " +
+                " Product_name = N'" + Product_name + "', " +
+                " Description = N'" + Description + "', " +
+                " Image = N'" + Image + "', " +
+                " Price = " + Price + "," +
+                " Discount = " + Discount + "," +
+                " Category_id = " + Category_id + "," +
+                " Supplier_id = " + Supplier_id + "," +
+                " Update_by = " + Update_by + "," +
+                " Sold = " + Sold + "," +
+                " Inventory = " + Inventory + "," +
+                " Update_at = GETDATE() " +
+                " WHERE Product.Product_id = '" + Product_id + "'";
 
+            if (cnn.State == ConnectionState.Closed)
+            {
+                cnn.Open();
+            }
+            SqlCommand cmd = cnn.CreateCommand();
+            cmd.Connection = cnn;
+            cmd.CommandText = sql.ToString();
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            return 1;
+        }
+        catch (System.Exception)
+        {
+
+            return 0;
+            throw;
+        }
+        return 0;
+
+    }
+
+    [WebMethod]
+    public int deleteProductsByID(string id)
+    {
+        try
+        {
+            SqlConnection cnn = new SqlConnection(connstr);
+            StringBuilder sql = new StringBuilder();
+            sql.Append(" DELETE FROM [Product] ");
+            sql.Append(" WHERE  Product_id  =  '" + id + "'");
+
+            if (cnn.State == ConnectionState.Closed)
+            {
+                cnn.Open();
+            }
+            SqlCommand cmd = cnn.CreateCommand();
+            cmd.Connection = cnn;
+            cmd.CommandText = sql.ToString();
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            return 1;
+        }
+        catch (System.Exception)
+        {
+            return 0;
+            throw;
+        }
+        return 0;
+
+    }
+
+    [WebMethod]
+    public int insertGetProductByID(string Product_id, string Product_name, string Description, string Image,
+        float Price, float Discount, int Category_id, int Supplier_id, int Update_by, int Inventory)
+    {
+        try
+        {
+            SqlConnection cnn = new SqlConnection(connstr);
+            string sql = "INSERT INTO Product (Product_id , Product_name , [Description] ,[Image] ,Price " +
+                " ,Discount ,Category_id ,Supplier_id ,Update_by ,Sold ,Inventory ,Update_at) " +
+                " VALUES( N'" + Product_id + "', " +
+                " N'" + Product_name + "', " +
+                " N'" + Description + "', " +
+                " N'" + Image + "', " +
+                " N'" + Price + "', " +
+                " N'" + Discount + "', " +
+                Category_id  + ", " +
+                Supplier_id + ", " +
+                Update_by + ", " +
+                 0 + ", " +
+                Inventory + ", " 
+                + "GETDATE()" + ")";
+
+            if (cnn.State == ConnectionState.Closed)
+            {
+                cnn.Open();
+            }
+            SqlCommand cmd = cnn.CreateCommand();
+            cmd.Connection = cnn;
+            cmd.CommandText = sql.ToString();
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            return 1;
+        }
+        catch (System.Exception)
+        {
+
+            return 0;
+            throw;
+        }
+        return 0;
+
+    }
 
     //1. Api get All Product by search, page, sort 
     [WebMethod]
@@ -710,6 +871,27 @@ public class WebService : System.Web.Services.WebService
         adapter.Fill(ds);
         return ds;
     }
+    [WebMethod]
+    public DataSet GetOrderByID(int ID)
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = " SELECT [Order].Order_id, [Order].Status, [Order].Shipper_id, Account.Employee_name,  "
+                  + " [Order].Flower_recipient_id,  Flower_recipient.Name, Flower_recipient.Address,  "
+                  + " Flower_recipient.Phone ,  [Order].Create_at, [Order].Create_by,  " +
+                  " CONCAT(Customer.First_name, ' ', Customer.Last_name) as fullname,   "
+                  + " [Order].Message_id,Message.Message_content,  [Order].Received_date,  "
+                  + " [Order].Received_time, [Order].Total  FROM[FloristDB].[dbo].[Order]   "
+                  + " LEFT Join[FloristDB].[dbo].[Customer] on[Customer].Customer_id = [Order].Create_by "
+                  + " LEFT Join[FloristDB].[dbo].[Account] on [Account].Account_id = [Order].Shipper_id "
+                  + " LEFT Join[FloristDB].[dbo].[Flower_recipient] on [Flower_recipient].Flower_recipient_id = [Order].Flower_recipient_id "
+                  + " LEFT Join[FloristDB].[dbo].[Message] on [Message].Message_id = [Order].Message_id " +
+                  " Where [Order].Received_date IS NOT NULL AND [Order].Order_id = " + ID + 
+                  " ORDER BY Received_date DESC ";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds;
+    }
 
     [WebMethod]
     public int insertOrder(int customerID, int Flower_recipient_id, float Total, int Message_id, string Received_date, string Received_time)
@@ -773,6 +955,21 @@ public class WebService : System.Web.Services.WebService
                   + " Inner Join[FloristDB].[dbo].[Order] on [Order].Order_id = [Order_detail].Order_id " +
                   " Inner Join[FloristDB].[dbo].[Product] on [Product].Product_id = [Order_detail].Product_id " +
                   " WHERE Order_detail.Order_id =  " + orderID;
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds;
+    }
+
+    [WebMethod]
+    public DataSet GetOrderDetailByDetailsID(int orderDetailsID)
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = " SELECT Order_detail.Order_detail_id, Order_detail.Quantity, Order_detail.Price, Order_detail.Discount,Product.Product_id,Order_detail.Order_id, Product.Product_name "
+                  + " FROM[FloristDB].[dbo].[Order_detail] "
+                  + " Inner Join[FloristDB].[dbo].[Order] on [Order].Order_id = [Order_detail].Order_id " +
+                  " Inner Join[FloristDB].[dbo].[Product] on [Product].Product_id = [Order_detail].Product_id " +
+                  " WHERE Order_detail.Order_detail_id =  " + orderDetailsID;
         SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
         DataSet ds = new DataSet();
         adapter.Fill(ds);
@@ -1280,9 +1477,92 @@ public class WebService : System.Web.Services.WebService
 
     //------------------API For Evalute Table -----------------------
 
-    //------------------API For Evalute Table -----------------------
+    //------------------API For Customer Table -----------------------
 
-    //------------------API For Evalute Table -----------------------
+
+    [WebMethod]
+    public DataSet GetAllCustomer()
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT Customer.*   FROM  [FloristDB].[dbo].[Customer] ";
+
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds;
+    }
+
+    [WebMethod]
+    public DataSet GetCustomerByID(int id)
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = " SELECT * FROM  [FloristDB].[dbo].[Customer]  WHERE Customer_id = " + id;
+
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds;
+    }
+
+
+    [WebMethod]
+    public int insertCustomer(string FirstName, string LastName, string Phone, string Password)
+    {
+        try
+        {
+            SqlConnection cnn = new SqlConnection(connstr);
+            cnn.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = cnn;
+            string sql = "INSERT INTO [FloristDB].[dbo].[Customer] (First_name, Last_name, Phone, Password, Address) VALUES (N'" + FirstName + "',N'" + LastName + "',N'" + Phone + "',N'" + Password + "')";
+            cmd.CommandText = sql;
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            return 1;
+        }
+        catch (Exception)
+        {
+            return 0;
+            throw;
+        }
+    }
+
+
+    [WebMethod]
+    public int deleteCustomer(int CustomerID)
+    {
+        try
+        {
+            SqlConnection cnn = new SqlConnection(connstr);
+            if (cnn.State == ConnectionState.Closed)
+            {
+                cnn.Open();
+            }
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = cnn;
+            string sql = "DELETE FROM [FloristDB].[dbo].[Customer] WHERE Customer_id = " + CustomerID;
+            cmd.CommandText = sql;
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            return (int)1;
+        }
+        catch (Exception)
+        {
+            return (int)0;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+    //------------------API For Customer Table -----------------------
 
 
 }

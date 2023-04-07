@@ -14,18 +14,18 @@
                 <span class="grap_profile_color_name_txt">Dinh Duy</span>
             </div>
             <div class="mt-3 grap_profile_nav">
-                <a href="Profile"><i class="fa-regular fa-user me-3"></i> <span>Tài khoản của tôi</span></a>
+                <a href="Profile"><i class="fa-regular fa-user me-3"></i> <span>My account</span></a>
                 <ul class="ul_profile mt-3">
                     <a href="/Profile" class="li_profile mt-2 @(ViewBag.profile != null ? "color_profile" : "")">
-                    <li>Hồ Sơ</li></a>
+                    <li>Profile</li></a>
                     <a href="/ProfileAddress" class="li_profile mt-2  @(ViewBag.profileAddress != null ? "color_profile" : "")">
-                    <li>Địa Chỉ</li></a>
+                    <li>Address</li></a>
                     <a href="/ProfilePassword" class="li_profile mt-2 @(ViewBag.profilePass != null ? "color_profile" : "")">
-                    <li>Đổi Mật Khẩu</li></a>
+                    <li>ChangePassword</li></a>
                 </ul>
             </div>
             <div class="mt-3 grap_profile_nav">
-                <a href="#"><i class="fa-solid fa-list-ul me-3"></i> <span>Đơn hàng</span></a>
+                <a href="#"><i class="fa-solid fa-list-ul me-3"></i> <span>Order</span></a>
             </div>
         </div>
         @RenderBody()

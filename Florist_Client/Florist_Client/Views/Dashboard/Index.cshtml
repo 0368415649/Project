@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<style>
+    .gral_all_total {
+        padding: 30px 15px;
+        border-radius: 4px;
+        color: white;
+        max-width: 180px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .bg_green {
+        background-color: #9abc32;
+    }
+
+    .bg_blue {
+        background-color: #6fb3e0;
+    }
+
+    .bg_red {
+        background-color: #d53f40;
+    }
+
+    .bg_or {
+        background-color: #e8b110;
+    }
+
+    .gral_information_title {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .p_11 {
+        padding: 5px 10px;
+    }
+
+    .gral_information {
+        width: 250px;
+        background-color: white;
+        border-radius: 4px;
+        margin-left : 70px !important;
+    }
+
+    .border_blur {
+        border: 1px solid rgb(0, 162, 255);
+    }
+
+    .border_or {
+        border: 1px solid #e8b110;
+    }
+
+    .gral_tttt {
+        padding: 50px 30px;
+        background-color: #ddd;
+        margin-top: 100px;  
+    }
+
+    .gral_all_total {
+        margin-left: 90px !important;
+    }
+</style>
+<div class="mt-4"></div>
+<div class="mb-4" style="color: #0986c9; margin-left: 24px; border-bottom: 5px solid #0986c9; padding-bottom: 10px; width: 150px;">
+    <i class="fa-solid fa-tower-cell"></i> Action To Day
+</div>
+<div class="d-flex mt-3">
+    <div class="d-flex gral_all_total bg_green ms-4">
+        <div class="me-3"><i class="fa-solid fa-tower-cell"></i></div>
+        <div class="gral_total">
+            <div class="total_title">Total</div>
+            <div class="total_number">8,913,113</div>
+        </div>
+    </div>
+    <div class="d-flex gral_all_total bg_blue ms-4">
+        <div class="me-3"><i class="fa-solid fa-cart-shopping"></i></div>
+        <div class="gral_total">
+            <div class="total_title">Total Order : <span>6</span></div>
+            <div class="total_number">Total Product : <span>5</span></div>
+        </div>
+    </div>
+    <div class="d-flex gral_all_total bg_red ms-4">
+        <div class="me-3">
+            <i class="fa-solid fa-rotate-left"></i>
+        </div>
+        <div class="gral_total">
+            <div class="total_title">Return order</div>
+            <div class="total_number">0</div>
+        </div>
+    </div>
+    <div class="d-flex gral_all_total bg_or ms-4">
+        <div class="me-3">
+            <i class="fa-solid fa-cloud"></i>
+        </div>
+        <div class="gral_total">
+            <div class="total_title">Web Order</div>
+            <div class="total_number">5</div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex mt-5 gral_tttt">
+    <div class="gral_information border_blur ms-5">
+        <div class="gral_information_title d-flex align-items-center">
+            <i class="fa-solid fa-tower-cell me-2"></i>
+            <div>Action</div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p_11">
+            <div class="p_to">Total</div>
+            <div class="p_to">8,913,113</div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p_11">
+            <div class="p_to">Total Order</div>
+            <div class="p_to"><span>5</span></div>
+        </div>
+        <div class="d-flex  justify-content-between align-items-center p_11">
+            <div class="p_to">Total Product</div>
+            <div class="p_to"><span>6</span></div>
+        </div>
+    </div>
+    <div class="gral_information border_blur border_or ms-5">
+        <div class="gral_information_title d-flex align-items-center">
+            <i class="fa-solid fa-tower-cell me-2"></i>
+            <div>Action</div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p_11">
+            <div class="p_to">Total</div>
+            <div class="p_to">8,913,113</div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p_11">
+            <div class="p_to">Total Order</div>
+            <div class="p_to"><span>5</span></div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p_11">
+            <div class="p_to">Total Product</div>
+            <div class="p_to"><span>6</span></div>
+        </div>
+    </div>
+
+    <div class="gral_information border_blur border_or ms-5">
+        <div class="gral_information_title d-flex align-items-center">
+            <i class="fa-solid fa-tower-cell me-2"></i>
+            <div>Action</div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p_11">
+            <div class="p_to">Total</div>
+            <div class="p_to">8,913,113</div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p_11">
+            <div class="p_to">Total Order</div>
+            <div class="p_to"><span>5</span></div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p_11">
+            <div class="p_to">Total Product</div>
+            <div class="p_to"><span>6</span></div>
+        </div>
+    </div>
+</div>

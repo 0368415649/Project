@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Florist_Client.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<style>
+    a {
+        text-decoration: none;
+    }
+</style>
+
+<h2>List Customer</h2>
+<div></div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Last_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birth_day)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.First_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Last_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birth_day)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Customer_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Customer_id })
+            </td>
+        </tr>
+    }
+
+</table>

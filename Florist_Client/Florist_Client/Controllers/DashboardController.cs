@@ -6,11 +6,12 @@ using System.Web.Mvc;
 
 namespace Florist_Client.Controllers
 {
-    public class About_usController : Controller
+    public class DashboardController : Controller
     {
-        // GET: About_us
+        // GET: Dashboard
         public ActionResult Index()
         {
+            ViewBag.Dashboard = "Dashboard";
             return View();
         }
     }

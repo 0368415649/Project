@@ -1,0 +1,101 @@
+﻿@model Florist_Client.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Recipient's name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            Receiver's address
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            Receiver's Phone
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShipperName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShipperName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Create_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Create_at)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Create_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Create_Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Received_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Received_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Received_time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Received_time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

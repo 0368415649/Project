@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,8 @@ namespace Florist_Client.Models
 {
     public class Products
     {
+        [Required]
+        [StringLength(6)]
         public string Product_id { get; set; }
         public string Product_name { get; set; }
         public string Description { get; set; }

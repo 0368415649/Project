@@ -1,0 +1,74 @@
+﻿@model Florist_Client.Models.OrderDetails
+
+@{
+    ViewBag.Title = "DetailsOrder";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>DetailsOrder</h2>
+
+<div>
+    <h4>OrderDetails</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Order_detail_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order_detail_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Order_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Discount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

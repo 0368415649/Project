@@ -13,6 +13,9 @@ namespace Florist_Client.Models
         public int Shipper_id { get; set; }
         public string ShipperName { get; set; }
         public int Flower_recipient_id { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
         public DateTime Create_at { get; set; }
         public int Create_by { get; set; }
         public string Create_Name { get; set; }

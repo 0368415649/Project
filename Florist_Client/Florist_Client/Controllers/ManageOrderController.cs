@@ -49,5 +49,48 @@ namespace Florist_Client.Controllers
             ViewBag.order = "order";
             return View(listOrder);
         }
+
+        public ActionResult DetailsOrder(int id)
+        {
+            DataSet dataSet = new DataSet();
+            api_product.WebService webService = new api_product.WebService();
+            dataSet = webService.GetOrderDetailByDetailsID((int)id);
+            OrderDetails orderDetails = new OrderDetails();
+            orderDetails.Order_detail_id = int.Parse(dataSet.Tables[0].Rows[0]["Order_detail_id"].ToString());
+            orderDetails.Product_id = dataSet.Tables[0].Rows[0]["Product_id"].ToString();
+            orderDetails.Product_Name = dataSet.Tables[0].Rows[0]["Product_Name"].ToString();
+            orderDetails.Order_id = int.Parse(dataSet.Tables[0].Rows[0]["Order_id"].ToString());
+            orderDetails.Quantity = int.Parse(dataSet.Tables[0].Rows[0]["Quantity"].ToString());
+            orderDetails.Price = float.Parse(dataSet.Tables[0].Rows[0]["Price"].ToString());
+            orderDetails.Discount = float.Parse(dataSet.Tables[0].Rows[0]["Discount"].ToString());
+
+            return View(orderDetails);
+        }
+
+        public ActionResult Details(int id)
+        {
+            DataSet dataSet = new DataSet();
+            api_product.WebService webService = new api_product.WebService();
+            dataSet = webService.GetOrderByID((int)id);
+            Order order = new Order();
+            order.Order_id = int.Parse(dataSet.Tables[0].Rows[0]["Order_id"].ToString());
+            order.Status = dataSet.Tables[0].Rows[0]["Status"].ToString();
+            order.Shipper_id = dataSet.Tables[0].Rows[0]["Shipper_id"].ToString() != "" ? int.Parse(dataSet.Tables[0].Rows[0]["Shipper_id"].ToString()) : 0;
+            order.ShipperName = dataSet.Tables[0].Rows[0]["Shipper_id"].ToString() != "" ? dataSet.Tables[0].Rows[0]["Employee_name"].ToString() : "No one";
+            order.Flower_recipient_id = int.Parse(dataSet.Tables[0].Rows[0]["Flower_recipient_id"].ToString());
+            order.Name = dataSet.Tables[0].Rows[0]["Name"].ToString();
+            order.Address = dataSet.Tables[0].Rows[0]["Address"].ToString();
+            order.Phone = dataSet.Tables[0].Rows[0]["Phone"].ToString();
+            order.Create_at = DateTime.Parse(dataSet.Tables[0].Rows[0]["Create_at"].ToString());
+            order.Create_by = int.Parse(dataSet.Tables[0].Rows[0]["Create_by"].ToString());
+            order.Create_Name = dataSet.Tables[0].Rows[0]["fullname"].ToString();
+            order.Message_id = int.Parse(dataSet.Tables[0].Rows[0]["Message_id"].ToString());
+            order.Content = dataSet.Tables[0].Rows[0]["Message_content"].ToString();
+            order.Received_date = DateTime.Parse(dataSet.Tables[0].Rows[0]["Received_date"].ToString());
+            order.Received_time = dataSet.Tables[0].Rows[0]["Received_time"].ToString();
+            order.Total = float.Parse(dataSet.Tables[0].Rows[0]["Total"].ToString());
+
+            return View(order);
+        }
     }
 }

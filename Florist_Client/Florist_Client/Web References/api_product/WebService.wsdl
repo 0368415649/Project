@@ -193,6 +193,44 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAllProducts">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllProductsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllProductsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllProductsID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllProductsIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllProductsIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetProductByCategory">
         <s:complexType>
           <s:sequence>
@@ -232,6 +270,81 @@
                 </s:sequence>
               </s:complexType>
             </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkExitsProduct">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="productID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkExitsProductResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="checkExitsProductResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateProductByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Product_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Product_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Image" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="Discount" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="Category_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Supplier_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Update_by" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Inventory" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Sold" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateProductByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateProductByIDResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteProductsByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteProductsByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="deleteProductsByIDResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertGetProductByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Product_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Product_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Image" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="Discount" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="Category_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Supplier_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Update_by" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Inventory" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertGetProductByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="insertGetProductByIDResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -615,6 +728,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetOrderByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOrderByIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="insertOrder">
         <s:complexType>
           <s:sequence>
@@ -655,6 +789,27 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="GetOrderDetailByIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderDetailByDetailsID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="orderDetailsID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderDetailByDetailsIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOrderDetailByDetailsIDResult">
               <s:complexType>
                 <s:sequence>
                   <s:element ref="s:schema" />
@@ -1045,6 +1200,75 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAllCustomer">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCustomerResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerByIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="insertCustomerResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="deleteCustomerResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetAllMessageSoapIn">
@@ -1113,6 +1337,18 @@
   <wsdl:message name="GetAllProductSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllProductResponse" />
   </wsdl:message>
+  <wsdl:message name="GetAllProductsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllProducts" />
+  </wsdl:message>
+  <wsdl:message name="GetAllProductsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllProductsIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllProductsID" />
+  </wsdl:message>
+  <wsdl:message name="GetAllProductsIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllProductsIDResponse" />
+  </wsdl:message>
   <wsdl:message name="GetProductByCategorySoapIn">
     <wsdl:part name="parameters" element="tns:GetProductByCategory" />
   </wsdl:message>
@@ -1124,6 +1360,30 @@
   </wsdl:message>
   <wsdl:message name="GetProductByIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetProductByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkExitsProductSoapIn">
+    <wsdl:part name="parameters" element="tns:checkExitsProduct" />
+  </wsdl:message>
+  <wsdl:message name="checkExitsProductSoapOut">
+    <wsdl:part name="parameters" element="tns:checkExitsProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateProductByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:updateProductByID" />
+  </wsdl:message>
+  <wsdl:message name="updateProductByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:updateProductByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteProductsByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteProductsByID" />
+  </wsdl:message>
+  <wsdl:message name="deleteProductsByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteProductsByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertGetProductByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:insertGetProductByID" />
+  </wsdl:message>
+  <wsdl:message name="insertGetProductByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:insertGetProductByIDResponse" />
   </wsdl:message>
   <wsdl:message name="GetCategoryNameSoapIn">
     <wsdl:part name="parameters" element="tns:GetCategoryName" />
@@ -1257,6 +1517,12 @@
   <wsdl:message name="GetAllOrderSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllOrderResponse" />
   </wsdl:message>
+  <wsdl:message name="GetOrderByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOrderByID" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOrderByIDResponse" />
+  </wsdl:message>
   <wsdl:message name="insertOrderSoapIn">
     <wsdl:part name="parameters" element="tns:insertOrder" />
   </wsdl:message>
@@ -1274,6 +1540,12 @@
   </wsdl:message>
   <wsdl:message name="GetOrderDetailByIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetOrderDetailByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderDetailByDetailsIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOrderDetailByDetailsID" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderDetailByDetailsIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOrderDetailByDetailsIDResponse" />
   </wsdl:message>
   <wsdl:message name="insertOrderDetailsSoapIn">
     <wsdl:part name="parameters" element="tns:insertOrderDetails" />
@@ -1407,6 +1679,30 @@
   <wsdl:message name="DeleteEvaluteSoapOut">
     <wsdl:part name="parameters" element="tns:DeleteEvaluteResponse" />
   </wsdl:message>
+  <wsdl:message name="GetAllCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCustomer" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerByID" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:insertCustomer" />
+  </wsdl:message>
+  <wsdl:message name="insertCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:insertCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteCustomer" />
+  </wsdl:message>
+  <wsdl:message name="deleteCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteCustomerResponse" />
+  </wsdl:message>
   <wsdl:portType name="WebServiceSoap">
     <wsdl:operation name="GetAllMessage">
       <wsdl:input message="tns:GetAllMessageSoapIn" />
@@ -1452,6 +1748,14 @@
       <wsdl:input message="tns:GetAllProductSoapIn" />
       <wsdl:output message="tns:GetAllProductSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllProducts">
+      <wsdl:input message="tns:GetAllProductsSoapIn" />
+      <wsdl:output message="tns:GetAllProductsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProductsID">
+      <wsdl:input message="tns:GetAllProductsIDSoapIn" />
+      <wsdl:output message="tns:GetAllProductsIDSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetProductByCategory">
       <wsdl:input message="tns:GetProductByCategorySoapIn" />
       <wsdl:output message="tns:GetProductByCategorySoapOut" />
@@ -1459,6 +1763,22 @@
     <wsdl:operation name="GetProductByID">
       <wsdl:input message="tns:GetProductByIDSoapIn" />
       <wsdl:output message="tns:GetProductByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkExitsProduct">
+      <wsdl:input message="tns:checkExitsProductSoapIn" />
+      <wsdl:output message="tns:checkExitsProductSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateProductByID">
+      <wsdl:input message="tns:updateProductByIDSoapIn" />
+      <wsdl:output message="tns:updateProductByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteProductsByID">
+      <wsdl:input message="tns:deleteProductsByIDSoapIn" />
+      <wsdl:output message="tns:deleteProductsByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertGetProductByID">
+      <wsdl:input message="tns:insertGetProductByIDSoapIn" />
+      <wsdl:output message="tns:insertGetProductByIDSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetCategoryName">
       <wsdl:input message="tns:GetCategoryNameSoapIn" />
@@ -1548,6 +1868,10 @@
       <wsdl:input message="tns:GetAllOrderSoapIn" />
       <wsdl:output message="tns:GetAllOrderSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetOrderByID">
+      <wsdl:input message="tns:GetOrderByIDSoapIn" />
+      <wsdl:output message="tns:GetOrderByIDSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="insertOrder">
       <wsdl:input message="tns:insertOrderSoapIn" />
       <wsdl:output message="tns:insertOrderSoapOut" />
@@ -1559,6 +1883,10 @@
     <wsdl:operation name="GetOrderDetailByID">
       <wsdl:input message="tns:GetOrderDetailByIDSoapIn" />
       <wsdl:output message="tns:GetOrderDetailByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderDetailByDetailsID">
+      <wsdl:input message="tns:GetOrderDetailByDetailsIDSoapIn" />
+      <wsdl:output message="tns:GetOrderDetailByDetailsIDSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="insertOrderDetails">
       <wsdl:input message="tns:insertOrderDetailsSoapIn" />
@@ -1647,6 +1975,22 @@
     <wsdl:operation name="DeleteEvalute">
       <wsdl:input message="tns:DeleteEvaluteSoapIn" />
       <wsdl:output message="tns:DeleteEvaluteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomer">
+      <wsdl:input message="tns:GetAllCustomerSoapIn" />
+      <wsdl:output message="tns:GetAllCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerByID">
+      <wsdl:input message="tns:GetCustomerByIDSoapIn" />
+      <wsdl:output message="tns:GetCustomerByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertCustomer">
+      <wsdl:input message="tns:insertCustomerSoapIn" />
+      <wsdl:output message="tns:insertCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteCustomer">
+      <wsdl:input message="tns:deleteCustomerSoapIn" />
+      <wsdl:output message="tns:deleteCustomerSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
@@ -1750,6 +2094,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllProducts">
+      <soap:operation soapAction="http://tempuri.org/GetAllProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProductsID">
+      <soap:operation soapAction="http://tempuri.org/GetAllProductsID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetProductByCategory">
       <soap:operation soapAction="http://tempuri.org/GetProductByCategory" style="document" />
       <wsdl:input>
@@ -1761,6 +2123,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetProductByID">
       <soap:operation soapAction="http://tempuri.org/GetProductByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkExitsProduct">
+      <soap:operation soapAction="http://tempuri.org/checkExitsProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateProductByID">
+      <soap:operation soapAction="http://tempuri.org/updateProductByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteProductsByID">
+      <soap:operation soapAction="http://tempuri.org/deleteProductsByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertGetProductByID">
+      <soap:operation soapAction="http://tempuri.org/insertGetProductByID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1966,6 +2364,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetOrderByID">
+      <soap:operation soapAction="http://tempuri.org/GetOrderByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="insertOrder">
       <soap:operation soapAction="http://tempuri.org/insertOrder" style="document" />
       <wsdl:input>
@@ -1986,6 +2393,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetOrderDetailByID">
       <soap:operation soapAction="http://tempuri.org/GetOrderDetailByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderDetailByDetailsID">
+      <soap:operation soapAction="http://tempuri.org/GetOrderDetailByDetailsID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2191,6 +2607,42 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllCustomer">
+      <soap:operation soapAction="http://tempuri.org/GetAllCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerByID">
+      <soap:operation soapAction="http://tempuri.org/GetCustomerByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCustomer">
+      <soap:operation soapAction="http://tempuri.org/insertCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCustomer">
+      <soap:operation soapAction="http://tempuri.org/deleteCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -2293,6 +2745,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllProducts">
+      <soap12:operation soapAction="http://tempuri.org/GetAllProducts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProductsID">
+      <soap12:operation soapAction="http://tempuri.org/GetAllProductsID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetProductByCategory">
       <soap12:operation soapAction="http://tempuri.org/GetProductByCategory" style="document" />
       <wsdl:input>
@@ -2304,6 +2774,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetProductByID">
       <soap12:operation soapAction="http://tempuri.org/GetProductByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkExitsProduct">
+      <soap12:operation soapAction="http://tempuri.org/checkExitsProduct" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateProductByID">
+      <soap12:operation soapAction="http://tempuri.org/updateProductByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteProductsByID">
+      <soap12:operation soapAction="http://tempuri.org/deleteProductsByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertGetProductByID">
+      <soap12:operation soapAction="http://tempuri.org/insertGetProductByID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2509,6 +3015,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetOrderByID">
+      <soap12:operation soapAction="http://tempuri.org/GetOrderByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="insertOrder">
       <soap12:operation soapAction="http://tempuri.org/insertOrder" style="document" />
       <wsdl:input>
@@ -2529,6 +3044,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetOrderDetailByID">
       <soap12:operation soapAction="http://tempuri.org/GetOrderDetailByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderDetailByDetailsID">
+      <soap12:operation soapAction="http://tempuri.org/GetOrderDetailByDetailsID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2727,6 +3251,42 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteEvalute">
       <soap12:operation soapAction="http://tempuri.org/DeleteEvalute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomer">
+      <soap12:operation soapAction="http://tempuri.org/GetAllCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerByID">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomerByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCustomer">
+      <soap12:operation soapAction="http://tempuri.org/insertCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCustomer">
+      <soap12:operation soapAction="http://tempuri.org/deleteCustomer" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

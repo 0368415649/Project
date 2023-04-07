@@ -122,11 +122,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\About_usController.cs" />
     <Compile Include="Controllers\AdminPagesController.cs" />
     <Compile Include="Controllers\CheckLoginController.cs" />
     <Compile Include="Controllers\Check_OutController.cs" />
     <Compile Include="Controllers\CormfirmCalendarController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\ManageCustomerController.cs" />
+    <Compile Include="Controllers\ManageProductController.cs" />
     <Compile Include="Controllers\ManageAccountController.cs" />
     <Compile Include="Controllers\ManageMessageController.cs" />
     <Compile Include="Controllers\ManageCategoryController.cs" />
@@ -137,7 +139,6 @@
     <Compile Include="Controllers\ProfilePasswordController.cs" />
     <Compile Include="Controllers\DetailProductController.cs" />
     <Compile Include="Controllers\Florist_valuesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\LogoutPageController.cs" />
     <Compile Include="Controllers\MarketingController.cs" />
@@ -260,6 +261,17 @@
     <Content Include="Views\ManageEvalute\Index.cshtml" />
     <Content Include="Views\ManageEvalute\Delete.cshtml" />
     <Content Include="Views\ManageOrder\Index.cshtml" />
+    <Content Include="Views\ManageOrder\Details.cshtml" />
+    <Content Include="Views\ManageOrder\DetailsOrder.cshtml" />
+    <Content Include="Views\ManageProduct\Index.cshtml" />
+    <Content Include="Views\ManageProduct\Details.cshtml" />
+    <Content Include="Views\ManageProduct\Create.cshtml" />
+    <Content Include="Views\ManageCustomer\Index.cshtml" />
+    <Content Include="Views\ManageCustomer\Edit.cshtml" />
+    <Content Include="Views\ManageCustomer\Delete.cshtml" />
+    <Content Include="Views\ManageProduct\Edit.cshtml" />
+    <Content Include="Views\ManageProduct\Delete.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
     <None Include="Views\Shared\LayoutAdmin.cshtml" />
     <None Include="Web References\api_product\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>

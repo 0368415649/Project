@@ -13,7 +13,7 @@
     <div class="grap_s_title">@(ViewBag.category_title)</div>
     <div class="row">
         <div class="col-3 mt-4">
-            <div class="title_left_s">Bộ Sưu Tập</div>
+            <div class="title_left_s">Collection</div>
             <div class="narbar_grap "><a class="narbar_item @((ViewBag.categoryHover == 1) ? "narbar_item_hover" : "")" href="SearchProduct?category=1">Flower basket</a></div>
             <div class="narbar_grap"><a class="narbar_item @((ViewBag.categoryHover == 2) ? "narbar_item_hover" : "")" href="SearchProduct?category=2">Bouquet</a></div>
             <div class="narbar_grap"><a class="narbar_item @((ViewBag.categoryHover == 3) ? "narbar_item_hover" : "")" href="SearchProduct?category=3">Birthday</a></div>
@@ -27,14 +27,14 @@
             {
                 <div class="grap_serach row">
                     <div class="col-2 grap_price_hot">
-                        <a href="SearchProduct?sortName=sold&typeSort=DESC&searchName=@(ViewBag.searchName)">Ban chay</a>
+                        <a href="SearchProduct?sortName=sold&typeSort=DESC&searchName=@(ViewBag.searchName)">Selling</a>
                     </div>
                     <div class="col-8">
                         <div class="grap_price">
-                            <div class="grap_price_label"><span>Gia</span> <i class="fa-solid fa-chevron-down" style="color: #000000;"></i></div>
+                            <div class="grap_price_label"><span>Price</span> <i class="fa-solid fa-chevron-down" style="color: #000000;"></i></div>
                             <div class="chirld_grap">
-                                <div><a href="SearchProduct?sortName=Price&typeSort=DESC&searchName=@(ViewBag.searchName)">Gia: Cap den thap</a></div>
-                                <div><a href="SearchProduct?sortName=Price&typeSort=ASC&searchName=@(ViewBag.searchName)">Gia: Thap den cao</a></div>
+                                <div><a href="SearchProduct?sortName=Price&typeSort=DESC&searchName=@(ViewBag.searchName)">Price: high to low</a></div>
+                                <div><a href="SearchProduct?sortName=Price&typeSort=ASC&searchName=@(ViewBag.searchName)">Price: low to high</a></div>
                             </div>
                         </div>
                     </div>

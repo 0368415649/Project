@@ -30,10 +30,10 @@
         color: white;
     }
     .mt_59 {
-        margin-left: 59px;
     }
+    
     .bg_2 {
-        background: #dddddd;
+       border-bottom: #ddd;
     }
 </style
 ><h2>Lisst Order</h2>
@@ -67,38 +67,40 @@
                      <div class="gral_th_form w_100 bg_2">
                          @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
                          <div class="me-2 ms-2">|</div>
-                         @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                         @Html.ActionLink("Details", "Details", new { id=item.Order_id })
                      </div>
                  </div>
-                 <div class="min_more mt_59">
+                 <div class="min_more mt_59" style="padding:10px 5px 0px 5px">
+                     <h1>Details</h1>
                      <div class="d-flex">
-                         <div class="gral_th_form w_50 bg_green ">Id </div>
+                         <div class="gral_th_form w_100 bg_green ">Id </div>
+                         <div class="gral_th_form w_100 bg_green">Product ID</div>
                          <div class="gral_th_form w_100 bg_green">Product Name</div>
                          <div class="gral_th_form w_100 bg_green">Quantity</div>
-                         <div class="gral_th_form w_50 bg_green">Price</div>
+                         <div class="gral_th_form w_100 bg_green">Price</div>
                          <div class="gral_th_form w_100 bg_green">Discount</div>
                          <div class="gral_th_form w_100 bg_green"></div>
                      </div>
                  </div>
-                 @foreach (Florist_Client.Models.OrderDetails order in item.orderDetails)
-                 {
-                     <div class="min_more mt_59">
-                         <div class="d-flex">
-                             <div class="gral_th_form w_50 bg_2" >@(order.Order_detail_id) </div>
-                             <div class="gral_th_form w_100 bg_2">@(order.Product_Name)</div>
-                             <div class="gral_th_form w_100 bg_2">@(order.Quantity)</div>
-                             <div class="gral_th_form w_50 bg_2">@(order.Price)</div>
-                             <div class="gral_th_form w_100 bg_2">@(order.Discount)</div>
-                             <div class="gral_th_form w_100 bg_2">
-                                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
-                                 <div class="me-2 ms-2">|</div>
-                                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                     @foreach (Florist_Client.Models.OrderDetails order in item.orderDetails)
+                     {
+                         <div class="min_more mt_59" style="padding: 0px 5px 0px 5px">
+                             <div class="d-flex">
+                                 <div class="gral_th_form w_100 bg_2">@(order.Order_detail_id) </div>
+                                 <div class="gral_th_form w_100 bg_2">@(order.Product_id)</div>
+                                 <div class="gral_th_form w_100 bg_2">@(order.Product_Name)</div>
+                                 <div class="gral_th_form w_100 bg_2">@(order.Quantity)</div>
+                                 <div class="gral_th_form w_100 bg_2">@(order.Price)</div>
+                                 <div class="gral_th_form w_100 bg_2">@(order.Discount)</div>
+                                 <div class="gral_th_form w_100 bg_2">
+                                     @Html.ActionLink("Details", "DetailsOrder", new { id = order.Order_detail_id })
+                                 </div>
                              </div>
                          </div>
-                     </div>
-                 }
-
-             </div>
+                         
+                     }
+                    <div class="mt-2"></div>
+                 </div>
          }
 
 </table>

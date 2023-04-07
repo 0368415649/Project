@@ -42,18 +42,6 @@ namespace Florist_Client.Controllers
                 Response.Cookies.Add(customerName);
                 Response.Cookies.Add(customerGroupID);
                 dataSet = webService.getListUrl(int.Parse(dataSet.Tables[0].Rows[0]["Group_id"].ToString()));
-                /*List<BaseUrl> baseUrls = new List<BaseUrl>();
-                foreach (DataRow item in dataSet.Tables[0].Rows)
-                {
-                    BaseUrl baseUrl = new BaseUrl();
-                    baseUrl.BaseUrlName = item["Base_url"].ToString();
-                    baseUrls.Add(baseUrl);
-                }
-
-                HttpCookie customerGroupID = new HttpCookie("Group_id");
-                customerGroupID.Value = baseUrls.ToString();
-                customerGroupID.Expires = DateTime.MaxValue;*/
-
                 return RedirectToAction("Index", "ManageOrder");
             }
             else

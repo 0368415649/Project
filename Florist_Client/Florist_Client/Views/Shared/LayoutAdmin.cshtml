@@ -23,24 +23,20 @@
         <div class="col-12 row_header row">
             <div class="text-center header_title col-10 mt-3">Florist Manage</div>
             <div class="header_content col-2">
-                xin chao <span>Admin</span>
+                Hello <span>@(Request.Cookies["EmployeeName"].Value)</span>
             </div>
         </div>
 
         <div class="col-3 sidebar_wrap">
             <ul class="nav_sidebar">
-                <a href="" class="nav_link">
-                <li class="sidebar_icon"><i class="fa-solid fa-gauge me-3"></i>Thống kê</li></a>
+                <a href="/Dashboard" class="nav_link">
+                <li class="sidebar_icon @(ViewBag.Dashboard != null ? "chang_color_admin" : "")"><i class="fa-solid fa-gauge me-3"></i>Dashboard</li></a>
                 <a href="/ManageOrder" class="nav_link">
-                <li class="sidebar_icon side_item3 @(ViewBag.Order != null ? "chang_color_admin" : "")"><i class="fa-solid fa-cart-shopping me-3"></i>Đơn hàng</li></a>
-                <a href="" class="nav_link">
-                <li class="sidebar_icon side_item3"><i class="fa-brands fa-product-hunt me-3"></i>Sản phẩm</li></a>
-                <a href="" class="nav_link">
-                <li class="sidebar_icon side_item3"><i class="fa-solid fa-user me-3"></i>Khách hàng</li></a>
-                <a href="" class="nav_link">
-                <li class="sidebar_icon side_item3"><i class="fa-solid fa-store me-3"></i>Doanh Số</li></a>
-                <a href="" class="nav_link">
-                <li class="sidebar_icon side_item3"><i class="fa-solid fa-wrench me-3"></i>Thiết lập</li></a>
+                <li class="sidebar_icon side_item3 @(ViewBag.Order != null ? "chang_color_admin" : "")"><i class="fa-solid fa-cart-shopping me-3"></i>Order Manage</li></a>
+                <a href="/ManageProduct" class="nav_link">
+                <li class="sidebar_icon side_item3 @(ViewBag.product != null ? "chang_color_admin" : "")"><i class="fa-brands fa-product-hunt me-3"></i>Product Manage</li></a>
+                <a href="/ManageCustomer" class="nav_link">
+                <li class="sidebar_icon side_item3 @(ViewBag.customer != null ? "chang_color_admin" : "")"><i class="fa-solid fa-user me-3"></i>Customer Manage</li></a>
                 <a href="/ManageEvalute" class="nav_link">
                 <li class="sidebar_icon side_item3 @(ViewBag.Evalute != null ? "chang_color_admin" : "")"><i class="fa-regular fa-rectangle-list me-3"></i></i>Evalute Manage</li></a>
                 <a href="/ManageCategory" class="nav_link">
@@ -51,10 +47,14 @@
                 <li class="sidebar_icon side_item3 @(ViewBag.messageAdmin != null ? "chang_color_admin" : "")"><i class="fa-regular fa-envelope me-3"></i>Message Manage</li></a>
                 <a href="/ManageAccount" class="nav_link">
                 <li class="sidebar_icon side_item3 @(ViewBag.account != null ? "chang_color_admin" : "")"><i class="fa-solid fa-universal-access me-3"></i>Account Manage</li></a>
+                <a href="" class="nav_link">
+                <li class="sidebar_icon side_item3"><i class="fa-solid fa-store me-3"></i>Sales Manage</li></a>
+                <a href="" class="nav_link">
+                <li class="sidebar_icon side_item3"><i class="fa-solid fa-wrench me-3"></i>Setting</li></a>
             </ul>
         </div>
         <div class="col-3"></div>
-        <div class="col-9" style="padding: 30px 50px">
+        <div class="col-9" style="padding: 30px 50px; margin-top: 50px;">
             @RenderBody()
         </div>
     </div>
