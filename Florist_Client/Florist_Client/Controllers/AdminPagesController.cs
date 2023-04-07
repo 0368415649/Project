@@ -42,7 +42,7 @@ namespace Florist_Client.Controllers
                 Response.Cookies.Add(customerName);
                 Response.Cookies.Add(customerGroupID);
                 dataSet = webService.getListUrl(int.Parse(dataSet.Tables[0].Rows[0]["Group_id"].ToString()));
-                return RedirectToAction("Index", "ManageOrder");
+                return RedirectToAction("Index", "Dashboard");
             }
             else
             {

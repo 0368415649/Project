@@ -26,7 +26,10 @@ namespace Florist_Client.Controllers
                 Evalute.Evalute_id = int.Parse(item["Evalute_id"].ToString());
                 Evalute.Evalute_content = item["Evalute_content"].ToString();
                 Evalute.Rate = int.Parse(item["Rate"].ToString());
-                Evalute.Create_at = DateTime.Parse(item["Create_at"].ToString());
+                if(item["Create_at"].ToString() != "")
+                {
+                    Evalute.Create_at = DateTime.Parse(item["Create_at"].ToString());
+                }
                 Evalute.Customer_Name = item["First_name"].ToString() + " " + item["Last_name"].ToString();
                 Evalute.Product_name = item["Product_name"].ToString();
                 listEvalute.Add(Evalute);

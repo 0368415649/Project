@@ -894,6 +894,28 @@ public class WebService : System.Web.Services.WebService
     }
 
     [WebMethod]
+    public DataSet GetOrderPeddingByCustomer(int customerID)
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = " SELECT [Order].Order_id, [Order].Status, [Order].Shipper_id, Account.Employee_name,  "
+                  + " [Order].Flower_recipient_id,  Flower_recipient.Name, Flower_recipient.Address,  "
+                  + " Flower_recipient.Phone ,  [Order].Create_at, [Order].Create_by,  " +
+                  " CONCAT(Customer.First_name, ' ', Customer.Last_name) as fullname,   "
+                  + " [Order].Message_id,Message.Message_content,  [Order].Received_date,  "
+                  + " [Order].Received_time, [Order].Total  FROM[FloristDB].[dbo].[Order]   "
+                  + " LEFT Join[FloristDB].[dbo].[Customer] on[Customer].Customer_id = [Order].Create_by "
+                  + " LEFT Join[FloristDB].[dbo].[Account] on [Account].Account_id = [Order].Shipper_id "
+                  + " LEFT Join[FloristDB].[dbo].[Flower_recipient] on [Flower_recipient].Flower_recipient_id = [Order].Flower_recipient_id "
+                  + " LEFT Join[FloristDB].[dbo].[Message] on [Message].Message_id = [Order].Message_id " +
+                  " Where [Order].Received_date IS NOT NULL AND [Order].Status = 'Pending' AND  [Order].Create_by = N'" + customerID + "'" +
+                  " ORDER BY Received_date DESC ";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds;
+    }
+
+    [WebMethod]
     public int insertOrder(int customerID, int Flower_recipient_id, float Total, int Message_id, string Received_date, string Received_time)
     {
         try
@@ -950,7 +972,8 @@ public class WebService : System.Web.Services.WebService
     public DataSet GetOrderDetailByID(int orderID)
     {
         SqlConnection cnn = new SqlConnection(connstr);
-        string sql = " SELECT Order_detail.Order_detail_id, Order_detail.Quantity, Order_detail.Price, Order_detail.Discount,Product.Product_id,Order_detail.Order_id, Product.Product_name "
+        string sql = " SELECT Order_detail.Order_detail_id, Order_detail.Quantity, Order_detail.Price, Order_detail.Discount,Product.Product_id,Order_detail.Order_id," +
+                     "  Product.Product_name , Product.Image "
                   + " FROM[FloristDB].[dbo].[Order_detail] "
                   + " Inner Join[FloristDB].[dbo].[Order] on [Order].Order_id = [Order_detail].Order_id " +
                   " Inner Join[FloristDB].[dbo].[Product] on [Product].Product_id = [Order_detail].Product_id " +
@@ -1552,17 +1575,173 @@ public class WebService : System.Web.Services.WebService
         }
     }
 
+    //-----------------------------------------API For Statistical -----------------------------
 
 
+    //1. Api Inventory
+
+    [WebMethod]
+    public string Inventory()
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT SUM(Inventory) as Total_inventory FROM [Product]";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds.Tables[0].Rows[0]["Total_inventory"].ToString();
+    }
+
+    // 2. API The number of products is about to be out of stock
+    [WebMethod]
+    public string Alarm()
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT Count(Product_id) as Alarm_product FROM  [Product]  WHERE ([Product].Inventory - [Product].Sold) <= 10";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds.Tables[0].Rows[0]["Alarm_product"].ToString();
+    }
+
+    //3. API The number of products exceeds the norm
+    [WebMethod]
+    public string ExceedTheNorm()
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT Count(Product_id) as Exceed FROM  [Product]  WHERE ([Product].Sold > [Product].Inventory)";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds.Tables[0].Rows[0]["Exceed"].ToString();
+    }
+
+    //4 Api Count Product
+    [WebMethod]
+    public string CountProduct()
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT   COUNT(Product_id) as Count_product FROM  [Product] ";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds.Tables[0].Rows[0]["Count_product"].ToString();
+    }
+
+    //5.  Api Count Supplier
+    [WebMethod]
+    public string CountSupplier()
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT   COUNT(Supplier_id) as Count_supplier FROM  [Supplier] ";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds.Tables[0].Rows[0]["Count_supplier"].ToString();
+    }
+
+    //6. Api product No selling price yet
+    [WebMethod]
+    public string ProductNoSellingPriceYet()
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT   COUNT(Product_id) as No_selling_price_yet FROM  [Product] WHERE Price = NULL ";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds.Tables[0].Rows[0]["No_selling_price_yet"].ToString();
+    }
+
+    //7. Api product unclassified
+    [WebMethod]
+    public string ProductUnclassified()
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT   COUNT(Product_id) as Unclassified FROM  [Product] WHERE Category_id = NULL ";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds.Tables[0].Rows[0]["Unclassified"].ToString();
+    }
+
+    //8. Api Products not yet discounted
+    [WebMethod]
+    public string ProductsNotYetDiscounted()
+    {
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT   COUNT(Product_id) as Not_yet_discounted FROM  [Product] WHERE Discount = NULL ";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds.Tables[0].Rows[0]["Not_yet_discounted"].ToString();
+    }
+
+    //9. Api Order Number in day(temp)
+    [WebMethod]
+    public string OrderNumber()
+    {
+        DateTime CurrentDate = DateTime.Now;
+        int day = CurrentDate.Day;
+        string dayString = day > 9 ? day.ToString() : '0' + day.ToString();
+        int month = CurrentDate.Month;
+        string monthString = month > 9 ? month.ToString() : '0' + month.ToString();
+        int year = CurrentDate.Year;
+        string Get_day = year.ToString() + '-' + monthString + '-' + dayString;
+        string Start_time = Get_day + " 00:00:00.000";
+        string End_time = Get_day + " 23:59:59.000";
+
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT   COUNT(Order_id) as Order_count FROM  [Order] WHERE Create_at >'" + Start_time + "' AND  Create_at <'" + End_time + "'";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds.Tables[0].Rows[0]["Order_count"].ToString();
+    }
+
+    //10. Api Product Number in day (temp)
+    [WebMethod]
+    public string ProductNumber()
+    {
+        DateTime CurrentDate = DateTime.Now;
+        int day = CurrentDate.Day;
+        string dayString = day > 9 ? day.ToString() : '0' + day.ToString();
+        int month = CurrentDate.Month;
+        string monthString = month > 9 ? month.ToString() : '0' + month.ToString();
+        int year = CurrentDate.Year;
+        string Get_day = year.ToString() + '-' + monthString + '-' + dayString;
+        string Start_time = Get_day + " 00:00:00.000";
+        string End_time = Get_day + " 23:59:59.000";
+
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT COUNT([Order_detail].Product_id) as Product_number FROM [Order_detail] INNER JOIN [Order] ON [Order_detail].Order_id = [Order].Order_id WHERE  [Order].Create_at >'" + Start_time + "' AND  [Order].Create_at <'" + End_time + "'";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds.Tables[0].Rows[0]["Product_number"].ToString();
+    }
+
+    //11 API Money Sell in day
+    [WebMethod]
+    public string MoneySell()
+    {
+        DateTime CurrentDate = DateTime.Now;
+        int day = CurrentDate.Day;
+        string dayString = day > 9 ? day.ToString() : '0' + day.ToString();
+        int month = CurrentDate.Month;
+        string monthString = month > 9 ? month.ToString() : '0' + month.ToString();
+        int year = CurrentDate.Year;
+        string Get_day = year.ToString() + '-' + monthString + '-' + dayString;
+        string Start_time = Get_day + " 00:00:00.000";
+        string End_time = Get_day + " 23:59:59.000";
+
+        SqlConnection cnn = new SqlConnection(connstr);
+        string sql = "SELECT SUM([Order].Total) as Money_sell FROM [Order] WHERE [Order].Create_at >'" + Start_time + "' AND  [Order].Create_at <'" + End_time + "'";
+        SqlDataAdapter adapter = new SqlDataAdapter(sql, cnn);
+        DataSet ds = new DataSet();
+        adapter.Fill(ds);
+        return ds.Tables[0].Rows[0]["Money_sell"].ToString();
+    }
 
 
-
-
-
-
-
-
-    //------------------API For Customer Table -----------------------
 
 
 }

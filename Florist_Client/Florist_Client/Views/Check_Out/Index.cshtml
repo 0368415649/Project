@@ -17,7 +17,9 @@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        <img src="~/Resources/img/home/logo_project.png" height="60px;" alt="">
+        <a href="/HomePage">
+            <img src="~/Resources/img/home/logo_project.png" height="60px;" alt="">
+        </a>
         <div class="d-flex mt-3">
             <div class="ml-3 color_pink_half">Cart <i class="fa-solid fa-angle-right ms-2 color_usui"></i></div>
             <div class="ml-3 ms-3">Information <i class="fa-solid fa-angle-right ms-2 color_usui"></i></div>

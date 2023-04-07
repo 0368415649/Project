@@ -72,15 +72,15 @@
     <div class="d-flex gral_all_total bg_green ms-4">
         <div class="me-3"><i class="fa-solid fa-tower-cell"></i></div>
         <div class="gral_total">
-            <div class="total_title">Total</div>
-            <div class="total_number">8,913,113</div>
+            <div class="total_title">Sales money</div>
+            <div class="total_number">@(ViewBag.totalPrice)</div>
         </div>
     </div>
     <div class="d-flex gral_all_total bg_blue ms-4">
         <div class="me-3"><i class="fa-solid fa-cart-shopping"></i></div>
         <div class="gral_total">
-            <div class="total_title">Total Order : <span>6</span></div>
-            <div class="total_number">Total Product : <span>5</span></div>
+            <div class="total_title">Total Order : <span>@(ViewBag.OrderNumber)</span></div>
+            <div class="total_number">Total Product : <span>@(ViewBag.ProductNumber)</span></div>
         </div>
     </div>
     <div class="d-flex gral_all_total bg_red ms-4">
@@ -98,7 +98,7 @@
         </div>
         <div class="gral_total">
             <div class="total_title">Web Order</div>
-            <div class="total_number">5</div>
+            <div class="total_number">0</div>
         </div>
     </div>
 </div>
@@ -107,37 +107,45 @@
     <div class="gral_information border_blur ms-5">
         <div class="gral_information_title d-flex align-items-center">
             <i class="fa-solid fa-tower-cell me-2"></i>
-            <div>Action</div>
+            <div>Activities</div>
         </div>
         <div class="d-flex justify-content-between align-items-center p_11">
-            <div class="p_to">Total</div>
-            <div class="p_to">8,913,113</div>
+            <div class="p_to">Sales money</div>
+            <div class="p_to">@(ViewBag.totalPrice)</div>
         </div>
         <div class="d-flex justify-content-between align-items-center p_11">
             <div class="p_to">Total Order</div>
-            <div class="p_to"><span>5</span></div>
+            <div class="p_to"><span>@(ViewBag.OrderNumber)</span></div>
         </div>
         <div class="d-flex  justify-content-between align-items-center p_11">
             <div class="p_to">Total Product</div>
-            <div class="p_to"><span>6</span></div>
+            <div class="p_to"><span>@(ViewBag.ProductNumber)</span></div>
+        </div>
+        <div class="d-flex  justify-content-between align-items-center p_11">
+            <div class="p_to">Return goods</div>
+            <div class="p_to"><span>0</span></div>
         </div>
     </div>
     <div class="gral_information border_blur border_or ms-5">
         <div class="gral_information_title d-flex align-items-center">
             <i class="fa-solid fa-tower-cell me-2"></i>
-            <div>Action</div>
+            <div>Warehouse information</div>
         </div>
         <div class="d-flex justify-content-between align-items-center p_11">
-            <div class="p_to">Total</div>
-            <div class="p_to">8,913,113</div>
+            <div class="p_to">Invantory</div>
+            <div class="p_to">@(ViewBag.Invantory)</div>
         </div>
         <div class="d-flex justify-content-between align-items-center p_11">
-            <div class="p_to">Total Order</div>
-            <div class="p_to"><span>5</span></div>
+            <div class="p_to">Out of stock</div>
+            <div class="p_to"><span>@(ViewBag.Alarm)</span></div>
         </div>
         <div class="d-flex justify-content-between align-items-center p_11">
-            <div class="p_to">Total Product</div>
-            <div class="p_to"><span>6</span></div>
+            <div class="p_to">Out of stock alarm</div>
+            <div class="p_to"><span>@(ViewBag.Alarm)</span></div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p_11">
+            <div class="p_to">Exceeded the norm</div>
+            <div class="p_to"><span>@(ViewBag.ExceedTheNorm)</span></div>
         </div>
     </div>
 
@@ -147,16 +155,20 @@
             <div>Action</div>
         </div>
         <div class="d-flex justify-content-between align-items-center p_11">
-            <div class="p_to">Total</div>
-            <div class="p_to">8,913,113</div>
+            <div class="p_to">Product/Suplier</div>
+            <div class="p_to">@(ViewBag.CountProduct)/@(ViewBag.CountSupplier)</div>
         </div>
         <div class="d-flex justify-content-between align-items-center p_11">
-            <div class="p_to">Total Order</div>
-            <div class="p_to"><span>5</span></div>
+            <div class="p_to">No selling price yet</div>
+            <div class="p_to"><span>@(ViewBag.ProductNoSellingPriceYet)</span></div>
         </div>
         <div class="d-flex justify-content-between align-items-center p_11">
-            <div class="p_to">Total Product</div>
-            <div class="p_to"><span>6</span></div>
+            <div class="p_to">Unsorted goods</div>
+            <div class="p_to"><span>@(ViewBag.ProductUnclassified)</span></div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p_11">
+            <div class="p_to">Item not discounted</div>
+            <div class="p_to"><span>@(ViewBag.ProductsNotYetDiscounted)</span></div>
         </div>
     </div>
 </div>

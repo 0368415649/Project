@@ -749,6 +749,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetOrderPeddingByCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="customerID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderPeddingByCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOrderPeddingByCustomerResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="insertOrder">
         <s:complexType>
           <s:sequence>
@@ -1269,6 +1290,116 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="Inventory">
+        <s:complexType />
+      </s:element>
+      <s:element name="InventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InventoryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Alarm">
+        <s:complexType />
+      </s:element>
+      <s:element name="AlarmResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AlarmResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExceedTheNorm">
+        <s:complexType />
+      </s:element>
+      <s:element name="ExceedTheNormResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExceedTheNormResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CountProduct">
+        <s:complexType />
+      </s:element>
+      <s:element name="CountProductResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CountProductResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CountSupplier">
+        <s:complexType />
+      </s:element>
+      <s:element name="CountSupplierResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CountSupplierResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProductNoSellingPriceYet">
+        <s:complexType />
+      </s:element>
+      <s:element name="ProductNoSellingPriceYetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProductNoSellingPriceYetResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProductUnclassified">
+        <s:complexType />
+      </s:element>
+      <s:element name="ProductUnclassifiedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProductUnclassifiedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProductsNotYetDiscounted">
+        <s:complexType />
+      </s:element>
+      <s:element name="ProductsNotYetDiscountedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProductsNotYetDiscountedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OrderNumber">
+        <s:complexType />
+      </s:element>
+      <s:element name="OrderNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderNumberResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProductNumber">
+        <s:complexType />
+      </s:element>
+      <s:element name="ProductNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProductNumberResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoneySell">
+        <s:complexType />
+      </s:element>
+      <s:element name="MoneySellResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MoneySellResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetAllMessageSoapIn">
@@ -1523,6 +1654,12 @@
   <wsdl:message name="GetOrderByIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetOrderByIDResponse" />
   </wsdl:message>
+  <wsdl:message name="GetOrderPeddingByCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOrderPeddingByCustomer" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderPeddingByCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOrderPeddingByCustomerResponse" />
+  </wsdl:message>
   <wsdl:message name="insertOrderSoapIn">
     <wsdl:part name="parameters" element="tns:insertOrder" />
   </wsdl:message>
@@ -1703,6 +1840,72 @@
   <wsdl:message name="deleteCustomerSoapOut">
     <wsdl:part name="parameters" element="tns:deleteCustomerResponse" />
   </wsdl:message>
+  <wsdl:message name="InventorySoapIn">
+    <wsdl:part name="parameters" element="tns:Inventory" />
+  </wsdl:message>
+  <wsdl:message name="InventorySoapOut">
+    <wsdl:part name="parameters" element="tns:InventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="AlarmSoapIn">
+    <wsdl:part name="parameters" element="tns:Alarm" />
+  </wsdl:message>
+  <wsdl:message name="AlarmSoapOut">
+    <wsdl:part name="parameters" element="tns:AlarmResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExceedTheNormSoapIn">
+    <wsdl:part name="parameters" element="tns:ExceedTheNorm" />
+  </wsdl:message>
+  <wsdl:message name="ExceedTheNormSoapOut">
+    <wsdl:part name="parameters" element="tns:ExceedTheNormResponse" />
+  </wsdl:message>
+  <wsdl:message name="CountProductSoapIn">
+    <wsdl:part name="parameters" element="tns:CountProduct" />
+  </wsdl:message>
+  <wsdl:message name="CountProductSoapOut">
+    <wsdl:part name="parameters" element="tns:CountProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="CountSupplierSoapIn">
+    <wsdl:part name="parameters" element="tns:CountSupplier" />
+  </wsdl:message>
+  <wsdl:message name="CountSupplierSoapOut">
+    <wsdl:part name="parameters" element="tns:CountSupplierResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProductNoSellingPriceYetSoapIn">
+    <wsdl:part name="parameters" element="tns:ProductNoSellingPriceYet" />
+  </wsdl:message>
+  <wsdl:message name="ProductNoSellingPriceYetSoapOut">
+    <wsdl:part name="parameters" element="tns:ProductNoSellingPriceYetResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProductUnclassifiedSoapIn">
+    <wsdl:part name="parameters" element="tns:ProductUnclassified" />
+  </wsdl:message>
+  <wsdl:message name="ProductUnclassifiedSoapOut">
+    <wsdl:part name="parameters" element="tns:ProductUnclassifiedResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProductsNotYetDiscountedSoapIn">
+    <wsdl:part name="parameters" element="tns:ProductsNotYetDiscounted" />
+  </wsdl:message>
+  <wsdl:message name="ProductsNotYetDiscountedSoapOut">
+    <wsdl:part name="parameters" element="tns:ProductsNotYetDiscountedResponse" />
+  </wsdl:message>
+  <wsdl:message name="OrderNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:OrderNumber" />
+  </wsdl:message>
+  <wsdl:message name="OrderNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:OrderNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProductNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:ProductNumber" />
+  </wsdl:message>
+  <wsdl:message name="ProductNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:ProductNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="MoneySellSoapIn">
+    <wsdl:part name="parameters" element="tns:MoneySell" />
+  </wsdl:message>
+  <wsdl:message name="MoneySellSoapOut">
+    <wsdl:part name="parameters" element="tns:MoneySellResponse" />
+  </wsdl:message>
   <wsdl:portType name="WebServiceSoap">
     <wsdl:operation name="GetAllMessage">
       <wsdl:input message="tns:GetAllMessageSoapIn" />
@@ -1872,6 +2075,10 @@
       <wsdl:input message="tns:GetOrderByIDSoapIn" />
       <wsdl:output message="tns:GetOrderByIDSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetOrderPeddingByCustomer">
+      <wsdl:input message="tns:GetOrderPeddingByCustomerSoapIn" />
+      <wsdl:output message="tns:GetOrderPeddingByCustomerSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="insertOrder">
       <wsdl:input message="tns:insertOrderSoapIn" />
       <wsdl:output message="tns:insertOrderSoapOut" />
@@ -1991,6 +2198,50 @@
     <wsdl:operation name="deleteCustomer">
       <wsdl:input message="tns:deleteCustomerSoapIn" />
       <wsdl:output message="tns:deleteCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Inventory">
+      <wsdl:input message="tns:InventorySoapIn" />
+      <wsdl:output message="tns:InventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Alarm">
+      <wsdl:input message="tns:AlarmSoapIn" />
+      <wsdl:output message="tns:AlarmSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExceedTheNorm">
+      <wsdl:input message="tns:ExceedTheNormSoapIn" />
+      <wsdl:output message="tns:ExceedTheNormSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CountProduct">
+      <wsdl:input message="tns:CountProductSoapIn" />
+      <wsdl:output message="tns:CountProductSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CountSupplier">
+      <wsdl:input message="tns:CountSupplierSoapIn" />
+      <wsdl:output message="tns:CountSupplierSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductNoSellingPriceYet">
+      <wsdl:input message="tns:ProductNoSellingPriceYetSoapIn" />
+      <wsdl:output message="tns:ProductNoSellingPriceYetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductUnclassified">
+      <wsdl:input message="tns:ProductUnclassifiedSoapIn" />
+      <wsdl:output message="tns:ProductUnclassifiedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductsNotYetDiscounted">
+      <wsdl:input message="tns:ProductsNotYetDiscountedSoapIn" />
+      <wsdl:output message="tns:ProductsNotYetDiscountedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderNumber">
+      <wsdl:input message="tns:OrderNumberSoapIn" />
+      <wsdl:output message="tns:OrderNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductNumber">
+      <wsdl:input message="tns:ProductNumberSoapIn" />
+      <wsdl:output message="tns:ProductNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoneySell">
+      <wsdl:input message="tns:MoneySellSoapIn" />
+      <wsdl:output message="tns:MoneySellSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
@@ -2373,6 +2624,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetOrderPeddingByCustomer">
+      <soap:operation soapAction="http://tempuri.org/GetOrderPeddingByCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="insertOrder">
       <soap:operation soapAction="http://tempuri.org/insertOrder" style="document" />
       <wsdl:input>
@@ -2636,6 +2896,105 @@
     </wsdl:operation>
     <wsdl:operation name="deleteCustomer">
       <soap:operation soapAction="http://tempuri.org/deleteCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Inventory">
+      <soap:operation soapAction="http://tempuri.org/Inventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Alarm">
+      <soap:operation soapAction="http://tempuri.org/Alarm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExceedTheNorm">
+      <soap:operation soapAction="http://tempuri.org/ExceedTheNorm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CountProduct">
+      <soap:operation soapAction="http://tempuri.org/CountProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CountSupplier">
+      <soap:operation soapAction="http://tempuri.org/CountSupplier" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductNoSellingPriceYet">
+      <soap:operation soapAction="http://tempuri.org/ProductNoSellingPriceYet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductUnclassified">
+      <soap:operation soapAction="http://tempuri.org/ProductUnclassified" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductsNotYetDiscounted">
+      <soap:operation soapAction="http://tempuri.org/ProductsNotYetDiscounted" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderNumber">
+      <soap:operation soapAction="http://tempuri.org/OrderNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductNumber">
+      <soap:operation soapAction="http://tempuri.org/ProductNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoneySell">
+      <soap:operation soapAction="http://tempuri.org/MoneySell" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3024,6 +3383,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetOrderPeddingByCustomer">
+      <soap12:operation soapAction="http://tempuri.org/GetOrderPeddingByCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="insertOrder">
       <soap12:operation soapAction="http://tempuri.org/insertOrder" style="document" />
       <wsdl:input>
@@ -3287,6 +3655,105 @@
     </wsdl:operation>
     <wsdl:operation name="deleteCustomer">
       <soap12:operation soapAction="http://tempuri.org/deleteCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Inventory">
+      <soap12:operation soapAction="http://tempuri.org/Inventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Alarm">
+      <soap12:operation soapAction="http://tempuri.org/Alarm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExceedTheNorm">
+      <soap12:operation soapAction="http://tempuri.org/ExceedTheNorm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CountProduct">
+      <soap12:operation soapAction="http://tempuri.org/CountProduct" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CountSupplier">
+      <soap12:operation soapAction="http://tempuri.org/CountSupplier" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductNoSellingPriceYet">
+      <soap12:operation soapAction="http://tempuri.org/ProductNoSellingPriceYet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductUnclassified">
+      <soap12:operation soapAction="http://tempuri.org/ProductUnclassified" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductsNotYetDiscounted">
+      <soap12:operation soapAction="http://tempuri.org/ProductsNotYetDiscounted" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderNumber">
+      <soap12:operation soapAction="http://tempuri.org/OrderNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductNumber">
+      <soap12:operation soapAction="http://tempuri.org/ProductNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoneySell">
+      <soap12:operation soapAction="http://tempuri.org/MoneySell" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

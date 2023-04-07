@@ -1,0 +1,116 @@
+﻿@model IEnumerable<Florist_Client.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutCommomProfile.cshtml";
+}
+
+<style>
+    .gral_tttt {
+        padding: 10px;
+        background-color: #f5f5f5;
+    }
+
+    .main_info {
+        font-size: 13px;
+    }
+
+    .order_item {
+        background-color: #ffffff;
+    }
+
+    .order_item_image {
+        width: 70%;
+        height: auto;
+    }
+
+    .order_item_content {
+        line-height: 5px;
+        margin-left: -10px;
+    }
+
+    .order_item_price {
+        padding-top: 40px;
+    }
+
+    .gral_total {
+        padding: 10px 15px;
+        background-color: #FAEDCD;
+        margin-bottom: 20px;
+    }
+
+    .total_order {
+        padding-left: 80%;
+    }
+
+    .icon_total_order {
+        font-size: 18px;
+    }
+
+    .h_40 {
+        height: 40px;
+    }
+</style>
+<div class="col-9 grap_profile_color_image_2">
+
+    @foreach (var item in Model)
+    {
+        <div class="status_delivery w-100">
+            <div class="gral_tttt">
+                <div class="d-flex justify-content-between main_info">
+                    <div>
+                        <span class="bg-danger p-1 text-light">Favourite+</span> <strong>FLORIST'S SHOP</strong>
+                        <span class="bg-danger p-1 text-light ms-3"><i class="fas fa-comment-alt"></i> Chat</span>
+                    </div>
+                    <div class="text-muted">
+                        <i class="fas fa-car-side"></i>
+                        <span class="me-3">The order has arrived at the FedEx warehouse</span>
+                        <i class="far fa-question-circle"></i> <span class="text-danger">DELIVERING</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="order">
+                    @foreach (Florist_Client.Models.OrderDetails order in item.orderDetails)
+                    {
+                        <div class="order_item">
+                            <div class="row ">
+                                <div class="col-2">
+
+                                    <img class="order_item_image" width="100px" height="" src="~/Resources/img/product/@(order.Image).png" alt="flower">
+                                </div>
+                                <div class="col-8">
+                                    <div class="order_item_content">
+                                        <h5 class="">@(order.Product_Name)</h5>
+                                        <p class="">x@(order.Quantity)</p>
+                                    </div>
+                                </div>
+                                <div class="col-2 text-danger text-center order_item_price">
+                                    $@(order.Price)
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    }
+                </div>
+            </div>
+            <div class="mt-1 gral_total">
+                <div class="total_order">
+                    <i class="fas fa-file-invoice-dollar text-danger bg-white icon_total_order me-1"></i> Total: <span class="text-danger ms-1" style="font-size:18px;">$(@item.Total)</span>
+                </div>
+                <div class="row pt-2">
+                    <div class="col-8 text-muted" style="font-size: 13px;">
+                        <p>Please only press: "Received" when the order has been delivered to you and the product received without problems.</p>
+                    </div>
+                    <div class="col-4 text-center">
+                        <button class="border p-2" style="background-color: #eeeeee;color:gray;">Received</button>
+                        <button class="border bg-gray  p-2">Contact Seller</button>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-2"></div>
+            </div>
+          
+        </div>
+    }
+  </div>

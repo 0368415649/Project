@@ -23,7 +23,7 @@
         <div class="col-12 row_header row">
             <div class="text-center header_title col-10 mt-3">Florist Manage</div>
             <div class="header_content col-2">
-                Hello <span>@(Request.Cookies["EmployeeName"].Value)</span>
+                Hello <span>@(Request.Cookies["EmployeeName"] != null ? Request.Cookies["EmployeeName"].Value : "" )</span>
             </div>
         </div>
 

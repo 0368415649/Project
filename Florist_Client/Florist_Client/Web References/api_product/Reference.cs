@@ -114,6 +114,8 @@ namespace Florist_Client.api_product {
         
         private System.Threading.SendOrPostCallback GetOrderByIDOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetOrderPeddingByCustomerOperationCompleted;
+        
         private System.Threading.SendOrPostCallback insertOrderOperationCompleted;
         
         private System.Threading.SendOrPostCallback getOrderMaxOperationCompleted;
@@ -173,6 +175,28 @@ namespace Florist_Client.api_product {
         private System.Threading.SendOrPostCallback insertCustomerOperationCompleted;
         
         private System.Threading.SendOrPostCallback deleteCustomerOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback InventoryOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AlarmOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ExceedTheNormOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CountProductOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CountSupplierOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ProductNoSellingPriceYetOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ProductUnclassifiedOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ProductsNotYetDiscountedOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback OrderNumberOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ProductNumberOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback MoneySellOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -339,6 +363,9 @@ namespace Florist_Client.api_product {
         public event GetOrderByIDCompletedEventHandler GetOrderByIDCompleted;
         
         /// <remarks/>
+        public event GetOrderPeddingByCustomerCompletedEventHandler GetOrderPeddingByCustomerCompleted;
+        
+        /// <remarks/>
         public event insertOrderCompletedEventHandler insertOrderCompleted;
         
         /// <remarks/>
@@ -427,6 +454,39 @@ namespace Florist_Client.api_product {
         
         /// <remarks/>
         public event deleteCustomerCompletedEventHandler deleteCustomerCompleted;
+        
+        /// <remarks/>
+        public event InventoryCompletedEventHandler InventoryCompleted;
+        
+        /// <remarks/>
+        public event AlarmCompletedEventHandler AlarmCompleted;
+        
+        /// <remarks/>
+        public event ExceedTheNormCompletedEventHandler ExceedTheNormCompleted;
+        
+        /// <remarks/>
+        public event CountProductCompletedEventHandler CountProductCompleted;
+        
+        /// <remarks/>
+        public event CountSupplierCompletedEventHandler CountSupplierCompleted;
+        
+        /// <remarks/>
+        public event ProductNoSellingPriceYetCompletedEventHandler ProductNoSellingPriceYetCompleted;
+        
+        /// <remarks/>
+        public event ProductUnclassifiedCompletedEventHandler ProductUnclassifiedCompleted;
+        
+        /// <remarks/>
+        public event ProductsNotYetDiscountedCompletedEventHandler ProductsNotYetDiscountedCompleted;
+        
+        /// <remarks/>
+        public event OrderNumberCompletedEventHandler OrderNumberCompleted;
+        
+        /// <remarks/>
+        public event ProductNumberCompletedEventHandler ProductNumberCompleted;
+        
+        /// <remarks/>
+        public event MoneySellCompletedEventHandler MoneySellCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllMessage", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1735,6 +1795,35 @@ namespace Florist_Client.api_product {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetOrderPeddingByCustomer", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet GetOrderPeddingByCustomer(int customerID) {
+            object[] results = this.Invoke("GetOrderPeddingByCustomer", new object[] {
+                        customerID});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetOrderPeddingByCustomerAsync(int customerID) {
+            this.GetOrderPeddingByCustomerAsync(customerID, null);
+        }
+        
+        /// <remarks/>
+        public void GetOrderPeddingByCustomerAsync(int customerID, object userState) {
+            if ((this.GetOrderPeddingByCustomerOperationCompleted == null)) {
+                this.GetOrderPeddingByCustomerOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetOrderPeddingByCustomerOperationCompleted);
+            }
+            this.InvokeAsync("GetOrderPeddingByCustomer", new object[] {
+                        customerID}, this.GetOrderPeddingByCustomerOperationCompleted, userState);
+        }
+        
+        private void OnGetOrderPeddingByCustomerOperationCompleted(object arg) {
+            if ((this.GetOrderPeddingByCustomerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetOrderPeddingByCustomerCompleted(this, new GetOrderPeddingByCustomerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/insertOrder", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public int insertOrder(int customerID, int Flower_recipient_id, float Total, int Message_id, string Received_date, string Received_time) {
             object[] results = this.Invoke("insertOrder", new object[] {
@@ -2655,6 +2744,303 @@ namespace Florist_Client.api_product {
             if ((this.deleteCustomerCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.deleteCustomerCompleted(this, new deleteCustomerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Inventory", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string Inventory() {
+            object[] results = this.Invoke("Inventory", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InventoryAsync() {
+            this.InventoryAsync(null);
+        }
+        
+        /// <remarks/>
+        public void InventoryAsync(object userState) {
+            if ((this.InventoryOperationCompleted == null)) {
+                this.InventoryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInventoryOperationCompleted);
+            }
+            this.InvokeAsync("Inventory", new object[0], this.InventoryOperationCompleted, userState);
+        }
+        
+        private void OnInventoryOperationCompleted(object arg) {
+            if ((this.InventoryCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InventoryCompleted(this, new InventoryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Alarm", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string Alarm() {
+            object[] results = this.Invoke("Alarm", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AlarmAsync() {
+            this.AlarmAsync(null);
+        }
+        
+        /// <remarks/>
+        public void AlarmAsync(object userState) {
+            if ((this.AlarmOperationCompleted == null)) {
+                this.AlarmOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAlarmOperationCompleted);
+            }
+            this.InvokeAsync("Alarm", new object[0], this.AlarmOperationCompleted, userState);
+        }
+        
+        private void OnAlarmOperationCompleted(object arg) {
+            if ((this.AlarmCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AlarmCompleted(this, new AlarmCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ExceedTheNorm", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string ExceedTheNorm() {
+            object[] results = this.Invoke("ExceedTheNorm", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ExceedTheNormAsync() {
+            this.ExceedTheNormAsync(null);
+        }
+        
+        /// <remarks/>
+        public void ExceedTheNormAsync(object userState) {
+            if ((this.ExceedTheNormOperationCompleted == null)) {
+                this.ExceedTheNormOperationCompleted = new System.Threading.SendOrPostCallback(this.OnExceedTheNormOperationCompleted);
+            }
+            this.InvokeAsync("ExceedTheNorm", new object[0], this.ExceedTheNormOperationCompleted, userState);
+        }
+        
+        private void OnExceedTheNormOperationCompleted(object arg) {
+            if ((this.ExceedTheNormCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ExceedTheNormCompleted(this, new ExceedTheNormCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CountProduct", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string CountProduct() {
+            object[] results = this.Invoke("CountProduct", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CountProductAsync() {
+            this.CountProductAsync(null);
+        }
+        
+        /// <remarks/>
+        public void CountProductAsync(object userState) {
+            if ((this.CountProductOperationCompleted == null)) {
+                this.CountProductOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCountProductOperationCompleted);
+            }
+            this.InvokeAsync("CountProduct", new object[0], this.CountProductOperationCompleted, userState);
+        }
+        
+        private void OnCountProductOperationCompleted(object arg) {
+            if ((this.CountProductCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CountProductCompleted(this, new CountProductCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CountSupplier", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string CountSupplier() {
+            object[] results = this.Invoke("CountSupplier", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CountSupplierAsync() {
+            this.CountSupplierAsync(null);
+        }
+        
+        /// <remarks/>
+        public void CountSupplierAsync(object userState) {
+            if ((this.CountSupplierOperationCompleted == null)) {
+                this.CountSupplierOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCountSupplierOperationCompleted);
+            }
+            this.InvokeAsync("CountSupplier", new object[0], this.CountSupplierOperationCompleted, userState);
+        }
+        
+        private void OnCountSupplierOperationCompleted(object arg) {
+            if ((this.CountSupplierCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CountSupplierCompleted(this, new CountSupplierCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ProductNoSellingPriceYet", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string ProductNoSellingPriceYet() {
+            object[] results = this.Invoke("ProductNoSellingPriceYet", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ProductNoSellingPriceYetAsync() {
+            this.ProductNoSellingPriceYetAsync(null);
+        }
+        
+        /// <remarks/>
+        public void ProductNoSellingPriceYetAsync(object userState) {
+            if ((this.ProductNoSellingPriceYetOperationCompleted == null)) {
+                this.ProductNoSellingPriceYetOperationCompleted = new System.Threading.SendOrPostCallback(this.OnProductNoSellingPriceYetOperationCompleted);
+            }
+            this.InvokeAsync("ProductNoSellingPriceYet", new object[0], this.ProductNoSellingPriceYetOperationCompleted, userState);
+        }
+        
+        private void OnProductNoSellingPriceYetOperationCompleted(object arg) {
+            if ((this.ProductNoSellingPriceYetCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ProductNoSellingPriceYetCompleted(this, new ProductNoSellingPriceYetCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ProductUnclassified", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string ProductUnclassified() {
+            object[] results = this.Invoke("ProductUnclassified", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ProductUnclassifiedAsync() {
+            this.ProductUnclassifiedAsync(null);
+        }
+        
+        /// <remarks/>
+        public void ProductUnclassifiedAsync(object userState) {
+            if ((this.ProductUnclassifiedOperationCompleted == null)) {
+                this.ProductUnclassifiedOperationCompleted = new System.Threading.SendOrPostCallback(this.OnProductUnclassifiedOperationCompleted);
+            }
+            this.InvokeAsync("ProductUnclassified", new object[0], this.ProductUnclassifiedOperationCompleted, userState);
+        }
+        
+        private void OnProductUnclassifiedOperationCompleted(object arg) {
+            if ((this.ProductUnclassifiedCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ProductUnclassifiedCompleted(this, new ProductUnclassifiedCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ProductsNotYetDiscounted", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string ProductsNotYetDiscounted() {
+            object[] results = this.Invoke("ProductsNotYetDiscounted", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ProductsNotYetDiscountedAsync() {
+            this.ProductsNotYetDiscountedAsync(null);
+        }
+        
+        /// <remarks/>
+        public void ProductsNotYetDiscountedAsync(object userState) {
+            if ((this.ProductsNotYetDiscountedOperationCompleted == null)) {
+                this.ProductsNotYetDiscountedOperationCompleted = new System.Threading.SendOrPostCallback(this.OnProductsNotYetDiscountedOperationCompleted);
+            }
+            this.InvokeAsync("ProductsNotYetDiscounted", new object[0], this.ProductsNotYetDiscountedOperationCompleted, userState);
+        }
+        
+        private void OnProductsNotYetDiscountedOperationCompleted(object arg) {
+            if ((this.ProductsNotYetDiscountedCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ProductsNotYetDiscountedCompleted(this, new ProductsNotYetDiscountedCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/OrderNumber", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string OrderNumber() {
+            object[] results = this.Invoke("OrderNumber", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void OrderNumberAsync() {
+            this.OrderNumberAsync(null);
+        }
+        
+        /// <remarks/>
+        public void OrderNumberAsync(object userState) {
+            if ((this.OrderNumberOperationCompleted == null)) {
+                this.OrderNumberOperationCompleted = new System.Threading.SendOrPostCallback(this.OnOrderNumberOperationCompleted);
+            }
+            this.InvokeAsync("OrderNumber", new object[0], this.OrderNumberOperationCompleted, userState);
+        }
+        
+        private void OnOrderNumberOperationCompleted(object arg) {
+            if ((this.OrderNumberCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.OrderNumberCompleted(this, new OrderNumberCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ProductNumber", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string ProductNumber() {
+            object[] results = this.Invoke("ProductNumber", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ProductNumberAsync() {
+            this.ProductNumberAsync(null);
+        }
+        
+        /// <remarks/>
+        public void ProductNumberAsync(object userState) {
+            if ((this.ProductNumberOperationCompleted == null)) {
+                this.ProductNumberOperationCompleted = new System.Threading.SendOrPostCallback(this.OnProductNumberOperationCompleted);
+            }
+            this.InvokeAsync("ProductNumber", new object[0], this.ProductNumberOperationCompleted, userState);
+        }
+        
+        private void OnProductNumberOperationCompleted(object arg) {
+            if ((this.ProductNumberCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ProductNumberCompleted(this, new ProductNumberCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/MoneySell", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string MoneySell() {
+            object[] results = this.Invoke("MoneySell", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void MoneySellAsync() {
+            this.MoneySellAsync(null);
+        }
+        
+        /// <remarks/>
+        public void MoneySellAsync(object userState) {
+            if ((this.MoneySellOperationCompleted == null)) {
+                this.MoneySellOperationCompleted = new System.Threading.SendOrPostCallback(this.OnMoneySellOperationCompleted);
+            }
+            this.InvokeAsync("MoneySell", new object[0], this.MoneySellOperationCompleted, userState);
+        }
+        
+        private void OnMoneySellOperationCompleted(object arg) {
+            if ((this.MoneySellCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.MoneySellCompleted(this, new MoneySellCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3771,6 +4157,32 @@ namespace Florist_Client.api_product {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetOrderPeddingByCustomerCompletedEventHandler(object sender, GetOrderPeddingByCustomerCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetOrderPeddingByCustomerCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetOrderPeddingByCustomerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void insertOrderCompletedEventHandler(object sender, insertOrderCompletedEventArgs e);
     
     /// <remarks/>
@@ -4545,6 +4957,292 @@ namespace Florist_Client.api_product {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void InventoryCompletedEventHandler(object sender, InventoryCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InventoryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InventoryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void AlarmCompletedEventHandler(object sender, AlarmCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AlarmCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AlarmCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void ExceedTheNormCompletedEventHandler(object sender, ExceedTheNormCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ExceedTheNormCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ExceedTheNormCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void CountProductCompletedEventHandler(object sender, CountProductCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CountProductCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CountProductCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void CountSupplierCompletedEventHandler(object sender, CountSupplierCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CountSupplierCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CountSupplierCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void ProductNoSellingPriceYetCompletedEventHandler(object sender, ProductNoSellingPriceYetCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ProductNoSellingPriceYetCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ProductNoSellingPriceYetCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void ProductUnclassifiedCompletedEventHandler(object sender, ProductUnclassifiedCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ProductUnclassifiedCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ProductUnclassifiedCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void ProductsNotYetDiscountedCompletedEventHandler(object sender, ProductsNotYetDiscountedCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ProductsNotYetDiscountedCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ProductsNotYetDiscountedCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void OrderNumberCompletedEventHandler(object sender, OrderNumberCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class OrderNumberCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal OrderNumberCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void ProductNumberCompletedEventHandler(object sender, ProductNumberCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ProductNumberCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ProductNumberCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void MoneySellCompletedEventHandler(object sender, MoneySellCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class MoneySellCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal MoneySellCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }

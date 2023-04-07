@@ -10,6 +10,7 @@ namespace Florist_Client.Models
     {
         public int Order_detail_id { get; set; }
         public string Product_id { get; set; }
+        public string Image { get; set; }
         public string Product_Name { get; set; }
         public int Order_id { get; set; }
         public int Quantity { get; set; }
